@@ -5,8 +5,9 @@ import java.util.List;
 
 public class Dijkstra {
 
-	public static PreviousInterface dijkstra(GraphInterface g, VertexInterface r, ASetInterface set) {
+	public static PreviousInterface dijkstra(GraphInterface g, VertexInterface r) {
 		int maxVal = Integer.MAX_VALUE;
+		ASet set = new ASet();
 		set.addVertex(r);
 		PiInterface pi = new Pi();
 		PreviousInterface pere = new Previous();

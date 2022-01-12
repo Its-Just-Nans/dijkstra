@@ -8,14 +8,13 @@ import ui.DrawingApp;
 
 public class MainTest {
 	public static void main(String[] args) {
-		DrawingApp a = new DrawingApp();
+		DrawingApp drawingApp = new DrawingApp();
 		Maze maze = new Maze();
 		String fileName = "data/labyrinthe.txt";
 		maze.initFromTextFile(fileName);
-		ASet set = new ASet();
 		MBox start = maze.findByType("D");
 		MBox end = maze.findByType("A");
-		PreviousInterface chemin = Dijkstra.dijkstra(maze, start, set);
+		PreviousInterface chemin = Dijkstra.dijkstra(maze, start);
 		// System.out.println(chemin);
 		MBox endCase = end;
 		while (endCase.getLabel() != start.getLabel()) {
