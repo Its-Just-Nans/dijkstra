@@ -3,7 +3,7 @@ package ui;
 import javax.swing.event.*;
 import java.awt.event.MouseEvent;
 
-public class DrawingPanelMouseListener extends MouseInputAdapter implements MouseInputListener, MouseMotionListener {
+public class DrawingPanelMouseListener extends MouseInputAdapter implements MouseMotionListener {
    private final DrawingApp drawingApp;
 
    public DrawingPanelMouseListener(DrawingApp drawingApp) {

@@ -20,8 +20,7 @@ public class ColorChooserButton extends JButton implements ActionListener {
 		DrawingAppModel drawingAppModel = drawingApp.getDrawingAppModel();
 
 		// Show JColorChooser dialog
-		Color newColor = JColorChooser.showDialog(drawingApp,
-				"Change segment color",
+		Color newColor = JColorChooser.showDialog(drawingApp, "Change segment color",
 				drawingAppModel.getCurrentColor());
 		// Changing color triggers refresh
 		if (newColor != null)
