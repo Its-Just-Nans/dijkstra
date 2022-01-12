@@ -15,7 +15,6 @@ public class Maze implements GraphInterface {
 	private List<ArrayList<MBox>> laby;
 	private int maxX;
 	private int maxY;
-	private final String WALL = "W";
 
 	public Maze() {
 		this.laby = new ArrayList<ArrayList<MBox>>();
@@ -51,28 +50,28 @@ public class Maze implements GraphInterface {
 		if (y > 0) {
 			// get the upper
 			MBox boxToAdd = this.laby.get(y - 1).get(x);
-			if (boxToAdd.getType() != WALL) {
+			if (boxToAdd.isTraversable()) {
 				listSuccessor.add(boxToAdd);
 			}
 		}
 		if (y < (maxY - 1)) {
 			// get the down
 			MBox boxToAdd = this.laby.get(y + 1).get(x);
-			if (boxToAdd.getType() != WALL) {
+			if (boxToAdd.isTraversable()) {
 				listSuccessor.add(boxToAdd);
 			}
 		}
 		if (x > 0) {
 			// get the left
 			MBox boxToAdd = this.laby.get(y).get(x - 1);
-			if (boxToAdd.getType() != WALL) {
+			if (boxToAdd.isTraversable()) {
 				listSuccessor.add(boxToAdd);
 			}
 		}
 		if (x < (maxX - 1)) {
 			// get the right
 			MBox boxToAdd = this.laby.get(y).get(x + 1);
-			if (boxToAdd.getType() != WALL) {
+			if (boxToAdd.isTraversable()) {
 				listSuccessor.add(boxToAdd);
 			}
 		}

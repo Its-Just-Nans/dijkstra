@@ -44,4 +44,7 @@ public abstract class MBox implements VertexInterface {
 		return this.Y;
 	}
 
+	public boolean isTraversable() {
+		return true;
+	}
 }
