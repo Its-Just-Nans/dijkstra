@@ -33,6 +33,7 @@ public class DrawingAppModel {
 
     public void setSelectedSegment(Segment newSelected) {
         this.selectedSegment = newSelected;
+        stateChanges(); // update the view
     }
 
     public final void cancelCurrentSegment() {
@@ -75,8 +76,7 @@ public class DrawingAppModel {
     public final void removeSelectedSegment() {
         if (this.selectedSegment != null) {
             editedSegments.remove(this.selectedSegment);
-            this.selectedSegment = null;
-            stateChanges();
+            setSelectedSegment(null);
         }
     }
 
@@ -109,8 +109,9 @@ public class DrawingAppModel {
         double yd = (double) y;
 
         for (Segment oneSegement : editedSegments) {
-            if (oneSegement.ptLineDist(xd, yd) < 1.0) {
+            if (oneSegement.ptLineDist(xd, yd) < 2.5) {
                 setSelectedSegment(oneSegement);
+                stateChanges();
                 return;
             }
         }
