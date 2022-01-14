@@ -1,7 +1,11 @@
 package ui;
 
 import javax.swing.*;
+
+import ui.DrawingApp;
+import ui.*;
 import model.*;
+
 import java.awt.event.*;
 
 public class EraseSegmentButton extends JButton implements ActionListener {
@@ -12,6 +16,7 @@ public class EraseSegmentButton extends JButton implements ActionListener {
 
 		this.drawingApp = drawingApp;
 
+		setEnabled(false); // default
 		addActionListener(this);
 	}
 

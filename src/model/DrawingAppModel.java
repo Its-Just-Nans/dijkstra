@@ -3,16 +3,29 @@ package model;
 import java.awt.*;
 import java.util.*;
 import javax.swing.event.*;
+import java.awt.geom.Point2D;
 
 public class DrawingAppModel {
-    private final ArrayList<Segment> editedSegments = new ArrayList<Segment>(128);
+    private final ArrayList<Segment> editedSegments = new ArrayList<Segment>();
+    private final ArrayList<Cercle> editedCercle = new ArrayList<Cercle>();
     private Color currentColor = new Color(48, 48, 48);
+
     private Segment currentSegment = null;
     private Segment selectedSegment = null;
+
+    private Cercle currentCercle = null;
+    private Cercle selectedCercle = null;
+
+    private String currentForme = null;
+
     private boolean modified = false;
 
     public Color getCurrentColor() {
         return this.currentColor;
+    }
+
+    public String getCurrentForme() {
+        return this.currentForme;
     }
 
     public boolean isModified() {
@@ -25,6 +38,10 @@ public class DrawingAppModel {
 
     public void setCurrentSegment(Segment newCurrent) {
         this.currentSegment = newCurrent;
+    }
+
+    public void setCurrentCercle(Cercle newCurrent) {
+        this.currentCercle = newCurrent;
     }
 
     public Segment getSelectedSegment() {
@@ -73,6 +90,10 @@ public class DrawingAppModel {
         }
     }
 
+    public final void setCurrentForme(String newCurrentForme) {
+        this.currentForme = newCurrentForme;
+    }
+
     public final void removeSelectedSegment() {
         if (this.selectedSegment != null) {
             editedSegments.remove(this.selectedSegment);
@@ -80,27 +101,85 @@ public class DrawingAppModel {
         }
     }
 
-    public final void initCurrentSegment(int x, int y) {
-        setCurrentSegment(new Segment(x, y, x, y, currentColor));
-    }
-
-    public final void modifyCurrentSegment(int x2, int y2) {
-        if (this.currentSegment != null) {
-            float x1 = (float) currentSegment.getX1();
-            float y1 = (float) currentSegment.getY1();
-            setCurrentSegment(new Segment(x1, y1, x2, y2, currentColor));
-        }
-    }
-
     public final void registerCurrentSegment(int x2, int y2) {
         if (this.currentSegment != null) {
             float x1 = (float) currentSegment.getX1();
             float y1 = (float) currentSegment.getY1();
-            if (Math.abs(x1 - (float) x2) >= 1.0f || Math.abs(y1 - (float) y2) >= 1.0f) {
-                currentSegment = null;
-                editedSegments.add(new Segment(x1, y1, x2, y2, currentColor));
-                stateChanges();
+            Cercle end1 = currentSegment.getEnd1();
+            float radius = Cercle.getDiametre() / 2;
+            for (Cercle oneCercle : this.editedCercle) {
+                if (oneCercle != end1) { // le segment ne peut pas avoir deux bouts identiques
+                    float xCercle = (float) oneCercle.getRealX();
+                    float yCercle = (float) oneCercle.getRealY();
+                    float dist = (float) Point2D.distance(x2, y2, xCercle, yCercle);
+                    if (dist < radius) {
+                        currentSegment.setEnd2(oneCercle);
+                        currentSegment.setLine(x1, y1, xCercle, yCercle);
+                        editedSegments.add(currentSegment);
+                    }
+                }
             }
+            setCurrentSegment(null);
+            stateChanges();
+        }
+    }
+
+    public final void initCurrentForme(int x, int y) {
+        System.out.println(x + " " + y);
+        if (this.currentForme == "Cercle") {
+            float diametre = Cercle.getDiametre();
+            float realX = x - (diametre / 2); // the x of Ellipse2D is at the top right corner;
+            float realY = y - (diametre / 2); // the y of Ellipse2D is at the top right corner;
+            editedCercle.add(new Cercle(realX, realY, this.currentColor));
+            System.out.println(realX + " " + realY);
+            setCurrentCercle(null);
+            setCurrentSegment(null);
+            stateChanges();
+        } else if (this.currentForme == "Segment") {
+            setCurrentCercle(null);
+            // check cercle
+            Segment newSegment = new Segment(x, y, x, y, this.currentColor);
+            float radius = Cercle.getDiametre() / 2;
+            for (Cercle oneCercle : this.editedCercle) {
+                float xCercle = (float) oneCercle.getRealX();
+                float yCercle = (float) oneCercle.getRealY();
+                float dist = (float) Point2D.distance(x, y, xCercle, yCercle);
+                if (dist < radius) {
+                    newSegment.setLine(xCercle, yCercle, x, y);
+                    newSegment.setEnd1(oneCercle);
+                    setCurrentSegment(newSegment);
+                    stateChanges();
+                    return;
+                }
+            }
+        }
+    }
+
+    public final void modifyCurrentForme(int x2, int y2) {
+        System.out.println(x2 + " " + y2);
+        if (this.currentSegment != null && this.currentForme == "Segment") {
+            float x1 = (float) currentSegment.getX1();
+            float y1 = (float) currentSegment.getY1();
+            currentSegment.setLine(x1, y1, x2, y2);
+        }
+        stateChanges();
+    }
+
+    public final void cancelCurrentForme() {
+        if (this.currentForme == "Cercle") {
+            setCurrentCercle(null);
+        } else if (this.currentForme == "Segment") {
+            setCurrentSegment(null);
+        }
+        stateChanges();
+    }
+
+    public final void paintCercle(Graphics g) {
+        for (Cercle oneCercle : editedCercle) {
+            oneCercle.paint(g, false, false);
+        }
+        if (this.currentCercle != null) {
+            this.currentCercle.paint(g, false, true);
         }
     }
 

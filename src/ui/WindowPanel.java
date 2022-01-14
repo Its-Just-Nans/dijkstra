@@ -1,6 +1,9 @@
 package ui;
 
 import javax.swing.*;
+
+import ui.Buttons.ButtonsPanel;
+
 import java.awt.*;
 
 public class WindowPanel extends JPanel {

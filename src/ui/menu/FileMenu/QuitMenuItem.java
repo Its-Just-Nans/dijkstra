@@ -3,6 +3,8 @@ package ui.menu.FileMenu;
 import javax.swing.*;
 import java.awt.event.*;
 import model.*;
+
+import ui.*;
 import ui.DrawingApp;
 
 public class QuitMenuItem extends JMenuItem implements ActionListener {

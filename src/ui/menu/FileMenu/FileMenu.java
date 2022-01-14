@@ -2,6 +2,7 @@ package ui.menu.FileMenu;
 
 import javax.swing.*;
 
+import ui.*;
 import ui.DrawingApp;
 
 public class FileMenu extends JMenu {

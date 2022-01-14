@@ -27,6 +27,7 @@ public class DrawingPanel extends JPanel {
 
 		// Ask the model to draw the segments
 		drawingApp.getDrawingAppModel().paintSegments(g);
+		drawingApp.getDrawingAppModel().paintCercle(g);
 	}
 
 	public void notifyForUpdate() {

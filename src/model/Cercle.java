@@ -3,13 +3,13 @@ package model;
 import java.awt.*;
 import java.awt.geom.*;
 
-public class Segment extends Line2D.Float {
+public class Cercle extends Ellipse2D.Float {
     private Color color = Color.BLACK;
-    private Cercle end1 = null;
-    private Cercle end2 = null;
 
-    public Segment(float x1, float y1, float x2, float y2, Color color) {
-        super(x1, y1, x2, y2);
+    private final static float diametre = 20f;
+
+    public Cercle(float x1, float y1, Color color) {
+        super(x1, y1, diametre, diametre);
 
         this.color = color;
     }
@@ -24,6 +24,18 @@ public class Segment extends Line2D.Float {
         usualStroke = new BasicStroke(3.0f);
         largeStroke = new BasicStroke(5.0f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_MITER);
         dashStroke = new BasicStroke(3.0f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_MITER, 10.0f, dash, 0.0f);
+    }
+
+    public static float getDiametre() {
+        return diametre;
+    }
+
+    public float getRealX() {
+        return x + (diametre / 2); // the x of Ellipse2D is at the top right corner;
+    }
+
+    public float getRealY() {
+        return y + (diametre / 2); // the y of Ellipse2D is at the top right corner;
     }
 
     public final void paint(Graphics g, boolean selected, boolean current) {
@@ -42,21 +54,6 @@ public class Segment extends Line2D.Float {
         } else {
             g2.draw(this);
         }
-    }
-
-    public void setEnd1(Cercle newEnd1) {
-        this.end1 = newEnd1;
-    }
-
-    public void setEnd2(Cercle newEnd2) {
-        this.end2 = newEnd2;
-    }
-
-    public Cercle getEnd1() {
-        return this.end1;
-    }
-
-    public Cercle getEnd2() {
-        return this.end2;
+        g2.fill(this);
     }
 }

@@ -1,7 +1,10 @@
 package ui;
 
 import javax.swing.*;
-import model.*;
+
+import model.DrawingAppModel;
+import ui.*;
+
 import java.awt.*;
 import java.awt.event.*;
 
@@ -23,7 +26,8 @@ public class ColorChooserButton extends JButton implements ActionListener {
 		Color newColor = JColorChooser.showDialog(drawingApp, "Change segment color",
 				drawingAppModel.getCurrentColor());
 		// Changing color triggers refresh
-		if (newColor != null)
+		if (newColor != null) {
 			drawingAppModel.setCurrentColor(newColor);
+		}
 	}
 }
