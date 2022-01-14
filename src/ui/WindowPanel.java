@@ -1,12 +1,11 @@
 package ui;
 
-import javax.swing.*;
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
 
 import ui.Buttons.ButtonsPanel;
 import ui.Drawing.DrawingApp;
 import ui.Drawing.DrawingPanel;
-
-import java.awt.*;
 
 public class WindowPanel extends JPanel {
 	private final DrawingPanel drawingPanel;

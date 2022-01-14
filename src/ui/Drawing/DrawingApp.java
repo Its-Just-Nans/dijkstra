@@ -1,11 +1,11 @@
 package ui.Drawing;
 
-import ui.*;
-import ui.Menu.DrawingMenuBar;
-
-import javax.swing.*;
+import javax.swing.JFrame;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+
+import ui.WindowPanel;
+import ui.Menu.DrawingMenuBar;
 
 public class DrawingApp extends JFrame implements ChangeListener {
    private final DrawingMenuBar drawingMenuBar;

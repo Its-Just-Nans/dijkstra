@@ -1,12 +1,10 @@
 package ui.Buttons;
 
-import javax.swing.*;
-
-import ui.*;
+import javax.swing.JButton;
 import ui.Drawing.DrawingApp;
 import ui.Drawing.Elements.Segment;
-
-import java.awt.event.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class EraseSegmentButton extends JButton implements ActionListener {
 	private final DrawingApp drawingApp;

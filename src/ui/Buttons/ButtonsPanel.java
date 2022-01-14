@@ -1,9 +1,8 @@
 package ui.Buttons;
 
-import java.awt.*;
-import javax.swing.*;
+import java.awt.GridLayout;
+import javax.swing.JPanel;
 
-import ui.*;
 import ui.Drawing.DrawingApp;
 
 public class ButtonsPanel extends JPanel {
@@ -14,7 +13,7 @@ public class ButtonsPanel extends JPanel {
 
 	public ButtonsPanel(DrawingApp drawingApp) {
 		super();
-		setLayout(new GridLayout(1, 4)); // 1 row, 3 columns
+		setLayout(new GridLayout(1, 4)); // 1 row, 4 columns
 
 		add(colorIndicator = new ColorIndicator(drawingApp));
 		add(colorChooser = new ColorChooserButton(drawingApp));

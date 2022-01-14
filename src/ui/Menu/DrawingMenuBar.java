@@ -1,6 +1,6 @@
 package ui.Menu;
 
-import javax.swing.*;
+import javax.swing.JMenuBar;
 
 import ui.Drawing.DrawingApp;
 import ui.Menu.Action.ActionMenu;

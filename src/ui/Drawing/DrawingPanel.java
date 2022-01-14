@@ -1,8 +1,9 @@
 package ui.Drawing;
 
-import javax.swing.*;
-
-import java.awt.*;
+import javax.swing.JPanel;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
 
 public class DrawingPanel extends JPanel {
 	private final DrawingApp drawingApp;

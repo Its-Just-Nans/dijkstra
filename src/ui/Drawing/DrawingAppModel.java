@@ -1,13 +1,14 @@
 package ui.Drawing;
 
-import java.awt.*;
-import java.util.*;
-import javax.swing.event.*;
+import javax.swing.event.ChangeListener;
+import javax.swing.event.ChangeEvent;
+import java.util.ArrayList;
+import java.awt.geom.Point2D;
+import java.awt.Graphics;
+import java.awt.Color;
 
 import ui.Drawing.Elements.Cercle;
 import ui.Drawing.Elements.Segment;
-
-import java.awt.geom.Point2D;
 
 public class DrawingAppModel {
     private final ArrayList<Segment> editedSegments = new ArrayList<Segment>();

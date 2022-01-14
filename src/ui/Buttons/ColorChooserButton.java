@@ -1,13 +1,13 @@
 package ui.Buttons;
 
-import javax.swing.*;
+import javax.swing.JColorChooser;
+import javax.swing.JButton;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import ui.*;
 import ui.Drawing.DrawingApp;
 import ui.Drawing.DrawingAppModel;
-
-import java.awt.*;
-import java.awt.event.*;
 
 public class ColorChooserButton extends JButton implements ActionListener {
 	private final DrawingApp drawingApp;

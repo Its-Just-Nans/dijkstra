@@ -1,13 +1,16 @@
 package ui.Buttons;
 
-import javax.swing.*;
-
-import ui.Drawing.DrawingApp;
-
-import java.awt.*;
-import java.awt.event.*;
+import javax.swing.AbstractButton;
+import javax.swing.ButtonGroup;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import java.awt.GridLayout;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
 import java.util.ArrayList;
 import java.util.Enumeration;
+
+import ui.Drawing.DrawingApp;
 
 public class ListFormes extends JPanel implements ItemListener {
 	private final DrawingApp drawingApp;

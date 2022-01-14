@@ -1,7 +1,10 @@
 package ui.Drawing.Elements;
 
-import java.awt.*;
-import java.awt.geom.*;
+import java.awt.Color;
+import java.awt.BasicStroke;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.geom.Ellipse2D;
 
 public class Cercle extends Ellipse2D.Float {
     private Color color = Color.BLACK;
