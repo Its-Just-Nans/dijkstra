@@ -1,7 +1,7 @@
 package dijkstra;
 
 public class Vertex implements VertexInterface {
-	String name;
+	private String name;
 
 	public Vertex() {
 

@@ -3,10 +3,10 @@ package maze;
 import dijkstra.VertexInterface;
 
 public abstract class MBox implements VertexInterface {
-	String label;
-	String type;
-	int X;
-	int Y;
+	private String label;
+	private String type;
+	private int X;
+	private int Y;
 
 	public MBox(String type) {
 		label = "case";

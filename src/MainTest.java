@@ -1,5 +1,4 @@
 
-import dijkstra.ASet;
 import dijkstra.PreviousInterface;
 import dijkstra.Dijkstra;
 import maze.MBox;
