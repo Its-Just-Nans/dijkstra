@@ -3,9 +3,8 @@ package ui.Buttons;
 import java.awt.*;
 import javax.swing.*;
 
-import ui.ColorIndicator;
-import ui.DrawingApp;
 import ui.*;
+import ui.Drawing.DrawingApp;
 
 public class ButtonsPanel extends JPanel {
 	private final ColorIndicator colorIndicator;

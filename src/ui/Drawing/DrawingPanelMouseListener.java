@@ -1,6 +1,7 @@
-package ui;
+package ui.Drawing;
 
 import javax.swing.event.*;
+
 import java.awt.event.MouseEvent;
 
 public class DrawingPanelMouseListener extends MouseInputAdapter implements MouseInputListener {

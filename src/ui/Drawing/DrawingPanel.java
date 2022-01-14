@@ -1,6 +1,7 @@
-package ui;
+package ui.Drawing;
 
 import javax.swing.*;
+
 import java.awt.*;
 
 public class DrawingPanel extends JPanel {

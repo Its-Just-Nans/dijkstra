@@ -1,8 +1,7 @@
-package ui;
+package ui.Drawing;
 
 import ui.*;
 import ui.Menu.DrawingMenuBar;
-import model.DrawingAppModel;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;

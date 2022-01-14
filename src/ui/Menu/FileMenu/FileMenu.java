@@ -1,9 +1,9 @@
-package ui.menu.FileMenu;
+package ui.Menu.FileMenu;
 
 import javax.swing.*;
 
 import ui.*;
-import ui.DrawingApp;
+import ui.Drawing.DrawingApp;
 
 public class FileMenu extends JMenu {
    private final QuitMenuItem quitMenuItem;

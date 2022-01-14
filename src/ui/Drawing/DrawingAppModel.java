@@ -1,8 +1,12 @@
-package model;
+package ui.Drawing;
 
 import java.awt.*;
 import java.util.*;
 import javax.swing.event.*;
+
+import ui.Drawing.Elements.Cercle;
+import ui.Drawing.Elements.Segment;
+
 import java.awt.geom.Point2D;
 
 public class DrawingAppModel {

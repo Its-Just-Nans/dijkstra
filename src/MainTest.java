@@ -3,7 +3,7 @@ import dijkstra.PreviousInterface;
 import dijkstra.Dijkstra;
 import maze.MBox;
 import maze.Maze;
-import ui.DrawingApp;
+import ui.Drawing.DrawingApp;
 
 public class MainTest {
 	public static void main(String[] args) {

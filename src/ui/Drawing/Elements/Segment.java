@@ -1,4 +1,4 @@
-package model;
+package ui.Drawing.Elements;
 
 import java.awt.*;
 import java.awt.geom.*;

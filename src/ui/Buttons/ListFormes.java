@@ -1,10 +1,10 @@
 package ui.Buttons;
 
 import javax.swing.*;
+
+import ui.Drawing.DrawingApp;
+
 import java.awt.*;
-
-import ui.DrawingApp;
-
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.Enumeration;

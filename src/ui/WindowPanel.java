@@ -3,6 +3,8 @@ package ui;
 import javax.swing.*;
 
 import ui.Buttons.ButtonsPanel;
+import ui.Drawing.DrawingApp;
+import ui.Drawing.DrawingPanel;
 
 import java.awt.*;
 

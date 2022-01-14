@@ -1,8 +1,8 @@
-package ui.menu.Action;
+package ui.Menu.Action;
 
 import javax.swing.*;
 
-import ui.DrawingApp;
+import ui.Drawing.DrawingApp;
 
 import java.awt.event.*;
 

@@ -1,9 +1,10 @@
-package ui;
+package ui.Buttons;
 
 import javax.swing.*;
 
-import model.DrawingAppModel;
 import ui.*;
+import ui.Drawing.DrawingApp;
+import ui.Drawing.DrawingAppModel;
 
 import java.awt.*;
 import java.awt.event.*;

@@ -1,8 +1,11 @@
-package ui;
+package ui.Buttons;
 
 import java.awt.Dimension;
 
 import javax.swing.*;
+
+import ui.Drawing.DrawingApp;
+
 import java.awt.*;
 
 public class ColorIndicator extends JPanel {
