@@ -20,7 +20,6 @@ public class DrawingPanelMouseListener extends MouseInputAdapter implements Mous
 
    @Override
    public final void mouseDragged(MouseEvent e) {
-      System.out.println("MOUSE");
       drawingApp.getDrawingAppModel().modifyCurrentForme(e.getX(), e.getY());
    }
 

@@ -22,7 +22,7 @@ public class DrawingAppModel {
     private Cercle selectedCercle = null;
 
     private String currentForme = null;
-
+    private String selectionType = null; // used with the "cursor" mode, to know the current figure
     private boolean modified = false;
 
     public Color getCurrentColor() {
@@ -31,6 +31,14 @@ public class DrawingAppModel {
 
     public String getCurrentForme() {
         return this.currentForme;
+    }
+
+    public String getSelectionType() {
+        return this.selectionType;
+    }
+
+    public void setSelectionType(String select) {
+        this.selectionType = select;
     }
 
     public boolean isModified() {
@@ -55,6 +63,21 @@ public class DrawingAppModel {
 
     public void setSelectedSegment(Segment newSelected) {
         this.selectedSegment = newSelected;
+        if (newSelected != null) {
+            setSelectionType("Segment");
+        }
+        stateChanges(); // update the view
+    }
+
+    public Cercle getSelectedCercle() {
+        return this.selectedCercle;
+    }
+
+    public void setSelectedCercle(Cercle newSelected) {
+        this.selectedCercle = newSelected;
+        if (newSelected != null) {
+            setSelectionType("Cercle");
+        }
         stateChanges(); // update the view
     }
 
@@ -97,6 +120,10 @@ public class DrawingAppModel {
 
     public final void setCurrentForme(String newCurrentForme) {
         this.currentForme = newCurrentForme;
+        this.setSelectedCercle(null);
+        this.setSelectedSegment(null);
+        this.setSelectionType(null);
+        stateChanges();
     }
 
     public final void removeSelectedSegment() {
@@ -130,13 +157,11 @@ public class DrawingAppModel {
     }
 
     public final void initCurrentForme(int x, int y) {
-        System.out.println(x + " " + y);
         if (this.currentForme == "Cercle") {
             float diametre = Cercle.getDiametre();
             float realX = x - (diametre / 2); // the x of Ellipse2D is at the top right corner;
             float realY = y - (diametre / 2); // the y of Ellipse2D is at the top right corner;
             editedCercle.add(new Cercle(realX, realY, this.currentColor));
-            System.out.println(realX + " " + realY);
             setCurrentCercle(null);
             setCurrentSegment(null);
             stateChanges();
@@ -161,7 +186,6 @@ public class DrawingAppModel {
     }
 
     public final void modifyCurrentForme(int x2, int y2) {
-        System.out.println(x2 + " " + y2);
         if (this.currentSegment != null && this.currentForme == "Segment") {
             float x1 = (float) currentSegment.getX1();
             float y1 = (float) currentSegment.getY1();
@@ -186,20 +210,34 @@ public class DrawingAppModel {
         if (this.currentCercle != null) {
             this.currentCercle.paint(g, false, true);
         }
+        if (this.selectedCercle != null) {
+            this.selectedCercle.paint(g, true, false);
+        }
     }
 
     public final void setSelection(int x, int y) {
         double xd = (double) x;
         double yd = (double) y;
 
-        for (Segment oneSegement : editedSegments) {
-            if (oneSegement.ptLineDist(xd, yd) < 2.5) {
-                setSelectedSegment(oneSegement);
-                stateChanges();
+        setSelectedCercle(null);
+        setSelectedSegment(null);
+
+        for (Cercle oneCercle : editedCercle) {
+            float xCercle = oneCercle.getRealX();
+            float yCercle = oneCercle.getRealY();
+            float radius = Cercle.getDiametre() / 2;
+            float dist = (float) Point2D.distance(x, y, xCercle, yCercle);
+            if (dist < radius) {
+                setSelectedCercle(oneCercle);
                 return;
             }
         }
 
-        setSelectedSegment(null);
+        for (Segment oneSegement : editedSegments) {
+            if (oneSegement.ptLineDist(xd, yd) < 2.5) {
+                setSelectedSegment(oneSegement);
+                return;
+            }
+        }
     }
 }

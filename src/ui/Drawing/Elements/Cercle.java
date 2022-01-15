@@ -8,29 +8,35 @@ import java.awt.geom.Ellipse2D;
 
 public class Cercle extends Ellipse2D.Float {
     private Color color = Color.BLACK;
-
+    private String type;
     private final static float diametre = 20f;
 
     public Cercle(float x1, float y1, Color color) {
         super(x1, y1, diametre, diametre);
 
         this.color = color;
+        setType("Normal");
     }
 
-    private final static float[] dash = { 4.0f };
-
-    private final static BasicStroke usualStroke;
-    private final static BasicStroke largeStroke;
-    private final static BasicStroke dashStroke;
-
-    static { // Static initialization of drawing modes
-        usualStroke = new BasicStroke(3.0f);
-        largeStroke = new BasicStroke(5.0f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_MITER);
-        dashStroke = new BasicStroke(3.0f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_MITER, 10.0f, dash, 0.0f);
-    }
+    private final static BasicStroke basicStroke = new BasicStroke();
 
     public static float getDiametre() {
         return diametre;
+    }
+
+    public void setType(String newType) {
+        this.type = newType;
+        if (this.type == "Normal") {
+            this.color = Color.BLACK;
+        } else if (this.type == "Depart") {
+            this.color = Color.BLUE;
+        } else if (this.type == "Arrivée") {
+            this.color = Color.RED;
+        }
+    }
+
+    public String getType() {
+        return this.type;
     }
 
     public float getRealX() {
@@ -44,19 +50,17 @@ public class Cercle extends Ellipse2D.Float {
     public final void paint(Graphics g, boolean selected, boolean current) {
         Graphics2D g2 = (Graphics2D) g;
 
+        g2.setStroke(basicStroke);
         g2.setColor(color);
-
-        if (current) {
-            g2.setStroke(dashStroke); // Dashed lines mode
-            g2.draw(this);
-            g2.setStroke(usualStroke); // Normal mode
-        } else if (selected) {
-            g2.setStroke(largeStroke); // Large lines mode
-            g2.draw(this);
-            g2.setStroke(usualStroke); // Normal mode
-        } else {
-            g2.draw(this);
+        if (selected) {
+            if (this.color == Color.BLACK) {
+                g2.setColor(Color.GRAY);
+            } else {
+                Color customColor = this.color;
+                g2.setColor(customColor.darker()); // darker to see selection
+            }
         }
         g2.fill(this);
+        g2.draw(this);
     }
 }

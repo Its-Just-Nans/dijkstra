@@ -39,6 +39,7 @@ public class Segment extends Line2D.Float {
             g2.draw(this);
             g2.setStroke(usualStroke); // Normal mode
         } else if (selected) {
+            g2.setColor(Color.GRAY);
             g2.setStroke(largeStroke); // Large lines mode
             g2.draw(this);
             g2.setStroke(usualStroke); // Normal mode
