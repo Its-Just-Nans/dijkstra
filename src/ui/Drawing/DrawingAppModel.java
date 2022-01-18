@@ -93,8 +93,9 @@ public class DrawingAppModel implements GraphInterface {
     }
 
     public final void paintSegments(Graphics g) {
-        for (Segment s : editedSegments)
+        for (Segment s : editedSegments) {
             s.paint(g, false, false);
+        }
 
         if (selectedSegment != null) {
             selectedSegment.paint(g, true, false);
@@ -133,11 +134,28 @@ public class DrawingAppModel implements GraphInterface {
         stateChanges();
     }
 
-    public final void removeSelectedSegment() {
-        if (this.selectedSegment != null) {
-            editedSegments.remove(this.selectedSegment);
-            setSelectedSegment(null);
+    public final void removeCurrentSelection() {
+        if (this.selectionType != null) {
+            if (this.selectionType == Constant.CERCLE) {
+                // need to remove connected Segment !
+                ArrayList<Segment> toRemove = new ArrayList<Segment>();
+                for (Segment oneSegment : editedSegments) {
+                    if (oneSegment.getEnd1() == this.selectedCercle || oneSegment.getEnd2() == this.selectedCercle) {
+                        toRemove.add(oneSegment);
+                    }
+                }
+                // using a temp ArrayList because remove element of a list while
+                // looping on it is not simple (and to avoid ConcurrentModificationException)
+                editedSegments.removeAll(toRemove);
+                editedCercle.remove(this.selectedCercle);
+                setSelectedCercle(null);
+            } else if (this.selectionType == Constant.SEGMENT) {
+                editedSegments.remove(this.selectedSegment);
+                setSelectedSegment(null);
+            }
         }
+        this.setSelectionType(null);
+        this.stateChanges(); // notify to hide the erase button
     }
 
     public final void registerCurrentSegment(int x2, int y2) {
@@ -246,6 +264,8 @@ public class DrawingAppModel implements GraphInterface {
                 return;
             }
         }
+        this.setSelectionType(null);
+        this.stateChanges(); // update for unselect, when click on background
     }
 
     public ArrayList<VertexInterface> getSommets() {
