@@ -10,6 +10,7 @@ import java.awt.event.ItemEvent;
 import java.util.ArrayList;
 import java.util.Enumeration;
 
+import ui.Constant;
 import ui.Drawing.DrawingApp;
 import ui.Drawing.Elements.Cercle;
 
@@ -24,10 +25,10 @@ public class ListType extends JPanel implements ItemListener {
 		this.setVisible(false);
 		this.drawingApp = drawingApp;
 
-		listButtons.add(new JRadioButton("Normal"));
-		listButtons.add(new JRadioButton("Arrivée"));
-		listButtons.add(new JRadioButton("Depart"));
-		listButtons.add(new JRadioButton("Mur"));
+		listButtons.add(new JRadioButton(Constant.NORMAL));
+		listButtons.add(new JRadioButton(Constant.ARRIVEE));
+		listButtons.add(new JRadioButton(Constant.DEPART));
+		listButtons.add(new JRadioButton(Constant.MUR));
 
 		listButtons.get(0).setSelected(true);// default is normal
 
@@ -39,9 +40,9 @@ public class ListType extends JPanel implements ItemListener {
 	}
 
 	public void notifyForUpdate() {
-		if (drawingApp.getDrawingAppModel().getCurrentForme() == "Cursor") {
+		if (drawingApp.getDrawingAppModel().getCurrentForme() == Constant.CURSOR) {
 			String forme = drawingApp.getDrawingAppModel().getSelectionType();
-			if (forme == "Cercle") {
+			if (forme == Constant.CERCLE) {
 				this.setVisible(true);
 				changeSeletedType();
 			} else {
@@ -75,8 +76,18 @@ public class ListType extends JPanel implements ItemListener {
 			if (oneButton.isSelected()) {
 				String type = oneButton.getText();
 				Cercle cercle = this.drawingApp.getDrawingAppModel().getSelectedCercle();
-				cercle.setType(type);
-				this.drawingApp.getDrawingAppModel().setSelectedCercle(cercle);
+				if (cercle != null) {
+					cercle.setType(type);
+					if (type == Constant.DEPART || type == Constant.ARRIVEE) {
+						ArrayList<Cercle> list = this.drawingApp.getDrawingAppModel().getEditedCercle();
+						for (Cercle oneCercle : list) {
+							if (oneCercle != cercle && oneCercle.getType() == type) {
+								oneCercle.setType(Constant.NORMAL);
+							}
+						}
+					}
+					this.drawingApp.getDrawingAppModel().stateChanges();
+				}
 				return;
 			}
 		}

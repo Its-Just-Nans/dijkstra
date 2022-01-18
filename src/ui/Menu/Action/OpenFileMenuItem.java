@@ -18,6 +18,6 @@ public class OpenFileMenuItem extends JMenuItem implements ActionListener {
    }
 
    public void actionPerformed(ActionEvent evt) {
-      System.out.println("CLICK");
+      this.drawingApp.solveDijkstra();
    }
 }

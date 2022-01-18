@@ -10,6 +10,7 @@ import java.awt.event.ItemEvent;
 import java.util.ArrayList;
 import java.util.Enumeration;
 
+import ui.Constant;
 import ui.Drawing.DrawingApp;
 
 public class ListFormes extends JPanel implements ItemListener {
@@ -23,9 +24,9 @@ public class ListFormes extends JPanel implements ItemListener {
 		this.drawingApp = drawingApp;
 
 		ArrayList<JRadioButton> listButtons = new ArrayList<JRadioButton>();
-		listButtons.add(new JRadioButton("Cursor"));
-		listButtons.add(new JRadioButton("Segment"));
-		listButtons.add(new JRadioButton("Cercle"));
+		listButtons.add(new JRadioButton(Constant.CURSOR));
+		listButtons.add(new JRadioButton(Constant.SEGMENT));
+		listButtons.add(new JRadioButton(Constant.CERCLE));
 
 		listButtons.get(0).setSelected(true); // default is cursor
 

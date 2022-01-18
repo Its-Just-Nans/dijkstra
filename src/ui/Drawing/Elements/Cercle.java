@@ -6,7 +6,10 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.Ellipse2D;
 
-public class Cercle extends Ellipse2D.Float {
+import dijkstra.VertexInterface;
+import ui.Constant;
+
+public class Cercle extends Ellipse2D.Float implements VertexInterface {
     private Color color = Color.BLACK;
     private String type;
     private final static float diametre = 20f;
@@ -15,7 +18,7 @@ public class Cercle extends Ellipse2D.Float {
         super(x1, y1, diametre, diametre);
 
         this.color = color;
-        setType("Normal");
+        setType(Constant.NORMAL);
     }
 
     private final static BasicStroke basicStroke = new BasicStroke();
@@ -24,13 +27,17 @@ public class Cercle extends Ellipse2D.Float {
         return diametre;
     }
 
+    public String getLabel() {
+        return this.type;
+    }
+
     public void setType(String newType) {
         this.type = newType;
-        if (this.type == "Normal") {
+        if (this.type == Constant.NORMAL) {
             this.color = Color.BLACK;
-        } else if (this.type == "Depart") {
+        } else if (this.type == Constant.DEPART) {
             this.color = Color.BLUE;
-        } else if (this.type == "Arrivée") {
+        } else if (this.type == Constant.ARRIVEE) {
             this.color = Color.RED;
         }
     }

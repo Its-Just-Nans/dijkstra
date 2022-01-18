@@ -4,6 +4,8 @@ import javax.swing.event.MouseInputListener;
 import javax.swing.event.MouseInputAdapter;
 import java.awt.event.MouseEvent;
 
+import ui.Constant;
+
 public class DrawingPanelMouseListener extends MouseInputAdapter implements MouseInputListener {
    private final DrawingApp drawingApp;
 
@@ -25,7 +27,7 @@ public class DrawingPanelMouseListener extends MouseInputAdapter implements Mous
 
    @Override
    public final void mouseReleased(MouseEvent e) {
-      if (drawingApp.getDrawingAppModel().getCurrentForme() == "Segment") {
+      if (drawingApp.getDrawingAppModel().getCurrentForme() == Constant.SEGMENT) {
          drawingApp.getDrawingAppModel().registerCurrentSegment(e.getX(), e.getY());
       }
    }
@@ -37,7 +39,7 @@ public class DrawingPanelMouseListener extends MouseInputAdapter implements Mous
 
    @Override
    public final void mouseClicked(MouseEvent e) {
-      if (drawingApp.getDrawingAppModel().getCurrentForme() == "Cursor") {
+      if (drawingApp.getDrawingAppModel().getCurrentForme() == Constant.CURSOR) {
          drawingApp.getDrawingAppModel().setSelection(e.getX(), e.getY());
       }
    }

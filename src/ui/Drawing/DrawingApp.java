@@ -4,7 +4,11 @@ import javax.swing.JFrame;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import dijkstra.Dijkstra;
+import dijkstra.PreviousInterface;
+import dijkstra.VertexInterface;
 import ui.WindowPanel;
+import ui.Drawing.Elements.Cercle;
 import ui.Menu.DrawingMenuBar;
 
 public class DrawingApp extends JFrame implements ChangeListener {
@@ -35,5 +39,22 @@ public class DrawingApp extends JFrame implements ChangeListener {
 
    public void stateChanged(ChangeEvent evt) {
       windowPanel.notifyForUpdate();
+   }
+
+   public void solveDijkstra() {
+      this.drawingAppModel = this.getDrawingAppModel();
+      // drawingAppModel.cleanInterface();
+      // drawingAppModel.checkValues();
+      VertexInterface start = drawingAppModel.getStart();
+      VertexInterface end = drawingAppModel.getEnd();
+      PreviousInterface chemin = Dijkstra.dijkstra(drawingAppModel, start);
+
+      Cercle endCaseTemp = (Cercle) end;
+      while (endCaseTemp.getLabel() != start.getLabel()) {
+         endCaseTemp = (Cercle) chemin.getValue(endCaseTemp);
+         if (endCaseTemp != null) {
+            drawingAppModel.setCaseWIN(endCaseTemp.getRealX(), endCaseTemp.getRealY());
+         }
+      }
    }
 }

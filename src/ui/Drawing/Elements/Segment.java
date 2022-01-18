@@ -6,15 +6,22 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.Line2D;
 
-public class Segment extends Line2D.Float {
+import dijkstra.VertexInterface;
+
+public class Segment extends Line2D.Float implements VertexInterface {
     private Color color = Color.BLACK;
     private Cercle end1 = null;
     private Cercle end2 = null;
+    private int value = 1;
 
     public Segment(float x1, float y1, float x2, float y2, Color color) {
         super(x1, y1, x2, y2);
 
         this.color = color;
+    }
+
+    public String getLabel() {
+        return null;
     }
 
     private final static float[] dash = { 4.0f };
@@ -62,5 +69,13 @@ public class Segment extends Line2D.Float {
 
     public Cercle getEnd2() {
         return this.end2;
+    }
+
+    public void setValue(int newValue) {
+        this.value = newValue;
+    }
+
+    public int getValue() {
+        return this.value;
     }
 }
