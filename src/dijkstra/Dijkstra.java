@@ -22,7 +22,7 @@ public class Dijkstra {
 		}
 		// pour j variant de 1 à n-1
 		int loopValue = listeSommets.size() - 1;
-		for (int j = 0; j < loopValue; j++) {
+		for (int j = 1; j <= loopValue; j++) {
 			// pour tout sommet y non encore dans A et successeur de pivot
 			List<VertexInterface> listOfSuccessorOfPivotNotInA = new ArrayList<VertexInterface>();
 			List<VertexInterface> listOfSuccessor = g.getSuccessorOf(pivot);
