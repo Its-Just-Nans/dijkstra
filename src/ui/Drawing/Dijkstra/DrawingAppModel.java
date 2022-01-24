@@ -1,4 +1,4 @@
-package ui.Drawing;
+package ui.Drawing.Dijkstra;
 
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
@@ -10,8 +10,8 @@ import java.awt.Color;
 import dijkstra.GraphInterface;
 import dijkstra.VertexInterface;
 import ui.Constant;
-import ui.Drawing.Elements.Cercle;
-import ui.Drawing.Elements.Segment;
+import ui.Drawing.Dijkstra.Elements.Cercle;
+import ui.Drawing.Dijkstra.Elements.Segment;
 
 public class DrawingAppModel implements GraphInterface {
     private final ArrayList<Segment> editedSegments = new ArrayList<Segment>();
@@ -114,8 +114,9 @@ public class DrawingAppModel implements GraphInterface {
 
     public void stateChanges() {
         ChangeEvent evt = new ChangeEvent(this);
-        for (ChangeListener listener : listeners)
+        for (ChangeListener listener : listeners) {
             listener.stateChanged(evt);
+        }
     }
 
     public final void setCurrentColor(Color currentColor) {
@@ -216,7 +217,31 @@ public class DrawingAppModel implements GraphInterface {
             float y1 = (float) currentSegment.getY1();
             currentSegment.setLine(x1, y1, x2, y2);
         }
-        stateChanges();
+        this.stateChanges();
+    }
+
+    public final void moveCirle(int newX, int newY) {
+        if (this.selectedCercle != null) {
+            float diametre = Cercle.getDiametre();
+            float realX = newX - (diametre / 2); // the x of Ellipse2D is at the top right corner;
+            float realY = newY - (diametre / 2);
+            selectedCercle.setFrame(realX, realY, diametre, diametre);
+            for (Segment oneSegment : editedSegments) {
+                if (oneSegment.getEnd1() == selectedCercle) {
+                    oneSegment.setLine(newX, newY, (float) oneSegment.getX2(), (float) oneSegment.getY2());
+                } else if (oneSegment.getEnd2() == selectedCercle) {
+                    oneSegment.setLine((float) oneSegment.getX1(), (float) oneSegment.getY1(), newX, newY);
+                }
+
+            }
+        }
+        this.stateChanges();
+    }
+
+    public final void endMoveCirle(int newX, int newY) {
+        this.setSelectedCercle(null);
+        this.setSelectionType(null);
+        this.stateChanges();
     }
 
     public final void cancelCurrentForme() {
@@ -225,7 +250,7 @@ public class DrawingAppModel implements GraphInterface {
         } else if (this.currentForme == Constant.SEGMENT) {
             setCurrentSegment(null);
         }
-        stateChanges();
+        this.stateChanges();
     }
 
     public final void paintCercle(Graphics g) {
@@ -241,8 +266,6 @@ public class DrawingAppModel implements GraphInterface {
     }
 
     public final void setSelection(int x, int y) {
-        double xd = (double) x;
-        double yd = (double) y;
 
         setSelectedCercle(null);
         setSelectedSegment(null);
@@ -259,7 +282,42 @@ public class DrawingAppModel implements GraphInterface {
         }
 
         for (Segment oneSegment : editedSegments) {
-            if (oneSegment.ptLineDist(xd, yd) < 2.5) {
+            final float dist = 2.5f;
+            float x1 = (float) oneSegment.getX1();
+            float x2 = (float) oneSegment.getX2();
+            float y1 = (float) oneSegment.getY1();
+            float y2 = (float) oneSegment.getY2();
+            float distCal = Integer.MAX_VALUE;
+            if (x1 <= x2) {
+                if (x >= x1 && x <= x2) {
+                    // basic
+                    System.out.println("IN-1");
+                    distCal = (float) oneSegment.ptLineDist(x, y);
+                } else if (x > x2) {
+
+                    System.out.println("1");
+                    distCal = (float) Point2D.distance(x, y, x2, y2);
+                } else if (x < x1) {
+
+                    System.out.println("2");
+                    distCal = (float) Point2D.distance(x, y, x1, y1);
+                }
+            } else {
+                if (x <= x1 && x >= x2) {
+                    // basic
+
+                    System.out.println("IN-2");
+                    distCal = (float) oneSegment.ptLineDist(x, y);
+                } else if (x < x2) {
+
+                    System.out.println("3");
+                    distCal = (float) Point2D.distance(x, y, x2, y2);
+                } else if (x > x1) {
+                    System.out.println("4");
+                    distCal = (float) Point2D.distance(x, y, x1, y1);
+                }
+            }
+            if (distCal < dist) {
                 setSelectedSegment(oneSegment);
                 return;
             }

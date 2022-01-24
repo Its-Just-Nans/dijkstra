@@ -1,25 +1,28 @@
-package ui.Drawing;
+package ui.Drawing.Labyrinthe;
 
 import javax.swing.JPanel;
+
+import ui.Drawing.DrawingApp;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 
-public class DrawingPanel extends JPanel {
+public class DrawingPanelLaby extends JPanel {
 	private final DrawingApp drawingApp;
 
-	public DrawingPanel(DrawingApp drawingApp) {
+	public DrawingPanelLaby(DrawingApp drawingApp) {
 		this.drawingApp = drawingApp;
 
 		setBackground(Color.WHITE); // fond du Dessin
 
 		// for pack() instruction
-		setPreferredSize(new Dimension(300, 300)); // taille ar defaut
+		setPreferredSize(new Dimension(300, 300)); // taille par defaut
 
-		DrawingPanelMouseListener drawingPanelMouseListener = new DrawingPanelMouseListener(drawingApp);
+		DrawingPanelMouseListenerLaby drawingPanelMouseListenerLaby = new DrawingPanelMouseListenerLaby(drawingApp);
 
-		addMouseListener(drawingPanelMouseListener);
-		addMouseMotionListener(drawingPanelMouseListener);
+		addMouseListener(drawingPanelMouseListenerLaby);
+		addMouseMotionListener(drawingPanelMouseListenerLaby);
 	}
 
 	@Override

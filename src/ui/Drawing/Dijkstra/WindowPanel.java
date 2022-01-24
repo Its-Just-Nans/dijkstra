@@ -1,4 +1,4 @@
-package ui;
+package ui.Drawing.Dijkstra;
 
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
@@ -6,7 +6,6 @@ import java.awt.BorderLayout;
 import ui.Buttons.ButtonsPanel;
 import ui.Buttons.ButtonsOptions;
 import ui.Drawing.DrawingApp;
-import ui.Drawing.DrawingPanel;
 
 public class WindowPanel extends JPanel {
 	private final DrawingPanel drawingPanel;
@@ -16,7 +15,9 @@ public class WindowPanel extends JPanel {
 	public WindowPanel(DrawingApp drawingApp) {
 		setLayout(new BorderLayout());
 
-		add(drawingPanel = new DrawingPanel(drawingApp), BorderLayout.CENTER);
+		this.drawingPanel = new DrawingPanel(drawingApp);
+		add(drawingPanel, BorderLayout.CENTER);
+
 		add(buttonsPanel = new ButtonsPanel(drawingApp), BorderLayout.SOUTH);
 		add(buttonsOptions = new ButtonsOptions(drawingApp), BorderLayout.EAST);
 	}

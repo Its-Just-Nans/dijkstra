@@ -12,7 +12,7 @@ import java.util.Enumeration;
 
 import ui.Constant;
 import ui.Drawing.DrawingApp;
-import ui.Drawing.Elements.Cercle;
+import ui.Drawing.Dijkstra.Elements.Cercle;
 
 public class ListType extends JPanel implements ItemListener {
 	private final DrawingApp drawingApp;

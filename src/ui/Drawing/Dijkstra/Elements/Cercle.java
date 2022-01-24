@@ -1,4 +1,4 @@
-package ui.Drawing.Elements;
+package ui.Drawing.Dijkstra.Elements;
 
 import java.awt.Color;
 import java.awt.BasicStroke;

@@ -1,16 +1,17 @@
-package ui.Menu.Action;
+package ui.Menu.Labyrinthe;
 
 import javax.swing.JMenuItem;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+import ui.Constant;
 import ui.Drawing.DrawingApp;
 
-public class OpenFileMenuItem extends JMenuItem implements ActionListener {
+public class NewLabyMenuItem extends JMenuItem implements ActionListener {
    private final DrawingApp drawingApp;
 
-   public OpenFileMenuItem(DrawingApp drawingApp) {
-      super("Ouvrir un fichier"); // Text of menu item
+   public NewLabyMenuItem(DrawingApp drawingApp) {
+      super(Constant.ACTIVATE); // Text of menu item
 
       this.drawingApp = drawingApp;
 
@@ -18,6 +19,7 @@ public class OpenFileMenuItem extends JMenuItem implements ActionListener {
    }
 
    public void actionPerformed(ActionEvent evt) {
-      this.drawingApp.solveDijkstra();
+      this.drawingApp.changeTo(Constant.LABY);
    }
+
 }

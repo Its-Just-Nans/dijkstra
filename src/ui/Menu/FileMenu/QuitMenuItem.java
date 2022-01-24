@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 import ui.Drawing.DrawingApp;
-import ui.Drawing.DrawingAppModel;
+import ui.Drawing.Dijkstra.DrawingAppModel;
 
 public class QuitMenuItem extends JMenuItem implements ActionListener {
    private final DrawingApp drawingApp;

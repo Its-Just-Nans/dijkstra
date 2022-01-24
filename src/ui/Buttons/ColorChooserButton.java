@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import ui.Drawing.DrawingApp;
-import ui.Drawing.DrawingAppModel;
+import ui.Drawing.Dijkstra.DrawingAppModel;
 
 public class ColorChooserButton extends JButton implements ActionListener {
 	private final DrawingApp drawingApp;

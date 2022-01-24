@@ -3,19 +3,25 @@ package ui.Menu;
 import javax.swing.JMenuBar;
 
 import ui.Drawing.DrawingApp;
-import ui.Menu.Action.ActionMenu;
+import ui.Menu.Dijkstra.DijkstraMenu;
 import ui.Menu.FileMenu.FileMenu;
+import ui.Menu.Labyrinthe.LabyrintheMenu;
 
 public class DrawingMenuBar extends JMenuBar {
 
+	private final LabyrintheMenu labyrintheMenu;
 	private final FileMenu fileMenu;
-	private final ActionMenu parametersMenu;
+	private final DijkstraMenu parametersMenu;
 
 	public DrawingMenuBar(DrawingApp drawingApp) {
 		super();
 
 		// Create and add menus
-		add(fileMenu = new FileMenu(drawingApp));
-		add(parametersMenu = new ActionMenu(drawingApp));
+		this.fileMenu = new FileMenu(drawingApp);
+		this.add(fileMenu);
+		this.labyrintheMenu = new LabyrintheMenu(drawingApp);
+		this.add(labyrintheMenu);
+		this.parametersMenu = new DijkstraMenu(drawingApp);
+		this.add(parametersMenu);
 	}
 }

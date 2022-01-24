@@ -4,7 +4,8 @@ import javax.swing.JButton;
 
 import ui.Constant;
 import ui.Drawing.DrawingApp;
-import ui.Drawing.Elements.Segment;
+import ui.Drawing.Dijkstra.Elements.Segment;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
