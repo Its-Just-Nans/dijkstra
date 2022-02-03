@@ -20,6 +20,22 @@ public class Maze implements GraphInterface {
 		this.laby = new ArrayList<ArrayList<MBox>>();
 	}
 
+	public void setMaxX(int newMaxX) {
+		this.maxX = newMaxX;
+	}
+
+	public int getMaxX() {
+		return this.maxX;
+	}
+
+	public void setMaxY(int newMaxY) {
+		this.maxY = newMaxY;
+	}
+
+	public int getMaxY() {
+		return this.maxY;
+	}
+
 	public MBox findByType(String type) {
 		MBox start = null;
 		for (int i = 0; i < this.maxY; i++) {
@@ -88,7 +104,6 @@ public class Maze implements GraphInterface {
 	}
 
 	public final void initFromTextFile(String fileName) {
-		// Thanks Google !
 		BufferedReader objReader = null;
 		try {
 			String strCurrentLine;

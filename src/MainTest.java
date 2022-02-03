@@ -16,7 +16,7 @@ public class MainTest {
 		PreviousInterface chemin = Dijkstra.dijkstra(maze, start);
 		// System.out.println(chemin);
 		MBox endCase = end;
-		while (endCase.getLabel() != start.getLabel()) {
+		while (!endCase.getLabel().equals(start.getLabel())) {
 			endCase = (MBox) chemin.getValue(endCase);
 			maze.setCaseWIN(endCase.getX(), endCase.getY());
 		}

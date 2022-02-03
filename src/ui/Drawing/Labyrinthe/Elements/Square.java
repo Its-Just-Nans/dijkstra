@@ -1,30 +1,56 @@
 package ui.Drawing.Labyrinthe.Elements;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.BasicStroke;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.geom.Rectangle2D;
+
+import javax.swing.BorderFactory;
+import javax.swing.JPanel;
 
 import dijkstra.VertexInterface;
 import ui.Constant;
+import ui.Drawing.DrawingApp;
 
-public class Square extends Rectangle2D.Float implements VertexInterface {
+public class Square extends JPanel implements VertexInterface {
     private Color color = Color.BLACK;
     private String type;
-    private final static float defaultWidth = 20f;
+    private int width;
+    private DrawingApp drawingApp;
+    private final static BasicStroke basicStroke = new BasicStroke();
 
-    public Square(float x1, float y1, Color color) {
-        super(x1, y1, defaultWidth, defaultWidth);
+    public Square(DrawingApp drawingApp, String newtype) {
+        super();
+        this.drawingApp = drawingApp;
+        int cubeSize = this.drawingApp.getDrawingAppModelLaby().getSquareSize();
+        this.setPreferredSize(new Dimension(cubeSize, cubeSize));
+        this.setBorder(BorderFactory.createLineBorder(Color.black));
+        this.setType(newtype);
+    }
 
-        this.color = color;
+    public Square(int x1, int y1, int newWidth, Color color) {
+        super();
+        this.width = newWidth;
+
         setType(Constant.NORMAL);
     }
 
-    private final static BasicStroke basicStroke = new BasicStroke();
-
-    public static float getDefaultWidth() {
-        return defaultWidth;
+    public void changeColor(Color newColor) {
+        if (newColor == null) {
+            if (Color.WHITE.equals(this.color)) {
+                this.setType(Constant.MUR);
+            } else if (Color.BLACK.equals(this.color)) {
+                this.setType(Constant.DEPART);
+            } else if (Color.BLUE.equals(this.color)) {
+                this.setType(Constant.ARRIVEE);
+            } else if (Color.RED.equals(this.color)) {
+                this.setType(Constant.NORMAL);
+            }
+        } else {
+            this.color = newColor;
+        }
+        this.setBackground(this.color);
     }
 
     public String getLabel() {
@@ -34,24 +60,20 @@ public class Square extends Rectangle2D.Float implements VertexInterface {
     public void setType(String newType) {
         this.type = newType;
         if (this.type == Constant.NORMAL) {
-            this.color = Color.BLACK;
+            this.color = Color.WHITE;
         } else if (this.type == Constant.DEPART) {
+            this.drawingApp.getDrawingAppModelLaby().resetCase(Constant.DEPART);
             this.color = Color.BLUE;
         } else if (this.type == Constant.ARRIVEE) {
+            this.drawingApp.getDrawingAppModelLaby().resetCase(Constant.ARRIVEE);
             this.color = Color.RED;
+        } else if (this.type == Constant.MUR) {
+            this.color = Color.BLACK;
         }
     }
 
     public String getType() {
         return this.type;
-    }
-
-    public float getRealX() {
-        return x + (width / 2); // the x of Ellipse2D is at the top right corner;
-    }
-
-    public float getRealY() {
-        return y + (width / 2); // the y of Ellipse2D is at the top right corner;
     }
 
     public final void paint(Graphics g, boolean selected, boolean current) {
@@ -67,7 +89,7 @@ public class Square extends Rectangle2D.Float implements VertexInterface {
                 g2.setColor(customColor.darker()); // darker to see selection
             }
         }
-        g2.fill(this);
-        g2.draw(this);
+        // g2.fill(this);
+        // g2.draw(this);
     }
 }

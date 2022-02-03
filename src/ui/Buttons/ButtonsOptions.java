@@ -12,7 +12,7 @@ public class ButtonsOptions extends JPanel {
 
     public ButtonsOptions(DrawingApp drawingApp) {
         super();
-        setLayout(new GridLayout(3, 1)); // 1 row, 4 columns
+        setLayout(new GridLayout(3, 1));
         add(eraseSegment = new EraseButton(drawingApp));
         add(listType = new ListType(drawingApp));
 
