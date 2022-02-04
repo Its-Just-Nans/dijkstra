@@ -24,10 +24,10 @@ public class EraseButton extends JButton implements ActionListener {
 	public void notifyForUpdate() {
 		String forme = drawingApp.getDrawingAppModel().getCurrentForme();
 		String type = drawingApp.getDrawingAppModel().getSelectionType();
-		if (forme == Constant.t("CURSOR")) {
+		if (forme.equals(Constant.t("CURSOR"))) {
 			if (type == null) {
 				this.setVisible(false);
-			} else if (type == Constant.t("SEGMENT") || type == Constant.t("CERCLE")) {
+			} else if (type.equals(Constant.t("SEGMENT")) || type.equals(Constant.t("CERCLE"))) {
 				this.setVisible(true);
 				this.setText("Erase " + type);
 				setEnabled(true);

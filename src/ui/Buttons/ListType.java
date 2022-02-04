@@ -40,9 +40,10 @@ public class ListType extends JPanel implements ItemListener {
 	}
 
 	public void notifyForUpdate() {
-		if (drawingApp.getDrawingAppModel().getCurrentForme() == Constant.t("CURSOR")) {
+		String curr = drawingApp.getDrawingAppModel().getCurrentForme();
+		if (curr.equals(Constant.t("CURSOR"))) {
 			String forme = drawingApp.getDrawingAppModel().getSelectionType();
-			if (forme == Constant.t("CERCLE")) {
+			if (forme.equals(Constant.t("CERCLE"))) {
 				this.setVisible(true);
 				changeSeletedType();
 			} else {
@@ -78,7 +79,7 @@ public class ListType extends JPanel implements ItemListener {
 				Cercle cercle = this.drawingApp.getDrawingAppModel().getSelectedCercle();
 				if (cercle != null) {
 					cercle.setType(type);
-					if (type == Constant.t("START") || type == Constant.t("END")) {
+					if (type.equals(Constant.t("START")) || type.equals(Constant.t("END"))) {
 						ArrayList<Cercle> list = this.drawingApp.getDrawingAppModel().getEditedCercle();
 						for (Cercle oneCercle : list) {
 							if (oneCercle != cercle && oneCercle.getType() == type) {

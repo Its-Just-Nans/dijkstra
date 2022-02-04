@@ -24,8 +24,8 @@ public class DrawingAppModel implements GraphInterface {
     private Cercle currentCercle = null;
     private Cercle selectedCercle = null;
 
-    private String currentForme = null;
-    private String selectionType = null; // used with the cursor mode, to know the current figure
+    private String currentForme = "";
+    private String selectionType = ""; // used with the cursor mode, to know the current figure
     private boolean modified = false;
 
     public ArrayList<Cercle> getEditedCercle() {
@@ -49,9 +49,9 @@ public class DrawingAppModel implements GraphInterface {
     }
 
     public void resetGame() {
-        editedSegments.clear();
-        editedCercle.clear();
-        stateChanges();
+        this.editedSegments.clear();
+        this.editedCercle.clear();
+        this.setCurrentForme(""); // this function activate stateChanges()
     }
 
     public boolean isModified() {
@@ -137,13 +137,13 @@ public class DrawingAppModel implements GraphInterface {
         this.currentForme = newCurrentForme;
         this.setSelectedCercle(null);
         this.setSelectedSegment(null);
-        this.setSelectionType(null);
+        this.setSelectionType("");
         stateChanges();
     }
 
     public final void removeCurrentSelection() {
         if (this.selectionType != null) {
-            if (this.selectionType == Constant.t("CERCLE")) {
+            if (this.selectionType.equals(Constant.t("CERCLE"))) {
                 // need to remove connected Segment !
                 ArrayList<Segment> toRemove = new ArrayList<Segment>();
                 for (Segment oneSegment : editedSegments) {
@@ -156,12 +156,12 @@ public class DrawingAppModel implements GraphInterface {
                 editedSegments.removeAll(toRemove);
                 editedCercle.remove(this.selectedCercle);
                 setSelectedCercle(null);
-            } else if (this.selectionType == Constant.t("SEGMENT")) {
+            } else if (this.selectionType.equals(Constant.t("SEGMENT"))) {
                 editedSegments.remove(this.selectedSegment);
                 setSelectedSegment(null);
             }
         }
-        this.setSelectionType(null);
+        this.setSelectionType("");
         this.stateChanges(); // notify to hide the erase button
     }
 
@@ -189,7 +189,7 @@ public class DrawingAppModel implements GraphInterface {
     }
 
     public final void initCurrentForme(int x, int y) {
-        if (this.currentForme == Constant.t("CERCLE")) {
+        if (this.currentForme.equals(Constant.t("CERCLE"))) {
             float diametre = Cercle.getDiametre();
             float realX = x - (diametre / 2); // the x of Ellipse2D is at the top right corner;
             float realY = y - (diametre / 2); // the y of Ellipse2D is at the top right corner;
@@ -197,7 +197,7 @@ public class DrawingAppModel implements GraphInterface {
             setCurrentCercle(null);
             setCurrentSegment(null);
             stateChanges();
-        } else if (this.currentForme == Constant.t("SEGMENT")) {
+        } else if (this.currentForme.equals(Constant.t("SEGMENT"))) {
             setCurrentCercle(null);
             // check cercle
             Segment newSegment = new Segment(x, y, x, y, this.currentColor);
@@ -218,7 +218,7 @@ public class DrawingAppModel implements GraphInterface {
     }
 
     public final void modifyCurrentForme(int x2, int y2) {
-        if (this.currentSegment != null && this.currentForme == Constant.t("SEGMENT")) {
+        if (this.currentSegment != null && this.currentForme.equals(Constant.t("SEGMENT"))) {
             float x1 = (float) currentSegment.getX1();
             float y1 = (float) currentSegment.getY1();
             currentSegment.setLine(x1, y1, x2, y2);
@@ -246,14 +246,14 @@ public class DrawingAppModel implements GraphInterface {
 
     public final void endMoveCirle(int newX, int newY) {
         this.setSelectedCercle(null);
-        this.setSelectionType(null);
+        this.setSelectionType("");
         this.stateChanges();
     }
 
     public final void cancelCurrentForme() {
-        if (this.currentForme == Constant.t("CERCLE")) {
+        if (this.currentForme.equals(Constant.t("CERCLE"))) {
             setCurrentCercle(null);
-        } else if (this.currentForme == Constant.t("SEGMENT")) {
+        } else if (this.currentForme.equals(Constant.t("SEGMENT"))) {
             setCurrentSegment(null);
         }
         this.stateChanges();
@@ -320,7 +320,7 @@ public class DrawingAppModel implements GraphInterface {
                 return;
             }
         }
-        this.setSelectionType(null);
+        this.setSelectionType("");
         this.stateChanges(); // update for unselect, when click on background
     }
 
@@ -374,7 +374,7 @@ public class DrawingAppModel implements GraphInterface {
     public VertexInterface getStart() {
         for (Cercle oneCercle : this.editedCercle) {
             // VertexInterface oneCercleInVertex = (VertexInterface) oneCercle;
-            if (oneCercle.getType() == Constant.t("START")) {
+            if (oneCercle.getType().equals(Constant.t("START"))) {
                 return oneCercle;
             }
         }
@@ -384,7 +384,7 @@ public class DrawingAppModel implements GraphInterface {
     public VertexInterface getEnd() {
         for (Cercle oneCercle : this.editedCercle) {
             // VertexInterface oneCercleInVertex = (VertexInterface) oneCercle;
-            if (oneCercle.getType() == Constant.t("END")) {
+            if (oneCercle.getType().equals(Constant.t("END"))) {
                 return oneCercle;
             }
         }

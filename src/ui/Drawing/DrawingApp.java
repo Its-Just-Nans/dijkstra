@@ -55,10 +55,10 @@ public class DrawingApp extends JFrame implements ChangeListener {
       if (this.windowType != newType) {
          windowPanelLaby.setVisible(false);
          windowPanel.setVisible(false);
-         if (newType == Constant.t("LABY")) {
+         if (newType.equals(Constant.t("LABY"))) {
             windowPanelLaby.setVisible(true);
             this.setContentPane(this.windowPanelLaby);
-         } else if (newType == Constant.t("GRAPH")) {
+         } else if (newType.equals(Constant.t("GRAPH"))) {
             windowPanel.setVisible(true);
             this.setContentPane(this.windowPanel);
          }
@@ -66,7 +66,7 @@ public class DrawingApp extends JFrame implements ChangeListener {
          this.pack();
          this.stateChanged(null);
       } else {
-         Modal.makeMessage("You are already in the correct game");
+         Modal.makeMessage(Constant.t("MSG_SWITCH"));
       }
    }
 
@@ -75,9 +75,9 @@ public class DrawingApp extends JFrame implements ChangeListener {
    }
 
    public void stateChanged(ChangeEvent evt) {
-      if (windowType == Constant.t("LABY")) {
+      if (windowType.equals(Constant.t("LABY"))) {
          windowPanelLaby.notifyForUpdate();
-      } else if (windowType == Constant.t("GRAPH")) {
+      } else if (windowType.equals(Constant.t("GRAPH"))) {
          windowPanel.notifyForUpdate();
       }
    }
@@ -85,12 +85,12 @@ public class DrawingApp extends JFrame implements ChangeListener {
    public void newGame(String newType) {
       windowPanelLaby.setVisible(false);
       windowPanel.setVisible(false);
-      if (newType == Constant.t("LABY")) {
+      if (newType.equals(Constant.t("LABY"))) {
          int labyHeight = Modal.ask("Entrer la taille du labyrinthe", 10, 5, 50);
          this.windowPanelLaby.setTheHeight(labyHeight);
          windowPanelLaby.setVisible(true);
          this.setContentPane(this.windowPanelLaby);
-      } else if (newType == Constant.t("GRAPH")) {
+      } else if (newType.equals(Constant.t("GRAPH"))) {
          this.drawingAppModel.resetGame();
          windowPanel.setVisible(true);
          this.setContentPane(this.windowPanel);
