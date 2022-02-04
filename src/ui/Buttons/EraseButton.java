@@ -3,7 +3,6 @@ package ui.Buttons;
 import javax.swing.JButton;
 
 import ui.Drawing.DrawingApp;
-import ui.Drawing.Dijkstra.Elements.Segment;
 import ui.Utils.Constant;
 
 import java.awt.event.ActionListener;
@@ -14,7 +13,6 @@ public class EraseButton extends JButton implements ActionListener {
 
 	public EraseButton(DrawingApp drawingApp) {
 		super(Constant.t("DEL_SEG")); // Button's text
-
 		this.drawingApp = drawingApp;
 
 		setEnabled(false); // default
@@ -26,10 +24,10 @@ public class EraseButton extends JButton implements ActionListener {
 	public void notifyForUpdate() {
 		String forme = drawingApp.getDrawingAppModel().getCurrentForme();
 		String type = drawingApp.getDrawingAppModel().getSelectionType();
-		if (forme == Constant.CURSOR) {
+		if (forme == Constant.t("CURSOR")) {
 			if (type == null) {
 				this.setVisible(false);
-			} else if (type == Constant.SEGMENT || type == Constant.CERCLE) {
+			} else if (type == Constant.t("SEGMENT") || type == Constant.t("CERCLE")) {
 				this.setVisible(true);
 				this.setText("Erase " + type);
 				setEnabled(true);

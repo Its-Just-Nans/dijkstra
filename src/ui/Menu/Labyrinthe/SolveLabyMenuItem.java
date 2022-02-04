@@ -1,9 +1,6 @@
 package ui.Menu.Labyrinthe;
 
-import javax.swing.JFrame;
 import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
-
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 

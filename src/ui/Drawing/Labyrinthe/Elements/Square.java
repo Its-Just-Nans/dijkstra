@@ -16,7 +16,6 @@ import ui.Utils.Constant;
 public class Square extends JPanel implements VertexInterface {
     private Color color = Color.BLACK;
     private String type;
-    private int width;
     private DrawingApp drawingApp;
     private final static BasicStroke basicStroke = new BasicStroke();
 
@@ -29,23 +28,16 @@ public class Square extends JPanel implements VertexInterface {
         this.setType(newtype);
     }
 
-    public Square(int x1, int y1, int newWidth, Color color) {
-        super();
-        this.width = newWidth;
-
-        setType(Constant.NORMAL);
-    }
-
     public void changeColor(Color newColor) {
         if (newColor == null) {
             if (Color.WHITE.equals(this.color)) {
-                this.setType(Constant.MUR);
+                this.setType(Constant.t("WALL"));
             } else if (Color.BLACK.equals(this.color)) {
-                this.setType(Constant.DEPART);
+                this.setType(Constant.t("START"));
             } else if (Color.BLUE.equals(this.color)) {
-                this.setType(Constant.ARRIVEE);
+                this.setType(Constant.t("END"));
             } else if (Color.RED.equals(this.color)) {
-                this.setType(Constant.NORMAL);
+                this.setType(Constant.t("NORMAL"));
             }
         } else {
             this.color = newColor;
@@ -59,15 +51,15 @@ public class Square extends JPanel implements VertexInterface {
 
     public void setType(String newType) {
         this.type = newType;
-        if (this.type == Constant.NORMAL) {
+        if (this.type.equals(Constant.t("NORMAL"))) {
             this.color = Color.WHITE;
-        } else if (this.type == Constant.DEPART) {
-            this.drawingApp.getDrawingAppModelLaby().resetCase(Constant.DEPART);
+        } else if (this.type.equals(Constant.t("START"))) {
+            this.drawingApp.getDrawingAppModelLaby().resetCase(Constant.t("START"));
             this.color = Color.BLUE;
-        } else if (this.type == Constant.ARRIVEE) {
-            this.drawingApp.getDrawingAppModelLaby().resetCase(Constant.ARRIVEE);
+        } else if (this.type.equals(Constant.t("END"))) {
+            this.drawingApp.getDrawingAppModelLaby().resetCase(Constant.t("END"));
             this.color = Color.RED;
-        } else if (this.type == Constant.MUR) {
+        } else if (this.type.equals(Constant.t("WALL"))) {
             this.color = Color.BLACK;
         }
     }

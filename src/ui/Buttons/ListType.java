@@ -25,10 +25,10 @@ public class ListType extends JPanel implements ItemListener {
 		this.setVisible(false);
 		this.drawingApp = drawingApp;
 
-		listButtons.add(new JRadioButton(Constant.NORMAL));
-		listButtons.add(new JRadioButton(Constant.ARRIVEE));
-		listButtons.add(new JRadioButton(Constant.DEPART));
-		listButtons.add(new JRadioButton(Constant.MUR));
+		listButtons.add(new JRadioButton(Constant.t("NORMAL")));
+		listButtons.add(new JRadioButton(Constant.t("END")));
+		listButtons.add(new JRadioButton(Constant.t("START")));
+		listButtons.add(new JRadioButton(Constant.t("WALL")));
 
 		listButtons.get(0).setSelected(true);// default is normal
 
@@ -40,9 +40,9 @@ public class ListType extends JPanel implements ItemListener {
 	}
 
 	public void notifyForUpdate() {
-		if (drawingApp.getDrawingAppModel().getCurrentForme() == Constant.CURSOR) {
+		if (drawingApp.getDrawingAppModel().getCurrentForme() == Constant.t("CURSOR")) {
 			String forme = drawingApp.getDrawingAppModel().getSelectionType();
-			if (forme == Constant.CERCLE) {
+			if (forme == Constant.t("CERCLE")) {
 				this.setVisible(true);
 				changeSeletedType();
 			} else {
@@ -78,11 +78,11 @@ public class ListType extends JPanel implements ItemListener {
 				Cercle cercle = this.drawingApp.getDrawingAppModel().getSelectedCercle();
 				if (cercle != null) {
 					cercle.setType(type);
-					if (type == Constant.DEPART || type == Constant.ARRIVEE) {
+					if (type == Constant.t("START") || type == Constant.t("END")) {
 						ArrayList<Cercle> list = this.drawingApp.getDrawingAppModel().getEditedCercle();
 						for (Cercle oneCercle : list) {
 							if (oneCercle != cercle && oneCercle.getType() == type) {
-								oneCercle.setType(Constant.NORMAL);
+								oneCercle.setType(Constant.t("NORMAL"));
 							}
 						}
 					}

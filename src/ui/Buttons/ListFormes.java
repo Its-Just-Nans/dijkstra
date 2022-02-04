@@ -25,8 +25,8 @@ public class ListFormes extends JPanel implements ItemListener {
 
 		ArrayList<JRadioButton> listButtons = new ArrayList<JRadioButton>();
 		listButtons.add(new JRadioButton(Constant.t("CURSOR")));
-		listButtons.add(new JRadioButton(Constant.SEGMENT));
-		listButtons.add(new JRadioButton(Constant.CERCLE));
+		listButtons.add(new JRadioButton(Constant.t("SEGMENT")));
+		listButtons.add(new JRadioButton(Constant.t("CERCLE")));
 
 		listButtons.get(0).setSelected(true); // default is cursor
 

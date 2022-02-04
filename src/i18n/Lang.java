@@ -12,7 +12,6 @@ public class Lang extends ListResourceBundle {
     private Object[][] contents = {
             { "ERR_MSG_INPUT", "ERR_MSG_INPUT", "Mauvaise valeur. Choix par défault " },
             { "OPTIONS", "Options" },
-            { "ARRIVEE", "Arrivée" },
             { "CHANGE_COLOR_SEGMENT", "Changer la couleur du segment" },
             { "DEL_SEG", "Supprimer le segment" },
             { "QUIT", "Quit the application" },
@@ -29,5 +28,12 @@ public class Lang extends ListResourceBundle {
             { "FILE", "Fichier" },
             { "ABOUT", "A propos" },
             { "GRAPH", "Graphe" },
+            { "SEGMENT", "Segment" },
+            { "CERCLE", "Cercle" },
+            { "NORMAL", "Normal" },
+            { "END", "Arrivée" },
+            { "START", "Départ" },
+            { "WALL", "Wall" },
+            { "MSG_SWITCH", "Vous êtes deja dans cet onglet" },
     };
 }

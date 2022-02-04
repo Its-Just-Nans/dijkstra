@@ -3,7 +3,6 @@ package ui.Drawing.Dijkstra;
 import javax.swing.JPanel;
 
 import ui.Drawing.DrawingApp;
-import ui.Drawing.Dijkstra.DrawingPanelMouseListenerDijkstra;
 
 import java.awt.Color;
 import java.awt.Dimension;

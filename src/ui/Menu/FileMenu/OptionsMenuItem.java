@@ -1,12 +1,10 @@
 package ui.Menu.FileMenu;
 
 import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 import ui.Drawing.DrawingApp;
-import ui.Drawing.Dijkstra.DrawingAppModel;
 import ui.Utils.Constant;
 import ui.Utils.Modal;
 

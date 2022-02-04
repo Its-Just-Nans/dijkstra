@@ -8,7 +8,6 @@ import java.awt.event.MouseEvent;
 
 import ui.Drawing.DrawingApp;
 import ui.Drawing.Labyrinthe.Elements.Square;
-import ui.Utils.Constant;
 
 public class DrawingPanelMouseListenerLaby extends MouseInputAdapter implements MouseInputListener {
    private final Square square;

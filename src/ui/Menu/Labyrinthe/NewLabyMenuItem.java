@@ -17,7 +17,7 @@ public class NewLabyMenuItem extends JMenuItem implements ActionListener {
    }
 
    public void actionPerformed(ActionEvent evt) {
-      this.drawingApp.newGame(Constant.LABY);
+      this.drawingApp.newGame(Constant.t("LABY"));
    }
 
    public void changeLocale() {

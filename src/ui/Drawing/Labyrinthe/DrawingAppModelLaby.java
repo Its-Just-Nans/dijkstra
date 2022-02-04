@@ -4,14 +4,11 @@ import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
 import java.util.ArrayList;
 import java.util.List;
-import java.awt.Graphics;
 import java.awt.Color;
 
-import dijkstra.GraphInterface;
 import dijkstra.VertexInterface;
 import maze.Maze;
 import ui.Drawing.Labyrinthe.Elements.Square;
-import ui.Utils.Constant;
 
 public class DrawingAppModelLaby extends Maze {
     private final ArrayList<Square> editedSquare = new ArrayList<Square>();

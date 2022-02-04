@@ -1,7 +1,5 @@
 package ui.Menu.Labyrinthe;
 
-import java.io.Console;
-
 import javax.swing.JMenu;
 
 import ui.Drawing.DrawingApp;

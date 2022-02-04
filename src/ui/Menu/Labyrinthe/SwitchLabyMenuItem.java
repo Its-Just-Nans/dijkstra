@@ -17,7 +17,7 @@ public class SwitchLabyMenuItem extends JMenuItem implements ActionListener {
    }
 
    public void actionPerformed(ActionEvent evt) {
-      this.drawingApp.changeTo(Constant.LABY);
+      this.drawingApp.changeTo(Constant.t("LABY"));
    }
 
    public void changeLocale() {

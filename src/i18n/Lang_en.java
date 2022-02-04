@@ -12,7 +12,6 @@ public class Lang_en extends ListResourceBundle {
     private Object[][] contents = {
             { "ERR_MSG_INPUT", "Bad value. Choix par défault " },
             { "OPTIONS", "Options" },
-            { "ARRIVEE", "End" },
             { "DEL_SEG", "Erase segment" },
             { "CHANGE_COLOR_SEGMENT", "Change color segment" },
             { "QUIT", "Quitter l'application" },
@@ -29,5 +28,12 @@ public class Lang_en extends ListResourceBundle {
             { "FILE", "File" },
             { "ABOUT", "About" },
             { "GRAPH", "Graph" },
+            { "SEGMENT", "Segment" },
+            { "CERCLE", "Circle" },
+            { "NORMAL", "Normal" },
+            { "END", "End" },
+            { "START", "Start" },
+            { "WALL", "Wall" },
+            { "MSG_SWITCH", "You are already in the correct tab" },
     };
 }
