@@ -6,9 +6,9 @@ import javax.swing.event.MouseInputAdapter;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 
-import ui.Constant;
 import ui.Drawing.DrawingApp;
 import ui.Drawing.Labyrinthe.Elements.Square;
+import ui.Utils.Constant;
 
 public class DrawingPanelMouseListenerLaby extends MouseInputAdapter implements MouseInputListener {
    private final Square square;
@@ -27,7 +27,7 @@ public class DrawingPanelMouseListenerLaby extends MouseInputAdapter implements 
 
    @Override
    public final void mouseDragged(MouseEvent e) {
-      System.out.println("drag");
+      // System.out.println("drag");
    }
 
    @Override

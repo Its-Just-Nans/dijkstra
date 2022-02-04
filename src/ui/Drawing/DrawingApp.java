@@ -11,15 +11,14 @@ import javax.swing.event.ChangeListener;
 import dijkstra.Dijkstra;
 import dijkstra.PreviousInterface;
 import dijkstra.VertexInterface;
-import ui.Constant;
 import ui.Drawing.Dijkstra.DrawingAppModel;
 import ui.Drawing.Dijkstra.WindowPanel;
 import ui.Drawing.Dijkstra.Elements.Cercle;
 import ui.Drawing.Labyrinthe.DrawingAppModelLaby;
 import ui.Menu.DrawingMenuBar;
-import ui.Utils.Questions;
+import ui.Utils.Constant;
+import ui.Utils.Modal;
 import ui.Drawing.Labyrinthe.WindowPanelLaby;
-import ui.Drawing.Labyrinthe.Elements.Square;
 
 public class DrawingApp extends JFrame implements ChangeListener {
    private final DrawingMenuBar drawingMenuBar;
@@ -42,7 +41,7 @@ public class DrawingApp extends JFrame implements ChangeListener {
       // drawingAppModelLaby.addObserver(this);
 
       this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Explicit !
-      this.changeTo(Constant.LABY);
+      this.changeTo(Constant.GRAPH);
 
       pack();
       setVisible(true); // The great show
@@ -61,8 +60,6 @@ public class DrawingApp extends JFrame implements ChangeListener {
          windowPanelLaby.setVisible(false);
          windowPanel.setVisible(false);
          if (newType == Constant.LABY) {
-            int labyHeight = Questions.ask("Entrer la taille du labyrinthe", 10, 5, 50);
-            this.windowPanelLaby.setTheHeight(labyHeight);
             windowPanelLaby.setVisible(true);
             this.setContentPane(this.windowPanelLaby);
          } else if (newType == Constant.GRAPH) {
@@ -72,8 +69,9 @@ public class DrawingApp extends JFrame implements ChangeListener {
          this.windowType = newType;
          this.pack();
          this.stateChanged(null);
+      } else {
+         Modal.makeMessage("You are already in the correct game");
       }
-
    }
 
    public void setDrawingAppModel(DrawingAppModel drawingAppModel) {
@@ -86,6 +84,24 @@ public class DrawingApp extends JFrame implements ChangeListener {
       } else if (windowType == Constant.GRAPH) {
          windowPanel.notifyForUpdate();
       }
+   }
+
+   public void newGame(String newType) {
+      windowPanelLaby.setVisible(false);
+      windowPanel.setVisible(false);
+      if (newType == Constant.LABY) {
+         int labyHeight = Modal.ask("Entrer la taille du labyrinthe", 10, 5, 50);
+         this.windowPanelLaby.setTheHeight(labyHeight);
+         windowPanelLaby.setVisible(true);
+         this.setContentPane(this.windowPanelLaby);
+      } else if (newType == Constant.GRAPH) {
+         this.drawingAppModel.resetGame();
+         windowPanel.setVisible(true);
+         this.setContentPane(this.windowPanel);
+      }
+      this.windowType = newType;
+      this.pack();
+      this.stateChanged(null);
    }
 
    public void solveDijkstra() {
@@ -109,5 +125,11 @@ public class DrawingApp extends JFrame implements ChangeListener {
          this.drawingAppModelLaby = this.getDrawingAppModelLaby();
 
       }
+   }
+
+   public void changeLocale() {
+      // windowPanel.changeLocale();
+      // windowPanelLaby.changeLocale();
+      drawingMenuBar.changeLocale();
    }
 }

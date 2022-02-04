@@ -10,8 +10,8 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 import dijkstra.VertexInterface;
-import ui.Constant;
 import ui.Drawing.DrawingApp;
+import ui.Utils.Constant;
 
 public class Square extends JPanel implements VertexInterface {
     private Color color = Color.BLACK;

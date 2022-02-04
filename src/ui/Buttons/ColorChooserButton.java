@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 
 import ui.Drawing.DrawingApp;
 import ui.Drawing.Dijkstra.DrawingAppModel;
+import ui.Utils.Constant;
 
 public class ColorChooserButton extends JButton implements ActionListener {
 	private final DrawingApp drawingApp;
@@ -24,7 +25,7 @@ public class ColorChooserButton extends JButton implements ActionListener {
 		DrawingAppModel drawingAppModel = drawingApp.getDrawingAppModel();
 
 		// Show JColorChooser dialog
-		Color newColor = JColorChooser.showDialog(drawingApp, "Change segment color",
+		Color newColor = JColorChooser.showDialog(drawingApp, Constant.t("CHANGE_COLOR_SEGMENT"),
 				drawingAppModel.getCurrentColor());
 		// Changing color triggers refresh
 		if (newColor != null) {

@@ -1,32 +1,15 @@
 package ui.Drawing.Labyrinthe;
 
-import java.awt.FlowLayout;
-
 import java.awt.GridLayout;
-import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.Color;
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.event.MouseInputListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionAdapter;
-import java.awt.event.MouseEvent;
 
-import java.util.ArrayList;
-
-import ui.Buttons.ButtonsPanel;
-import ui.Constant;
-import ui.Buttons.ButtonsOptions;
 import ui.Drawing.DrawingApp;
-import ui.Drawing.Dijkstra.DrawingPanel;
 import ui.Drawing.Labyrinthe.Elements.Square;
+import ui.Utils.Constant;
 
 public class WindowPanelLaby extends JPanel {
 	private final DrawingApp drawingApp;
-	private ArrayList<Square> listSquare;
 	private DrawingAppModelLaby drawingAppModelLaby;
 	private int height;
 
@@ -34,10 +17,9 @@ public class WindowPanelLaby extends JPanel {
 		super();
 		this.drawingApp = drawingApp;
 		drawingAppModelLaby = drawingApp.getDrawingAppModelLaby();
-		this.listSquare = new ArrayList<Square>();
-		this.height = 5;
+		this.height = 10;
 		setLayout(new GridLayout(this.height, this.height));
-
+		this.generateLaby();
 		this.setBackground(Color.RED);
 	}
 

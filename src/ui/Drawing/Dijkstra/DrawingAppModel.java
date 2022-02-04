@@ -9,9 +9,9 @@ import java.awt.Color;
 
 import dijkstra.GraphInterface;
 import dijkstra.VertexInterface;
-import ui.Constant;
 import ui.Drawing.Dijkstra.Elements.Cercle;
 import ui.Drawing.Dijkstra.Elements.Segment;
+import ui.Utils.Constant;
 
 public class DrawingAppModel implements GraphInterface {
     private final ArrayList<Segment> editedSegments = new ArrayList<Segment>();
@@ -46,6 +46,12 @@ public class DrawingAppModel implements GraphInterface {
 
     public void setSelectionType(String select) {
         this.selectionType = select;
+    }
+
+    public void resetGame() {
+        editedSegments.clear();
+        editedCercle.clear();
+        stateChanges();
     }
 
     public boolean isModified() {
@@ -291,29 +297,21 @@ public class DrawingAppModel implements GraphInterface {
             if (x1 <= x2) {
                 if (x >= x1 && x <= x2) {
                     // basic
-                    System.out.println("IN-1");
                     distCal = (float) oneSegment.ptLineDist(x, y);
                 } else if (x > x2) {
-
-                    System.out.println("1");
                     distCal = (float) Point2D.distance(x, y, x2, y2);
                 } else if (x < x1) {
 
-                    System.out.println("2");
                     distCal = (float) Point2D.distance(x, y, x1, y1);
                 }
             } else {
                 if (x <= x1 && x >= x2) {
                     // basic
-
-                    System.out.println("IN-2");
                     distCal = (float) oneSegment.ptLineDist(x, y);
                 } else if (x < x2) {
 
-                    System.out.println("3");
                     distCal = (float) Point2D.distance(x, y, x2, y2);
                 } else if (x > x1) {
-                    System.out.println("4");
                     distCal = (float) Point2D.distance(x, y, x1, y1);
                 }
             }

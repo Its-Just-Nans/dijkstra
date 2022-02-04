@@ -2,21 +2,26 @@ package ui.Menu.Dijkstra;
 
 import javax.swing.JMenu;
 
-import ui.Constant;
 import ui.Drawing.DrawingApp;
+import ui.Utils.Constant;
 
 public class DijkstraMenu extends JMenu {
-   private final SolveMenuItem openFileItem;
-   private final NewMenuItem newMenuItem;
+   NewMenuItem newMenuItem;
+   SwitchMenuItem switchMenuItem;
+   SolveMenuItem solveMenuItem;
 
    public DijkstraMenu(DrawingApp drawingApp) {
-      super(Constant.DIJKSTRA); // Text of the menu
+      super(Constant.t("GRAPH")); // Text of the menu
 
-      // Create and add menu items
-      this.newMenuItem = new NewMenuItem(drawingApp);
-      add(this.newMenuItem);
-      this.openFileItem = new SolveMenuItem(drawingApp);
-      add(this.openFileItem);
+      add(newMenuItem = new NewMenuItem(drawingApp));
+      add(switchMenuItem = new SwitchMenuItem(drawingApp));
+      add(solveMenuItem = new SolveMenuItem(drawingApp));
    }
 
+   public void changeLocale() {
+      this.setText(Constant.t("GRAPH"));
+      newMenuItem.changeLocale();
+      switchMenuItem.changeLocale();
+      solveMenuItem.changeLocale();
+   }
 }

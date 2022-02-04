@@ -8,10 +8,9 @@ import ui.Menu.FileMenu.FileMenu;
 import ui.Menu.Labyrinthe.LabyrintheMenu;
 
 public class DrawingMenuBar extends JMenuBar {
-
-	private final LabyrintheMenu labyrintheMenu;
 	private final FileMenu fileMenu;
-	private final DijkstraMenu parametersMenu;
+	private final LabyrintheMenu labyrintheMenu;
+	private final DijkstraMenu dijkstraMenu;
 
 	public DrawingMenuBar(DrawingApp drawingApp) {
 		super();
@@ -21,7 +20,13 @@ public class DrawingMenuBar extends JMenuBar {
 		this.add(fileMenu);
 		this.labyrintheMenu = new LabyrintheMenu(drawingApp);
 		this.add(labyrintheMenu);
-		this.parametersMenu = new DijkstraMenu(drawingApp);
-		this.add(parametersMenu);
+		this.dijkstraMenu = new DijkstraMenu(drawingApp);
+		this.add(dijkstraMenu);
+	}
+
+	public void changeLocale() {
+		this.fileMenu.changeLocale();
+		this.labyrintheMenu.changeLocale();
+		this.dijkstraMenu.changeLocale();
 	}
 }

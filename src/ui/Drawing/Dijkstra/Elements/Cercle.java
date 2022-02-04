@@ -7,7 +7,7 @@ import java.awt.Graphics2D;
 import java.awt.geom.Ellipse2D;
 
 import dijkstra.VertexInterface;
-import ui.Constant;
+import ui.Utils.Constant;
 
 public class Cercle extends Ellipse2D.Float implements VertexInterface {
     private Color color = Color.BLACK;

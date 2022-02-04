@@ -4,22 +4,25 @@ import java.io.Console;
 
 import javax.swing.JMenu;
 
-import ui.Constant;
 import ui.Drawing.DrawingApp;
+import ui.Utils.Constant;
 
 public class LabyrintheMenu extends JMenu {
-   private final SolveLabyMenuItem solveLabyMenuItem;
-   private final NewLabyMenuItem newLabyMenuItem;
-   private DrawingApp drawingApp;
+   private NewLabyMenuItem newLabyMenuItem;
+   private SwitchLabyMenuItem switchLabyMenuItem;
+   private SolveLabyMenuItem solveLabyMenuItem;
 
    public LabyrintheMenu(DrawingApp drawingApp) {
-      super(Constant.LABY); // Text of the menu
-      this.drawingApp = drawingApp;
+      super(Constant.t("LABY")); // Text of the menu
+      add(newLabyMenuItem = new NewLabyMenuItem(drawingApp));
+      add(switchLabyMenuItem = new SwitchLabyMenuItem(drawingApp));
+      add(solveLabyMenuItem = new SolveLabyMenuItem(drawingApp));
+   }
 
-      // Create and add menu items
-      this.newLabyMenuItem = new NewLabyMenuItem(drawingApp);
-      add(this.newLabyMenuItem);
-      this.solveLabyMenuItem = new SolveLabyMenuItem(drawingApp);
-      add(this.solveLabyMenuItem);
+   public void changeLocale() {
+      this.setText(Constant.t("LABY"));
+      newLabyMenuItem.changeLocale();
+      switchLabyMenuItem.changeLocale();
+      solveLabyMenuItem.changeLocale();
    }
 }

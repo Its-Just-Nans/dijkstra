@@ -2,9 +2,9 @@ package ui.Buttons;
 
 import javax.swing.JButton;
 
-import ui.Constant;
 import ui.Drawing.DrawingApp;
 import ui.Drawing.Dijkstra.Elements.Segment;
+import ui.Utils.Constant;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -13,7 +13,7 @@ public class EraseButton extends JButton implements ActionListener {
 	private final DrawingApp drawingApp;
 
 	public EraseButton(DrawingApp drawingApp) {
-		super("Erase segment"); // Button's text
+		super(Constant.t("DEL_SEG")); // Button's text
 
 		this.drawingApp = drawingApp;
 

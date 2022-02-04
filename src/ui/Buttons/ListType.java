@@ -10,9 +10,9 @@ import java.awt.event.ItemEvent;
 import java.util.ArrayList;
 import java.util.Enumeration;
 
-import ui.Constant;
 import ui.Drawing.DrawingApp;
 import ui.Drawing.Dijkstra.Elements.Cercle;
+import ui.Utils.Constant;
 
 public class ListType extends JPanel implements ItemListener {
 	private final DrawingApp drawingApp;

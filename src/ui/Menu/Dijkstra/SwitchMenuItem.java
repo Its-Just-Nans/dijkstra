@@ -7,20 +7,20 @@ import java.awt.event.ActionEvent;
 import ui.Drawing.DrawingApp;
 import ui.Utils.Constant;
 
-public class NewMenuItem extends JMenuItem implements ActionListener {
+public class SwitchMenuItem extends JMenuItem implements ActionListener {
    private final DrawingApp drawingApp;
 
-   public NewMenuItem(DrawingApp drawingApp) {
-      super(Constant.t("NEW")); // Text of menu item
+   public SwitchMenuItem(DrawingApp drawingApp) {
+      super(Constant.t("SWITCH")); // Text of menu item
       this.drawingApp = drawingApp;
       addActionListener(this);
    }
 
    public void actionPerformed(ActionEvent evt) {
-      this.drawingApp.newGame(Constant.GRAPH);
+      this.drawingApp.changeTo(Constant.GRAPH);
    }
 
    public void changeLocale() {
-      this.setText(Constant.t("NEW"));
+      this.setText(Constant.t("SWITCH"));
    }
 }

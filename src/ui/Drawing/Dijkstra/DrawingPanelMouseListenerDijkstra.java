@@ -4,8 +4,8 @@ import javax.swing.event.MouseInputListener;
 import javax.swing.event.MouseInputAdapter;
 import java.awt.event.MouseEvent;
 
-import ui.Constant;
 import ui.Drawing.DrawingApp;
+import ui.Utils.Constant;
 
 public class DrawingPanelMouseListenerDijkstra extends MouseInputAdapter implements MouseInputListener {
    private final DrawingApp drawingApp;
