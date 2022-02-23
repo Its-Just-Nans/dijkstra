@@ -14,6 +14,7 @@ public class Lang extends ListResourceBundle {
             { "OPTIONS", "Options" },
             { "CHANGE_COLOR_SEGMENT", "Changer la couleur du segment" },
             { "DEL_SEG", "Supprimer le segment" },
+            { "DEL_CIRCLE", "Supprimer le cercle" },
             { "QUIT", "Quit the application" },
             { "LEAVE", "Quitter" },
             { "SAVE", "Dessin non sauvé. Sauvegarder ?" },

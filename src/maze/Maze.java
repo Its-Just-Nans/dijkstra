@@ -40,7 +40,7 @@ public class Maze implements GraphInterface {
 		MBox start = null;
 		for (int i = 0; i < this.maxY; i++) {
 			for (int z = 0; z < this.maxX; z++) {
-				if (this.laby.get(i).get(z).getType() == type) {
+				if (this.laby.get(i).get(z).getType().equals(type)) {
 					start = this.laby.get(i).get(z);
 				}
 			}

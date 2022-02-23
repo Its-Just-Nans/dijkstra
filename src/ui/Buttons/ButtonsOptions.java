@@ -23,4 +23,9 @@ public class ButtonsOptions extends JPanel {
         eraseSegment.notifyForUpdate();
         listType.notifyForUpdate();
     }
+
+    public void changeLocale() {
+        eraseSegment.changeLocale();
+        listType.changeLocale();
+    }
 }

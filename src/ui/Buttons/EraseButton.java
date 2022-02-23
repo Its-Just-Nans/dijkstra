@@ -24,12 +24,12 @@ public class EraseButton extends JButton implements ActionListener {
 	public void notifyForUpdate() {
 		String forme = drawingApp.getDrawingAppModel().getCurrentForme();
 		String type = drawingApp.getDrawingAppModel().getSelectionType();
-		if (forme.equals(Constant.t("CURSOR"))) {
-			if (type == null) {
+		if (forme.equals(Constant.cst("CURSOR"))) {
+			if (type == "") {
 				this.setVisible(false);
-			} else if (type.equals(Constant.t("SEGMENT")) || type.equals(Constant.t("CERCLE"))) {
+			} else if (type.equals(Constant.cst("SEGMENT")) || type.equals(Constant.cst("CERCLE"))) {
+				this.changeLocale();
 				this.setVisible(true);
-				this.setText("Erase " + type);
 				setEnabled(true);
 			}
 		} else {
@@ -41,5 +41,14 @@ public class EraseButton extends JButton implements ActionListener {
 	public final void actionPerformed(ActionEvent evt) {
 		// Operation delegated to the model
 		drawingApp.getDrawingAppModel().removeCurrentSelection();
+	}
+
+	public final void changeLocale() {
+		String type = drawingApp.getDrawingAppModel().getSelectionType();
+		if (type.equals(Constant.cst("SEGMENT"))) {
+			this.setText(Constant.t("DEL_SEG"));
+		} else {
+			this.setText(Constant.t("DEL_CIRCLE"));
+		}
 	}
 }

@@ -18,4 +18,8 @@ public class ButtonsPanel extends JPanel {
 	public void notifyForUpdate() {
 		// do nothing
 	}
+
+	public void changeLocale() {
+		ListFormes.changeLocale();
+	}
 }

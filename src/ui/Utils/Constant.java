@@ -6,21 +6,36 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class Constant {
-    public static String lang = "fr";
+    private static String lang = "fr";
     private static final ResourceBundle bundle_fr = ResourceBundle.getBundle("i18n.Lang", new Locale("fr", "FR"));
     private static final ResourceBundle bundle_en = ResourceBundle.getBundle("i18n.Lang", new Locale("en", "EN"));
-    public static HashSet<String> langs = new HashSet<String>() {
+    private static HashSet<String> langs = new HashSet<String>() {
         {
             add("fr");
             add("en");
         }
     };
-    public static HashMap<String, ResourceBundle> langObj = new HashMap<String, ResourceBundle>() {
+    private static HashMap<String, ResourceBundle> langObj = new HashMap<String, ResourceBundle>() {
         {
             put("fr", bundle_fr);
             put("en", bundle_en);
         }
     };
+    private static HashMap<String, String> constante = new HashMap<String, String>() {
+        {
+            put("GRAPH", "GRAPH");
+            put("CURSOR", "CURSOR");
+            put("LABY", "LABYRINTH");
+            put("CERCLE", "CIRCLE");
+            put("SEGMENT", "SEGMENT");
+            put("WALL", "WALL");
+            put("END", "END");
+            put("START", "START");
+            put("NORMAL", "NORMAL");
+        }
+    };
+
+    /* Public methods */
 
     public static void changeLang(String newLang) {
         if (langs.contains(newLang)) {
@@ -28,8 +43,26 @@ public class Constant {
         }
     }
 
+    public static String getLang() {
+        return lang;
+    }
+
     public static String t(String key) {
         return langObj.get(lang).getString(key);
+    }
+
+    public static String cst(String cstSTR) {
+        if (constante.containsKey(cstSTR)) {
+            return constante.get(cstSTR);
+        }
+        System.out.println("Missing" + cstSTR); // only debug
+        System.out.println("Missing" + cstSTR); // only debug
+        System.out.println("Missing" + cstSTR); // only debug
+        System.out.println("Missing" + cstSTR); // only debug
+        System.out.println("Missing" + cstSTR); // only debug
+        System.out.println("Missing" + cstSTR); // only debug
+        System.out.println("Missing" + cstSTR); // only debug
+        return "";
     }
 
 }

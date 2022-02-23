@@ -17,7 +17,7 @@ public class NewMenuItem extends JMenuItem implements ActionListener {
    }
 
    public void actionPerformed(ActionEvent evt) {
-      this.drawingApp.newGame(Constant.t("GRAPH"));
+      this.drawingApp.newGame(Constant.cst("GRAPH"));
    }
 
    public void changeLocale() {

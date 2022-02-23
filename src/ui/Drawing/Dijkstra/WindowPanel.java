@@ -27,4 +27,10 @@ public class WindowPanel extends JPanel {
 		buttonsPanel.notifyForUpdate();
 		buttonsOptions.notifyForUpdate();
 	}
+
+	public void changeLocale() {
+		drawingPanel.changeLocale();
+		buttonsPanel.changeLocale();
+		buttonsOptions.changeLocale();
+	}
 }

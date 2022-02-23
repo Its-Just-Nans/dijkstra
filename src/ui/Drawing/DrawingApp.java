@@ -37,7 +37,7 @@ public class DrawingApp extends JFrame implements ChangeListener {
       // drawingAppModelLaby.addObserver(this);
 
       this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Explicit !
-      this.changeTo(Constant.t("GRAPH"));
+      this.changeTo(Constant.cst("GRAPH"));
 
       pack();
       setVisible(true); // The great show
@@ -55,10 +55,10 @@ public class DrawingApp extends JFrame implements ChangeListener {
       if (this.windowType != newType) {
          windowPanelLaby.setVisible(false);
          windowPanel.setVisible(false);
-         if (newType.equals(Constant.t("LABY"))) {
+         if (newType.equals(Constant.cst("LABY"))) {
             windowPanelLaby.setVisible(true);
             this.setContentPane(this.windowPanelLaby);
-         } else if (newType.equals(Constant.t("GRAPH"))) {
+         } else if (newType.equals(Constant.cst("GRAPH"))) {
             windowPanel.setVisible(true);
             this.setContentPane(this.windowPanel);
          }
@@ -75,9 +75,9 @@ public class DrawingApp extends JFrame implements ChangeListener {
    }
 
    public void stateChanged(ChangeEvent evt) {
-      if (windowType.equals(Constant.t("LABY"))) {
+      if (windowType.equals(Constant.cst("LABY"))) {
          windowPanelLaby.notifyForUpdate();
-      } else if (windowType.equals(Constant.t("GRAPH"))) {
+      } else if (windowType.equals(Constant.cst("GRAPH"))) {
          windowPanel.notifyForUpdate();
       }
    }
@@ -85,12 +85,12 @@ public class DrawingApp extends JFrame implements ChangeListener {
    public void newGame(String newType) {
       windowPanelLaby.setVisible(false);
       windowPanel.setVisible(false);
-      if (newType.equals(Constant.t("LABY"))) {
+      if (newType.equals(Constant.cst("LABY"))) {
          int labyHeight = Modal.ask("Entrer la taille du labyrinthe", 10, 5, 50);
          this.windowPanelLaby.setTheHeight(labyHeight);
          windowPanelLaby.setVisible(true);
          this.setContentPane(this.windowPanelLaby);
-      } else if (newType.equals(Constant.t("GRAPH"))) {
+      } else if (newType.equals(Constant.cst("GRAPH"))) {
          this.drawingAppModel.resetGame();
          windowPanel.setVisible(true);
          this.setContentPane(this.windowPanel);
@@ -101,7 +101,7 @@ public class DrawingApp extends JFrame implements ChangeListener {
    }
 
    public void solveDijkstra() {
-      if (windowType.equals(Constant.t("GRAPH"))) {
+      if (windowType.equals(Constant.cst("GRAPH"))) {
 
          this.drawingAppModel = this.getDrawingAppModel();
          // drawingAppModel.cleanInterface();
@@ -117,14 +117,14 @@ public class DrawingApp extends JFrame implements ChangeListener {
                drawingAppModel.setCaseWIN(endCaseTemp.getRealX(), endCaseTemp.getRealY());
             }
          }
-      } else if (windowType.equals(Constant.t("LABY"))) {
+      } else if (windowType.equals(Constant.cst("LABY"))) {
          this.drawingAppModelLaby = this.getDrawingAppModelLaby();
 
       }
    }
 
    public void changeLocale() {
-      // windowPanel.changeLocale();
+      windowPanel.changeLocale();
       // windowPanelLaby.changeLocale();
       drawingMenuBar.changeLocale();
    }

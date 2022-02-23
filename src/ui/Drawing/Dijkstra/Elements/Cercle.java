@@ -18,7 +18,7 @@ public class Cercle extends Ellipse2D.Float implements VertexInterface {
         super(x1, y1, diametre, diametre);
 
         this.color = color;
-        setType(Constant.t("NORMAL"));
+        setType(Constant.cst("NORMAL"));
     }
 
     private final static BasicStroke basicStroke = new BasicStroke();
@@ -33,11 +33,11 @@ public class Cercle extends Ellipse2D.Float implements VertexInterface {
 
     public void setType(String newType) {
         this.type = newType;
-        if (this.type.equals(Constant.t("NORMAL"))) {
+        if (this.type.equals(Constant.cst("NORMAL"))) {
             this.color = Color.BLACK;
-        } else if (this.type.equals(Constant.t("START"))) {
+        } else if (this.type.equals(Constant.cst("START"))) {
             this.color = Color.BLUE;
-        } else if (this.type.equals(Constant.t("END"))) {
+        } else if (this.type.equals(Constant.cst("END"))) {
             this.color = Color.RED;
         }
     }

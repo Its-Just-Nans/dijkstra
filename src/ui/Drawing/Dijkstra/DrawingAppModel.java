@@ -77,7 +77,7 @@ public class DrawingAppModel implements GraphInterface {
     public void setSelectedSegment(Segment newSelected) {
         this.selectedSegment = newSelected;
         if (newSelected != null) {
-            setSelectionType(Constant.t("SEGMENT"));
+            setSelectionType(Constant.cst("SEGMENT"));
         }
         stateChanges(); // update the view
     }
@@ -89,7 +89,7 @@ public class DrawingAppModel implements GraphInterface {
     public void setSelectedCercle(Cercle newSelected) {
         this.selectedCercle = newSelected;
         if (newSelected != null) {
-            setSelectionType(Constant.t("CERCLE"));
+            setSelectionType(Constant.cst("CERCLE"));
         }
         stateChanges(); // update the view
     }
@@ -143,7 +143,7 @@ public class DrawingAppModel implements GraphInterface {
 
     public final void removeCurrentSelection() {
         if (this.selectionType != null) {
-            if (this.selectionType.equals(Constant.t("CERCLE"))) {
+            if (this.selectionType.equals(Constant.cst("CERCLE"))) {
                 // need to remove connected Segment !
                 ArrayList<Segment> toRemove = new ArrayList<Segment>();
                 for (Segment oneSegment : editedSegments) {
@@ -156,7 +156,7 @@ public class DrawingAppModel implements GraphInterface {
                 editedSegments.removeAll(toRemove);
                 editedCercle.remove(this.selectedCercle);
                 setSelectedCercle(null);
-            } else if (this.selectionType.equals(Constant.t("SEGMENT"))) {
+            } else if (this.selectionType.equals(Constant.cst("SEGMENT"))) {
                 editedSegments.remove(this.selectedSegment);
                 setSelectedSegment(null);
             }
@@ -189,7 +189,7 @@ public class DrawingAppModel implements GraphInterface {
     }
 
     public final void initCurrentForme(int x, int y) {
-        if (this.currentForme.equals(Constant.t("CERCLE"))) {
+        if (this.currentForme.equals(Constant.cst("CERCLE"))) {
             float diametre = Cercle.getDiametre();
             float realX = x - (diametre / 2); // the x of Ellipse2D is at the top right corner;
             float realY = y - (diametre / 2); // the y of Ellipse2D is at the top right corner;
@@ -197,7 +197,7 @@ public class DrawingAppModel implements GraphInterface {
             setCurrentCercle(null);
             setCurrentSegment(null);
             stateChanges();
-        } else if (this.currentForme.equals(Constant.t("SEGMENT"))) {
+        } else if (this.currentForme.equals(Constant.cst("SEGMENT"))) {
             setCurrentCercle(null);
             // check cercle
             Segment newSegment = new Segment(x, y, x, y, this.currentColor);
@@ -218,7 +218,7 @@ public class DrawingAppModel implements GraphInterface {
     }
 
     public final void modifyCurrentForme(int x2, int y2) {
-        if (this.currentSegment != null && this.currentForme.equals(Constant.t("SEGMENT"))) {
+        if (this.currentSegment != null && this.currentForme.equals(Constant.cst("SEGMENT"))) {
             float x1 = (float) currentSegment.getX1();
             float y1 = (float) currentSegment.getY1();
             currentSegment.setLine(x1, y1, x2, y2);
@@ -251,9 +251,9 @@ public class DrawingAppModel implements GraphInterface {
     }
 
     public final void cancelCurrentForme() {
-        if (this.currentForme.equals(Constant.t("CERCLE"))) {
+        if (this.currentForme.equals(Constant.cst("CERCLE"))) {
             setCurrentCercle(null);
-        } else if (this.currentForme.equals(Constant.t("SEGMENT"))) {
+        } else if (this.currentForme.equals(Constant.cst("SEGMENT"))) {
             setCurrentSegment(null);
         }
         this.stateChanges();
@@ -374,7 +374,7 @@ public class DrawingAppModel implements GraphInterface {
     public VertexInterface getStart() {
         for (Cercle oneCercle : this.editedCercle) {
             // VertexInterface oneCercleInVertex = (VertexInterface) oneCercle;
-            if (oneCercle.getType().equals(Constant.t("START"))) {
+            if (oneCercle.getType().equals(Constant.cst("START"))) {
                 return oneCercle;
             }
         }
@@ -384,7 +384,7 @@ public class DrawingAppModel implements GraphInterface {
     public VertexInterface getEnd() {
         for (Cercle oneCercle : this.editedCercle) {
             // VertexInterface oneCercleInVertex = (VertexInterface) oneCercle;
-            if (oneCercle.getType().equals(Constant.t("END"))) {
+            if (oneCercle.getType().equals(Constant.cst("END"))) {
                 return oneCercle;
             }
         }

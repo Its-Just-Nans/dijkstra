@@ -37,7 +37,7 @@ public class WindowPanelLaby extends JPanel {
 		this.removeAll();
 		int totalNumber = this.height * this.height;
 		for (int i = 0; i < totalNumber; i++) {
-			Square square = new Square(this.drawingApp, Constant.t("NORMAL"));
+			Square square = new Square(this.drawingApp, Constant.cst("NORMAL"));
 			DrawingPanelMouseListenerLaby drawingPanelMouseListenerLaby = new DrawingPanelMouseListenerLaby(
 					this.drawingApp,
 					square);

@@ -56,7 +56,7 @@ public class Modal {
 
         JRadioButton lang_fr = new JRadioButton("Français");
         JRadioButton lang_en = new JRadioButton("English");
-        if (Constant.lang.equals("fr")) {
+        if (Constant.getLang().equals("fr")) {
             lang_fr.setSelected(true);
         } else {
             lang_en.setSelected(true);

@@ -13,6 +13,7 @@ public class Lang_en extends ListResourceBundle {
             { "ERR_MSG_INPUT", "Bad value. Choix par défault " },
             { "OPTIONS", "Options" },
             { "DEL_SEG", "Erase segment" },
+            { "DEL_CIRCLE", "Erase circle" },
             { "CHANGE_COLOR_SEGMENT", "Change color segment" },
             { "QUIT", "Quitter l'application" },
             { "LEAVE", "Leave" },
