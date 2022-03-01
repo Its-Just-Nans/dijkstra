@@ -1,21 +1,32 @@
 package ui.Menu;
 
-import javax.swing.*;
+import javax.swing.JMenuBar;
 
-import ui.DrawingApp;
-import ui.Menu.Action.ActionMenu;
+import ui.Drawing.DrawingApp;
+import ui.Menu.Dijkstra.DijkstraMenu;
 import ui.Menu.FileMenu.FileMenu;
+import ui.Menu.Labyrinthe.LabyrintheMenu;
 
 public class DrawingMenuBar extends JMenuBar {
-
 	private final FileMenu fileMenu;
-	private final ActionMenu parametersMenu;
+	private final LabyrintheMenu labyrintheMenu;
+	private final DijkstraMenu dijkstraMenu;
 
 	public DrawingMenuBar(DrawingApp drawingApp) {
 		super();
 
 		// Create and add menus
-		add(fileMenu = new FileMenu(drawingApp));
-		add(parametersMenu = new ActionMenu(drawingApp));
+		this.fileMenu = new FileMenu(drawingApp);
+		this.add(fileMenu);
+		this.labyrintheMenu = new LabyrintheMenu(drawingApp);
+		this.add(labyrintheMenu);
+		this.dijkstraMenu = new DijkstraMenu(drawingApp);
+		this.add(dijkstraMenu);
+	}
+
+	public void changeLocale() {
+		this.fileMenu.changeLocale();
+		this.labyrintheMenu.changeLocale();
+		this.dijkstraMenu.changeLocale();
 	}
 }

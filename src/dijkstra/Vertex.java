@@ -1,13 +1,18 @@
 package dijkstra;
 
 public class Vertex implements VertexInterface {
-	private String name;
+	private String label;
 
 	public Vertex() {
 
 	}
 
-	public Vertex(String name) {
-		this.name = name;
+	public Vertex(String label) {
+		this.label = label;
+	}
+
+	@Override
+	public String getLabel() {
+		return this.label;
 	}
 }
