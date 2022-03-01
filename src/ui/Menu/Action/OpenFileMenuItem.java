@@ -1,4 +1,4 @@
-package ui.menu.Action;
+package ui.Menu.Action;
 
 import javax.swing.*;
 

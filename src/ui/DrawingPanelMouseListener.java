@@ -3,7 +3,7 @@ package ui;
 import javax.swing.event.*;
 import java.awt.event.MouseEvent;
 
-public class DrawingPanelMouseListener extends MouseInputAdapter implements MouseMotionListener {
+public class DrawingPanelMouseListener extends MouseInputAdapter implements MouseInputListener {
    private final DrawingApp drawingApp;
 
    public DrawingPanelMouseListener(DrawingApp drawingApp) {
@@ -14,26 +14,31 @@ public class DrawingPanelMouseListener extends MouseInputAdapter implements Mous
 
    @Override
    public final void mousePressed(MouseEvent e) {
-      drawingApp.getDrawingAppModel().initCurrentSegment(e.getX(), e.getY());
+      drawingApp.getDrawingAppModel().initCurrentForme(e.getX(), e.getY());
    }
 
    @Override
    public final void mouseDragged(MouseEvent e) {
-      drawingApp.getDrawingAppModel().modifyCurrentSegment(e.getX(), e.getY());
+      System.out.println("MOUSE");
+      drawingApp.getDrawingAppModel().modifyCurrentForme(e.getX(), e.getY());
    }
 
    @Override
    public final void mouseReleased(MouseEvent e) {
-      drawingApp.getDrawingAppModel().registerCurrentSegment(e.getX(), e.getY());
+      if (drawingApp.getDrawingAppModel().getCurrentForme() == "Segment") {
+         drawingApp.getDrawingAppModel().registerCurrentSegment(e.getX(), e.getY());
+      }
    }
 
    @Override
    public final void mouseExited(MouseEvent e) {
-      drawingApp.getDrawingAppModel().cancelCurrentSegment();
+      drawingApp.getDrawingAppModel().cancelCurrentForme();
    }
 
    @Override
    public final void mouseClicked(MouseEvent e) {
-      drawingApp.getDrawingAppModel().setSelection(e.getX(), e.getY());
+      if (drawingApp.getDrawingAppModel().getCurrentForme() == "Cursor") {
+         drawingApp.getDrawingAppModel().setSelection(e.getX(), e.getY());
+      }
    }
 }

@@ -1,8 +1,9 @@
-package ui.menu.FileMenu;
+package ui.Menu.FileMenu;
 
 import javax.swing.*;
 import java.awt.event.*;
-import model.*;
+
+import ui.Drawing.*;
 import ui.DrawingApp;
 
 public class QuitMenuItem extends JMenuItem implements ActionListener {

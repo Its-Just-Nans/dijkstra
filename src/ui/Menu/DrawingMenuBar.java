@@ -1,9 +1,10 @@
-package ui;
+package ui.Menu;
 
 import javax.swing.*;
 
-import ui.menu.Action.ActionMenu;
-import ui.menu.FileMenu.FileMenu;
+import ui.DrawingApp;
+import ui.Menu.Action.ActionMenu;
+import ui.Menu.FileMenu.FileMenu;
 
 public class DrawingMenuBar extends JMenuBar {
 
