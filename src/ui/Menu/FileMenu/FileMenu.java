@@ -1,21 +1,5 @@
 package ui.Menu.FileMenu;
 
-<<<<<<< HEAD
-import javax.swing.*;
-
-import ui.*;
-import ui.Drawing.*;
-import ui.DrawingApp;
-
-public class FileMenu extends JMenu {
-   private final QuitMenuItem quitMenuItem;
-
-   public FileMenu(DrawingApp drawingApp) {
-      super("File"); // Text of the menu
-
-      // Create and add menu items
-      add(this.quitMenuItem = new QuitMenuItem(drawingApp));
-=======
 import javax.swing.JMenu;
 
 import ui.Drawing.DrawingApp;
@@ -40,7 +24,6 @@ public class FileMenu extends JMenu {
       quitMenuItem.changeLocale();
       aboutMenuItem.changeLocale();
       optionsMenuItem.changeLocale();
->>>>>>> 33f66416d59e4e2af5c96c946648a6dda8e903f2
    }
 
 }
