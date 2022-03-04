@@ -348,31 +348,39 @@ public class DrawingAppModel implements GraphInterface {
     }
 
     public int getWeight(VertexInterface src, VertexInterface dest) {
-        for (Segment oneSegment : this.editedSegments) {
-            if (oneSegment.getEnd1() == src) {
-                // check End2
-                if (oneSegment.getEnd2() == dest) {
-                    return oneSegment.getValue();
-                }
-            } else if (oneSegment.getEnd2() == src) {
-                // check End1
-                if (oneSegment.getEnd1() == dest) {
-                    return oneSegment.getValue();
-                }
-            }
+        Segment segmentTemp = getSegmentByCercles(src, dest);
+        if (segmentTemp != null) {
+            return segmentTemp.getValue();
         }
         return Integer.MAX_VALUE;
     }
 
-    private Cercle searchCercleFromVertex(VertexInterface tofind) {
-        for (Cercle oneCercle : this.editedCercle) {
-            // VertexInterface oneCercleInVertex = (VertexInterface) oneCercle;
-            if (oneCercle == tofind) {
-                return oneCercle;
+    private Segment getSegmentByCercles(VertexInterface src, VertexInterface dest) {
+        for (Segment oneSegment : this.editedSegments) {
+            if (oneSegment.getEnd1() == src) {
+                // check End2
+                if (oneSegment.getEnd2() == dest) {
+                    return oneSegment;
+                }
+            } else if (oneSegment.getEnd2() == src) {
+                // check End1
+                if (oneSegment.getEnd1() == dest) {
+                    return oneSegment;
+                }
             }
         }
         return null;
     }
+
+    // private Cercle searchCercleFromVertex(VertexInterface tofind) {
+    // for (Cercle oneCercle : this.editedCercle) {
+    // // VertexInterface oneCercleInVertex = (VertexInterface) oneCercle;
+    // if (oneCercle == tofind) {
+    // return oneCercle;
+    // }
+    // }
+    // return null;
+    // }
 
     public VertexInterface getStart() {
         for (Cercle oneCercle : this.editedCercle) {
@@ -398,8 +406,14 @@ public class DrawingAppModel implements GraphInterface {
         System.out.println(x + " " + y);
     }
 
+    private void cleanInterface() {
+        for (Segment oneSegment : this.editedSegments) {
+            oneSegment.setColor(new Color(48, 48, 48));
+        }
+    }
+
     public void solveDijkstra() {
-        // drawingAppModel.cleanInterface();
+        this.cleanInterface();
         // drawingAppModel.checkValues();
         VertexInterface start = this.getStart();
         if (start == null) {
@@ -413,12 +427,29 @@ public class DrawingAppModel implements GraphInterface {
         }
         PreviousInterface chemin = Dijkstra.dijkstra(this, start);
 
-        Cercle caseTemp = (Cercle) end;
+        ArrayList<VertexInterface> listFinal = new ArrayList<VertexInterface>();
+        VertexInterface caseTemp = end;
         while (caseTemp != null) {
-            caseTemp = (Cercle) chemin.getValue(caseTemp);
-            if (caseTemp != null) {
-                this.setCaseWIN(caseTemp.getRealX(), caseTemp.getRealY());
+            listFinal.add(caseTemp);
+            caseTemp = chemin.getValue(caseTemp);
+        }
+        int sizeList = listFinal.size();
+        if (sizeList == 1 && listFinal.get(0) == null) {
+            // System.out.println("No solution");
+            Modal.makeMessage(Constant.t("NO_SOLUTION"));
+        }
+        for (int a = 0; a < sizeList; a++) {
+            VertexInterface src = listFinal.get(a);
+            VertexInterface dest = null;
+            if ((a + 1) < sizeList) {
+                dest = listFinal.get(a + 1);
+            }
+            if (src != null && dest != null) {
+                Segment s = getSegmentByCercles(src, dest);
+                // System.out.println(s);
+                s.setColor(Color.YELLOW);
             }
         }
+        this.stateChanges();
     }
 }

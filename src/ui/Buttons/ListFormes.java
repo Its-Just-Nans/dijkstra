@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 
 import ui.Drawing.DrawingApp;
+import ui.Drawing.Dijkstra.Elements.Cercle;
 import ui.Utils.Constant;
 
 public class ListFormes extends JPanel implements ItemListener {
@@ -65,5 +66,9 @@ public class ListFormes extends JPanel implements ItemListener {
 		CURSORbutton.setText(Constant.t("CURSOR"));
 		SEGMENTbutton.setText(Constant.t("SEGMENT"));
 		CERCLEbutton.setText(Constant.t("CERCLE"));
+	}
+
+	public void notifyForUpdate() {
+
 	}
 }

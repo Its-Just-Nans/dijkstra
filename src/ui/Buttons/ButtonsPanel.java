@@ -6,20 +6,24 @@ import javax.swing.JPanel;
 import ui.Drawing.DrawingApp;
 
 public class ButtonsPanel extends JPanel {
-	private final ListFormes ListFormes;
+	private final ListFormes listFormes;
+	private final ButtonsOptions buttonsOptions;
 
 	public ButtonsPanel(DrawingApp drawingApp) {
 		super();
 
-		setLayout(new GridLayout(1, 1)); // 1 row, 4 columns
-		add(ListFormes = new ListFormes(drawingApp));
+		setLayout(new GridLayout(1, 2)); // 1 row, 4 columns
+		add(listFormes = new ListFormes(drawingApp));
+		add(buttonsOptions = new ButtonsOptions(drawingApp));
 	}
 
 	public void notifyForUpdate() {
-		// do nothing
+		listFormes.notifyForUpdate();
+		buttonsOptions.notifyForUpdate();
 	}
 
 	public void changeLocale() {
-		ListFormes.changeLocale();
+		listFormes.changeLocale();
+		buttonsOptions.changeLocale();
 	}
 }

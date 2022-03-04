@@ -1,8 +1,18 @@
 package maze;
 
+import ui.Utils.Constant;
+
 public class MazeReadingException extends Exception {
-	public MazeReadingException(String name, int num, String message) {
-		super(message);
-		System.out.print(name + " " + num);
+	private String correctMsg;
+
+	public MazeReadingException(String code, String addInfos, String stack) {
+		super(stack);
+		this.correctMsg = Constant.t(code);
+		this.correctMsg = correctMsg + " " + addInfos;
+		System.out.print(correctMsg);
+	}
+
+	public String getInfos() {
+		return this.correctMsg;
 	}
 }

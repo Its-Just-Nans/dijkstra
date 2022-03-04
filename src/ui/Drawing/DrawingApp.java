@@ -1,15 +1,14 @@
 package ui.Drawing;
 
+import java.net.URL;
+
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import dijkstra.Dijkstra;
-import dijkstra.PreviousInterface;
-import dijkstra.VertexInterface;
 import ui.Drawing.Dijkstra.DrawingAppModel;
 import ui.Drawing.Dijkstra.WindowPanel;
-import ui.Drawing.Dijkstra.Elements.Cercle;
 import ui.Drawing.Labyrinthe.DrawingAppModelLaby;
 import ui.Menu.DrawingMenuBar;
 import ui.Utils.Constant;
@@ -25,7 +24,13 @@ public class DrawingApp extends JFrame implements ChangeListener {
    private String windowType = null;
 
    public DrawingApp() {
-      super("Drawing Application"); // Window title
+      super("Dijkstra with JAVA"); // Window title
+      // iconURL is null when not found
+      URL iconURL = getClass().getResource("./logo.png");
+      if (iconURL != null) {
+         ImageIcon icon = new ImageIcon(iconURL);
+         this.setIconImage(icon.getImage());
+      }
       this.drawingAppModel = new DrawingAppModel();
       this.drawingAppModelLaby = new DrawingAppModelLaby(this);
 

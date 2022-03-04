@@ -51,6 +51,9 @@ public class Segment extends Line2D.Float implements VertexInterface {
             g2.draw(this);
             g2.setStroke(usualStroke); // Normal mode
         } else {
+            if (this.color.equals(Color.YELLOW)) {
+                g2.setStroke(largeStroke); // Large lines mode
+            }
             g2.draw(this);
         }
     }
@@ -77,5 +80,9 @@ public class Segment extends Line2D.Float implements VertexInterface {
 
     public int getValue() {
         return this.value;
+    }
+
+    public void setColor(Color newColor) {
+        this.color = newColor;
     }
 }

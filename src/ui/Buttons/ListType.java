@@ -59,13 +59,17 @@ public class ListType extends JPanel implements ItemListener {
 	private void changeSeletedType() {
 		Cercle cercle = drawingApp.getDrawingAppModel().getSelectedCercle();
 		if (cercle != null) {
-			String type = cercle.getType();
+			// all false
 			for (JRadioButton oneButton : listButtons) {
 				oneButton.setSelected(false);
-				String actualType = oneButton.getText();
-				if (type == actualType) {
-					oneButton.setSelected(true);
-				}
+			}
+			String typeOfCercle = cercle.getType();
+			if (typeOfCercle.equals(Constant.cst("NORMAL"))) {
+				listButtons.get(0).setSelected(true);
+			} else if (typeOfCercle.equals(Constant.cst("END"))) {
+				listButtons.get(1).setSelected(true);
+			} else if (typeOfCercle.equals(Constant.cst("START"))) {
+				listButtons.get(2).setSelected(true);
 			}
 		}
 	}

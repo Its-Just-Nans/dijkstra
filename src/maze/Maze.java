@@ -1,6 +1,7 @@
 package maze;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -10,6 +11,7 @@ import java.util.List;
 
 import dijkstra.GraphInterface;
 import dijkstra.VertexInterface;
+import ui.Utils.Modal;
 
 public class Maze implements GraphInterface {
 	private List<ArrayList<MBox>> laby;
@@ -126,6 +128,7 @@ public class Maze implements GraphInterface {
 
 	public final void initFromTextFile(String fileName) {
 		BufferedReader objReader = null;
+		int countChecker = 0;
 		try {
 			String strCurrentLine;
 			objReader = new BufferedReader(new FileReader(fileName));
@@ -146,20 +149,35 @@ public class Maze implements GraphInterface {
 						case 'E':
 							line.add(new EBox(i, counter));
 							break;
+						case 'F':
+							line.add(new FBox(i, counter));
+							break;
 						default:
-							new MazeReadingException("file", counter, "error in line");
+							throw new MazeReadingException("ERROR_CHAR_LINE", String.valueOf(counter + 1),
+									Thread.currentThread().getStackTrace().toString());
 					}
 				}
 				this.maxX = line.size();
 				this.laby.add(line);
+				if (counter != 0) {
+					if (line.size() != countChecker) {
+						throw new MazeReadingException("ERROR_LINE_LEN", String.valueOf(counter + 1),
+								Thread.currentThread().getStackTrace().toString());
+					}
+				}
+				countChecker = line.size();
 				counter++;
 			}
 			this.maxY = this.laby.size();
+		} catch (MazeReadingException ex) {
+			Modal.Error(ex.getInfos(), ex.getMessage());
+			this.createVoidMaze();
 		} catch (FileNotFoundException fe) {
-			new MazeReadingException("File not Found", 0, fe.getMessage());
+			Modal.ErrorCode("FILE_NOT_FOUND", fe.getMessage());
+			this.createVoidMaze();
 		} catch (IOException e) {
-			e.printStackTrace();
-			new MazeReadingException("I/O Error", 0, e.getMessage());
+			Modal.ErrorCode("IO_ERROR", e.getMessage());
+			this.createVoidMaze();
 		} finally {
 			try {
 				if (objReader != null) {
@@ -171,10 +189,29 @@ public class Maze implements GraphInterface {
 		}
 	}
 
+	private void createVoidMaze() {
+		this.maxX = 10;
+		this.maxY = 10;
+		laby.clear();
+		for (int i = 0; i < this.maxY; i++) {
+			ArrayList<MBox> list = new ArrayList<MBox>();
+			for (int z = 0; z < this.maxX; z++) {
+				list.add(new EBox(i, z));
+			}
+			this.laby.add(list);
+		}
+	}
+
 	public final void saveToTextFile(String fileName) {
-		PrintWriter writer;
+		File file = new File(fileName);
 		try {
-			writer = new PrintWriter(fileName);
+			file.createNewFile();
+		} catch (IOException e) {
+
+		}
+		PrintWriter writer = null;
+		try {
+			writer = new PrintWriter(file);
 			String text = "";
 			for (int y = 0; y < this.maxY; y++) {
 				for (int x = 0; x < this.maxX; x++) {
@@ -186,7 +223,13 @@ public class Maze implements GraphInterface {
 			writer.flush();
 			writer.close();
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			Modal.ErrorCode("NOT_SAVED", e.getMessage());
+		} catch (Exception e) {
+			Modal.ErrorCode("IO_ERROR", e.getMessage());
+		} finally {
+			if (writer != null) {
+				writer.close();
+			}
 		}
 	}
 }
