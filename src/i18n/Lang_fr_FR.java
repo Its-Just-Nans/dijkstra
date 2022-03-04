@@ -10,7 +10,7 @@ public class Lang_fr_FR extends ListResourceBundle {
     }
 
     private Object[][] contents = {
-            { "ERR_MSG_INPUT", "ERR_MSG_INPUT", "Mauvaise valeur. Choix par défault " },
+            { "ERR_MSG_INPUT", "Mauvaise valeur. Choix par défault" },
             { "OPTIONS", "Options" },
             { "CHANGE_COLOR_SEGMENT", "Changer la couleur du segment" },
             { "DEL_SEG", "Supprimer le segment" },

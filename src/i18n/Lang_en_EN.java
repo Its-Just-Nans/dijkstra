@@ -10,13 +10,13 @@ public class Lang_en_EN extends ListResourceBundle {
     }
 
     private Object[][] contents = {
-            { "ERR_MSG_INPUT", "Bad value. Choix par défault " },
+            { "ERR_MSG_INPUT", "Bad value. Default choice" },
             { "OPTIONS", "Options" },
             { "DEL_SEG", "Erase segment" },
             { "DEL_CIRCLE", "Erase circle" },
             { "CHANGE_COLOR_SEGMENT", "Change color segment" },
             { "QUIT", "Quitter l'application" },
-            { "LEAVE", "Leave" },
+            { "LEAVE", "Quit" },
             { "SAVE", "Drawing not saved. Save ?" },
             { "SQUARE_SIZE", "Enter size of labyrinth square" },
             { "OPT_MOD", "This modification will be set for the next labyrinth" },
