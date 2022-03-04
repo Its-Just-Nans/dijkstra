@@ -53,7 +53,6 @@ public class WindowPanelLaby extends JPanel {
 	public void generateLaby(List<MBox> list) {
 		this.removeAll();
 		int count = 0;
-		int height = drawingAppModelLaby.getHeight();
 		int width = drawingAppModelLaby.getWidth();
 		for (MBox oneVertex : list) {
 			Square square = new Square(this.drawingApp, oneVertex);

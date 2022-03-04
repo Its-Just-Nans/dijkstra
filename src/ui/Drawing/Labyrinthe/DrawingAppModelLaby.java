@@ -4,7 +4,6 @@ import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
 import java.util.ArrayList;
 import java.util.List;
-import java.awt.Color;
 
 import dijkstra.Dijkstra;
 import dijkstra.PreviousInterface;
@@ -21,7 +20,6 @@ import ui.Utils.Modal;
 public class DrawingAppModelLaby {
     private ArrayList<ChangeListener> listeners = new ArrayList<ChangeListener>();
     private final ArrayList<Square> editedSquare = new ArrayList<Square>();
-    private Color currentColor = new Color(48, 48, 48);
     private boolean clicked = false;
     private int squareSize = 20;
     private int heightLaby = 10;
@@ -78,10 +76,6 @@ public class DrawingAppModelLaby {
         }
     }
 
-    public Color getCurrentColor() {
-        return this.currentColor;
-    }
-
     public void initLabyFromFile() {
         this.editedSquare.clear();
         Maze maze = new Maze();
@@ -91,8 +85,8 @@ public class DrawingAppModelLaby {
         }
         maze.initFromTextFile(pathToFile);
         List<MBox> listBox = maze.getAllMBox();
-        int height = maze.getMaxX();
-        int width = maze.getMaxY();
+        int width = maze.getMaxX();
+        int height = maze.getMaxY();
         this.drawingApp.getWindowPanelLaby().setDimensions(height, width);
         this.drawingApp.getWindowPanelLaby().generateLaby(listBox);
     }
@@ -108,42 +102,7 @@ public class DrawingAppModelLaby {
         }
     }
 
-    public final void initCurrentForme(int x, int y) {
-        System.out.println("LOOL");
-    }
-
-    public final void modifyCurrentForme(int x2, int y2) {
-        //
-        System.out.println("LOOqsdfkjlhkdjkqdsjL");
-        System.out.println("LOOqsdfkjlhkdjkqdsjL");
-        this.stateChanges();
-    }
-
-    public ArrayList<VertexInterface> getSuccessorOf(VertexInterface vertex) {
-        //
-        return null;
-    }
-
-    public int getWeight(VertexInterface src, VertexInterface dest) {
-        //
-        return Integer.MAX_VALUE;
-    }
-
-    public VertexInterface getStart() {
-        //
-        return null;
-    }
-
-    public VertexInterface getEnd() {
-        //
-        return null;
-    }
-
-    public void setCaseWIN(float x, float y) {
-        System.out.println(x + " " + y);
-    }
-
-    public void solveDijkstra() {
+    private Maze createMaze() {
         ArrayList<ArrayList<MBox>> boxes = new ArrayList<ArrayList<MBox>>();
         for (int hauteur = 0; hauteur < this.heightLaby; hauteur++) {
             ArrayList<MBox> list = new ArrayList<MBox>();
@@ -155,7 +114,20 @@ public class DrawingAppModelLaby {
             boxes.add(list);
         }
 
-        Maze maze = new Maze(boxes);
+        return new Maze(boxes);
+    }
+
+    private void removeFinalBoxes() {
+        for (Square oneSquare : editedSquare) {
+            if (oneSquare.getBox().getType().equals("F")) {
+                oneSquare.setBox(new EBox());
+            }
+        }
+    }
+
+    public void solveDijkstra() {
+        removeFinalBoxes();
+        Maze maze = createMaze();
         VertexInterface start = maze.findByType("D");
         if (start == null) {
             Modal.makeMessage(Constant.t("NO_START"));
@@ -177,6 +149,10 @@ public class DrawingAppModelLaby {
             }
             listFinal.add(tempCase); // this line is after to no include the final box
         }
+        if (listFinal.size() == 1 && listFinal.get(0) == null) {
+            // System.out.println("No solution");
+            Modal.makeMessage(Constant.t("NO_SOLUTION"));
+        }
         for (MBox oneBox : listFinal) {
             if (oneBox != null) {
                 Square tempSquare = getSquareFormBox(oneBox);
@@ -194,5 +170,10 @@ public class DrawingAppModelLaby {
             }
         }
         return null;
+    }
+
+    public void saveToFile(String path) {
+        Maze maze = createMaze();
+        maze.saveToTextFile(path);
     }
 }

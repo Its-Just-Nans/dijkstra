@@ -10,6 +10,7 @@ public class LabyrintheMenu extends JMenu {
    private SwitchLabyMenuItem switchLabyMenuItem;
    private SolveLabyMenuItem solveLabyMenuItem;
    private InitFromFileMenuItem initFromFileMenuItem;
+   private SaveToFileMenuItem saveToFileMenuItem;
 
    public LabyrintheMenu(DrawingApp drawingApp) {
       super(Constant.t("LABY")); // Text of the menu
@@ -17,6 +18,7 @@ public class LabyrintheMenu extends JMenu {
       add(switchLabyMenuItem = new SwitchLabyMenuItem(drawingApp));
       add(solveLabyMenuItem = new SolveLabyMenuItem(drawingApp));
       add(initFromFileMenuItem = new InitFromFileMenuItem(drawingApp));
+      add(saveToFileMenuItem = new SaveToFileMenuItem(drawingApp));
    }
 
    public void changeLocale() {
@@ -25,5 +27,6 @@ public class LabyrintheMenu extends JMenu {
       switchLabyMenuItem.changeLocale();
       solveLabyMenuItem.changeLocale();
       initFromFileMenuItem.changeLocale();
+      saveToFileMenuItem.changeLocale();
    }
 }

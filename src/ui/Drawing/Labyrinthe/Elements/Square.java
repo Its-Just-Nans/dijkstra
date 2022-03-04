@@ -2,9 +2,6 @@ package ui.Drawing.Labyrinthe.Elements;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.BasicStroke;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
@@ -14,12 +11,9 @@ import ui.Drawing.DrawingApp;
 import ui.Utils.Constant;
 
 public class Square extends JPanel {
-    private Color color = Color.BLACK;
-    private String type;
     private int x;
     private int y;
     private DrawingApp drawingApp;
-    private final static BasicStroke basicStroke = new BasicStroke();
     private MBox box;
 
     public Square(DrawingApp drawingApp, MBox mbox) {

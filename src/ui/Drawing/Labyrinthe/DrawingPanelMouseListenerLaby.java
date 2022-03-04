@@ -8,7 +8,6 @@ import maze.EBox;
 import maze.MBox;
 import maze.WBox;
 
-import java.awt.Color;
 import java.awt.event.MouseEvent;
 
 import ui.Drawing.DrawingApp;
