@@ -8,7 +8,8 @@ import java.util.ResourceBundle;
 public class Constant {
     private static String lang = "fr";
     private static final ResourceBundle bundle_fr = ResourceBundle.getBundle("i18n.Lang", new Locale("fr", "FR"));
-    private static final ResourceBundle bundle_en = ResourceBundle.getBundle("i18n.Lang", new Locale("en", "EN"));
+    private static final ResourceBundle bundle_en = ResourceBundle.getBundle("i18n.Lang",
+            new Locale("en", "EN"));
     private static HashSet<String> langs = new HashSet<String>() {
         {
             add("fr");

@@ -16,12 +16,9 @@ public class DrawingMenuBar extends JMenuBar {
 		super();
 
 		// Create and add menus
-		this.fileMenu = new FileMenu(drawingApp);
-		this.add(fileMenu);
-		this.labyrintheMenu = new LabyrintheMenu(drawingApp);
-		this.add(labyrintheMenu);
-		this.dijkstraMenu = new DijkstraMenu(drawingApp);
-		this.add(dijkstraMenu);
+		this.add(fileMenu = new FileMenu(drawingApp));
+		this.add(labyrintheMenu = new LabyrintheMenu(drawingApp));
+		this.add(dijkstraMenu = new DijkstraMenu(drawingApp));
 	}
 
 	public void changeLocale() {

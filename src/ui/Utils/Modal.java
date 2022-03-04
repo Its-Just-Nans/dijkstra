@@ -19,7 +19,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
-import javax.swing.plaf.FileChooserUI;
 
 import ui.Drawing.DrawingApp;
 
@@ -169,6 +168,25 @@ public class Modal {
             return temp.getPath();
         }
         return null;
+    }
+
+    public static String filePathChooser() {
+        JFileChooser fileChooser = new JFileChooser();
+        if (fileChooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
+            File file = fileChooser.getSelectedFile();
+            return file.getPath();
+        }
+        return null;
+    }
+
+    public static void Error(String correctMsg, String trace) {
+        System.out.println(trace);
+        Modal.makeMessage(correctMsg);
+    }
+
+    public static void ErrorCode(String code, String trace) {
+        System.out.println(trace);
+        Modal.makeMessage(Constant.t(code));
     }
 
 }
