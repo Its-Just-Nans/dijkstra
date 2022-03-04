@@ -2,7 +2,7 @@ package i18n;
 
 import java.util.ListResourceBundle;
 
-public class Lang extends ListResourceBundle {
+public class Lang_fr_FR extends ListResourceBundle {
 
     @Override
     protected Object[][] getContents() {
@@ -23,7 +23,7 @@ public class Lang extends ListResourceBundle {
             { "SQUARE_SIZE", "Tailles des cases du labyrinthe:" },
             { "NEW", "Nouveau" },
             { "CURSOR", "Selection" },
-            { "SOLVE", "Solve" },
+            { "SOLVE", "Solution" },
             { "SWITCH", "Changer" },
             { "LABY", "Labyrinthe" },
             { "FILE", "Fichier" },
@@ -41,5 +41,14 @@ public class Lang extends ListResourceBundle {
             { "GET_WIDTH", "Entrer la largeur du labyrinthe" },
             { "NO_START", "Le départ n'a pas été trouvé" },
             { "NO_END", "L'arrivée n'a pas été trouvé" },
+            { "SAVE_TO_FILE", "Sauvegarder le labyrinthe" },
+            { "NOT_SAVED", "Le fichier n'a pas été enregistré" },
+            { "IO_ERROR", "Une erreur (I/O) s'est produite" },
+            { "FILE_NOT_FOUND", "Le fichier n'a pas été trouvé" },
+            { "ERROR_CHAR_LINE", "Erreur dans le fichier à la ligne :" },
+            { "ERROR_LINE_LEN", "Erreur avec la longueur de la ligne:" },
+            { "NO_SOLUTION", "Pas de solution trouvée" },
+            { "SEGMENT_VALUE", "Valeur du segment" },
+            { "UPDATE_VALUE", "Actualiser la valeur" },
     };
 }

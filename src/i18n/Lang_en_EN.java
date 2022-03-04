@@ -2,7 +2,7 @@ package i18n;
 
 import java.util.ListResourceBundle;
 
-public class Lang_en extends ListResourceBundle {
+public class Lang_en_EN extends ListResourceBundle {
 
     @Override
     protected Object[][] getContents() {
@@ -23,7 +23,7 @@ public class Lang_en extends ListResourceBundle {
             { "SQUARE_SIZE", "Labyrinth square's size:" },
             { "NEW", "New" },
             { "CURSOR", "Cursor" },
-            { "SOLVE", "Solution" },
+            { "SOLVE", "Solve" },
             { "SWITCH", "Switch" },
             { "LABY", "Labyrinth" },
             { "FILE", "File" },
@@ -39,7 +39,16 @@ public class Lang_en extends ListResourceBundle {
             { "INIT_FROM_FILE", "Init from file" },
             { "GET_HEIGHT", "Enter the height of the labyrinth" },
             { "GET_WIDTH", "Enter the width of the labyrinth" },
-            { "NO_START", "Start can't be found !" },
-            { "NO_END", "End can't be found !" },
+            { "NO_START", "The starting point was not found !" },
+            { "NO_END", "The ending point was not found !" },
+            { "SAVE_TO_FILE", "Save the labyrinth to a file" },
+            { "NOT_SAVED", "The file was not saved" },
+            { "IO_ERROR", "An error occurred" },
+            { "FILE_NOT_FOUND", "The file was not found" },
+            { "ERROR_CHAR_LINE", "Error in the file at line :" },
+            { "ERROR_LINE_LEN", "Error with the length of the line :" },
+            { "NO_SOLUTION", "No solution found" },
+            { "SEGMENT_VALUE", "Value of the segment" },
+            { "UPDATE_VALUE", "Actualiser la valeur" },
     };
 }
