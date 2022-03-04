@@ -86,7 +86,7 @@ public class Maze implements GraphInterface {
 		int x = box.getX();
 		int y = box.getY();
 		List<VertexInterface> listSuccessor = new ArrayList<VertexInterface>();
-		if (y > 1) {
+		if (y > 0) {
 			// get the upper
 			MBox boxToAdd = this.laby.get(y - 1).get(x);
 			if (boxToAdd.isTraversable()) {
@@ -100,7 +100,7 @@ public class Maze implements GraphInterface {
 				listSuccessor.add(boxToAdd);
 			}
 		}
-		if (x > 1) {
+		if (x > 0) {
 			// get the left
 			MBox boxToAdd = this.laby.get(y).get(x - 1);
 			if (boxToAdd.isTraversable()) {
