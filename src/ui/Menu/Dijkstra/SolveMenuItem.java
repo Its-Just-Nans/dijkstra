@@ -17,7 +17,7 @@ public class SolveMenuItem extends JMenuItem implements ActionListener {
    }
 
    public void actionPerformed(ActionEvent evt) {
-      this.drawingApp.solveDijkstra();
+      this.drawingApp.getDrawingAppModel().solveDijkstra();
    }
 
    public void changeLocale() {

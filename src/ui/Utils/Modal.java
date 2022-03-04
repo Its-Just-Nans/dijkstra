@@ -5,18 +5,21 @@ import java.awt.Cursor;
 import java.awt.Desktop;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+import javax.swing.plaf.FileChooserUI;
 
 import ui.Drawing.DrawingApp;
 
@@ -157,4 +160,15 @@ public class Modal {
                 return false;
         }
     }
+
+    public static String fileChooser() {
+        JFileChooser fileChooser = new JFileChooser();
+        int returnVal = fileChooser.showOpenDialog(null);
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            File temp = fileChooser.getSelectedFile();
+            return temp.getPath();
+        }
+        return null;
+    }
+
 }

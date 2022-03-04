@@ -20,6 +20,17 @@ public class Maze implements GraphInterface {
 		this.laby = new ArrayList<ArrayList<MBox>>();
 	}
 
+	/**
+	 * Create a maze from a already existing list
+	 * 
+	 * @param allBoxes
+	 */
+	public Maze(ArrayList<ArrayList<MBox>> allBoxes) {
+		this.laby = allBoxes;
+		this.maxX = allBoxes.get(0).size();
+		this.maxY = allBoxes.size();
+	}
+
 	public void setMaxX(int newMaxX) {
 		this.maxX = newMaxX;
 	}
@@ -58,12 +69,22 @@ public class Maze implements GraphInterface {
 		return list;
 	}
 
+	public List<MBox> getAllMBox() {
+		List<MBox> list = new ArrayList<MBox>();
+		for (int i = 0; i < this.maxY; i++) {
+			for (int z = 0; z < this.maxX; z++) {
+				list.add(this.laby.get(i).get(z));
+			}
+		}
+		return list;
+	}
+
 	public List<VertexInterface> getSuccessorOf(VertexInterface vertex) {
 		MBox box = (MBox) vertex;
 		int x = box.getX();
 		int y = box.getY();
 		List<VertexInterface> listSuccessor = new ArrayList<VertexInterface>();
-		if (y > 0) {
+		if (y > 1) {
 			// get the upper
 			MBox boxToAdd = this.laby.get(y - 1).get(x);
 			if (boxToAdd.isTraversable()) {
@@ -77,7 +98,7 @@ public class Maze implements GraphInterface {
 				listSuccessor.add(boxToAdd);
 			}
 		}
-		if (x > 0) {
+		if (x > 1) {
 			// get the left
 			MBox boxToAdd = this.laby.get(y).get(x - 1);
 			if (boxToAdd.isTraversable()) {
@@ -134,9 +155,11 @@ public class Maze implements GraphInterface {
 				counter++;
 			}
 			this.maxY = this.laby.size();
+		} catch (FileNotFoundException fe) {
+			new MazeReadingException("File not Found", 0, fe.getMessage());
 		} catch (IOException e) {
 			e.printStackTrace();
-			new MazeReadingException("file", 0, e.getMessage());
+			new MazeReadingException("I/O Error", 0, e.getMessage());
 		} finally {
 			try {
 				if (objReader != null) {

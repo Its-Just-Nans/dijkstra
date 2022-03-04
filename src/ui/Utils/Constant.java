@@ -32,6 +32,7 @@ public class Constant {
             put("END", "END");
             put("START", "START");
             put("NORMAL", "NORMAL");
+            put("FINAL", "FINAL");
         }
     };
 
@@ -65,4 +66,17 @@ public class Constant {
         return "";
     }
 
+    public static String convertType(String type) {
+        if (type.equals("W")) {
+            return Constant.cst("WALL");
+        } else if (type.equals("D")) {
+            return Constant.cst("START");
+        } else if (type.equals("A")) {
+            return Constant.cst("END");
+        } else if (type.equals("F")) {
+            return Constant.cst("FINAL");
+        } else {
+            return Constant.cst("NORMAL");
+        }
+    }
 }

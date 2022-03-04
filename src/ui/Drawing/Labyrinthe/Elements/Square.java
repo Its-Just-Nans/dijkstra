@@ -9,79 +9,71 @@ import java.awt.Graphics2D;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
-import dijkstra.VertexInterface;
+import maze.MBox;
 import ui.Drawing.DrawingApp;
 import ui.Utils.Constant;
 
-public class Square extends JPanel implements VertexInterface {
+public class Square extends JPanel {
     private Color color = Color.BLACK;
     private String type;
+    private int x;
+    private int y;
     private DrawingApp drawingApp;
     private final static BasicStroke basicStroke = new BasicStroke();
+    private MBox box;
 
-    public Square(DrawingApp drawingApp, String newtype) {
+    public Square(DrawingApp drawingApp, MBox mbox) {
         super();
         this.drawingApp = drawingApp;
         int cubeSize = this.drawingApp.getDrawingAppModelLaby().getSquareSize();
-        // this.setPreferredSize(new Dimension(cubeSize, cubeSize));
+        this.setPreferredSize(new Dimension(cubeSize, cubeSize));
         this.setBorder(BorderFactory.createLineBorder(Color.black));
-        this.setType(newtype);
+        this.setBox(mbox);
     }
 
-    public void changeColor(Color newColor) {
-        if (newColor == null) {
-            if (Color.WHITE.equals(this.color)) {
-                this.setType(Constant.cst("WALL"));
-            } else if (Color.BLACK.equals(this.color)) {
-                this.setType(Constant.cst("START"));
-            } else if (Color.BLUE.equals(this.color)) {
-                this.setType(Constant.cst("END"));
-            } else if (Color.RED.equals(this.color)) {
-                this.setType(Constant.cst("NORMAL"));
-            }
-        } else {
-            this.color = newColor;
-        }
-        this.setBackground(this.color);
+    public void setBox(MBox mbox) {
+        this.box = mbox;
+        this.box.setX(this.x);
+        this.box.setY(this.y);
+        this.setPanelBackground();
     }
 
-    public String getLabel() {
-        return this.type;
+    public void setCoord(int x, int y) {
+        this.x = x;
+        this.y = y;
+        this.box.setX(this.x);
+        this.box.setY(this.y);
     }
 
-    public void setType(String newType) {
-        this.type = newType;
-        if (this.type.equals(Constant.cst("NORMAL"))) {
-            this.color = Color.WHITE;
-        } else if (this.type.equals(Constant.cst("START"))) {
+    public String getBoxType() {
+        return this.box.getType();
+    }
+
+    public MBox getBox() {
+        return this.box;
+    }
+
+    private void setPanelBackground() {
+        Color temp;
+        String typeOfBox = Constant.convertType(box.getType());
+        if (typeOfBox.equals(Constant.cst("START"))) {
+            MBox tempBox = this.getBox();
             this.drawingApp.getDrawingAppModelLaby().resetCase(Constant.cst("START"));
-            this.color = Color.BLUE;
-        } else if (this.type.equals(Constant.cst("END"))) {
+            this.box = tempBox;
+            temp = Color.BLUE;
+        } else if (typeOfBox.equals(Constant.cst("END"))) {
+            MBox tempBox = this.getBox();
             this.drawingApp.getDrawingAppModelLaby().resetCase(Constant.cst("END"));
-            this.color = Color.RED;
-        } else if (this.type.equals(Constant.cst("WALL"))) {
-            this.color = Color.BLACK;
+            this.box = tempBox;
+            temp = Color.RED;
+        } else if (typeOfBox.equals(Constant.cst("WALL"))) {
+            temp = Color.BLACK;
+        } else if (typeOfBox.equals(Constant.cst("FINAL"))) {
+            temp = Color.YELLOW;
+        } else {
+            // (typeOfBox.equals(Constant.cst("NORMAL"))
+            temp = Color.WHITE; // default value
         }
-    }
-
-    public String getType() {
-        return this.type;
-    }
-
-    public final void paint(Graphics g, boolean selected, boolean current) {
-        Graphics2D g2 = (Graphics2D) g;
-
-        g2.setStroke(basicStroke);
-        g2.setColor(color);
-        if (selected) {
-            if (this.color == Color.BLACK) {
-                g2.setColor(Color.GRAY);
-            } else {
-                Color customColor = this.color;
-                g2.setColor(customColor.darker()); // darker to see selection
-            }
-        }
-        // g2.fill(this);
-        // g2.draw(this);
+        this.setBackground(temp);
     }
 }

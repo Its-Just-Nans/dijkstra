@@ -1,6 +1,6 @@
 package maze;
 
-public class EBox extends MBox {
+public class EBox extends MBox { // case vide
 	public EBox() {
 		super("E");
 	}

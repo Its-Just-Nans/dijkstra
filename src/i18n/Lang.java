@@ -36,5 +36,10 @@ public class Lang extends ListResourceBundle {
             { "START", "Départ" },
             { "WALL", "Wall" },
             { "MSG_SWITCH", "Vous êtes deja dans cet onglet" },
+            { "INIT_FROM_FILE", "Ouvrir depuis un fichier" },
+            { "GET_HEIGHT", "Entrer la hauteur du labyrinthe" },
+            { "GET_WIDTH", "Entrer la largeur du labyrinthe" },
+            { "NO_START", "Le départ n'a pas été trouvé" },
+            { "NO_END", "L'arrivée n'a pas été trouvé" },
     };
 }

@@ -12,12 +12,7 @@ public class ASet extends HashSet<VertexInterface> implements ASetInterface {
 		this.add(nouveauVertex);
 	}
 
-	public boolean isIn(VertexInterface sommets) {
-		for (VertexInterface element : this) {
-			if (element == sommets) {
-				return true;
-			}
-		}
-		return false;
+	public boolean isIn(VertexInterface sommet) {
+		return this.contains(sommet);
 	}
 }

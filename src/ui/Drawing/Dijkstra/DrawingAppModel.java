@@ -7,11 +7,14 @@ import java.awt.geom.Point2D;
 import java.awt.Graphics;
 import java.awt.Color;
 
+import dijkstra.Dijkstra;
 import dijkstra.GraphInterface;
+import dijkstra.PreviousInterface;
 import dijkstra.VertexInterface;
 import ui.Drawing.Dijkstra.Elements.Cercle;
 import ui.Drawing.Dijkstra.Elements.Segment;
 import ui.Utils.Constant;
+import ui.Utils.Modal;
 
 public class DrawingAppModel implements GraphInterface {
     private final ArrayList<Segment> editedSegments = new ArrayList<Segment>();
@@ -393,5 +396,29 @@ public class DrawingAppModel implements GraphInterface {
 
     public void setCaseWIN(float x, float y) {
         System.out.println(x + " " + y);
+    }
+
+    public void solveDijkstra() {
+        // drawingAppModel.cleanInterface();
+        // drawingAppModel.checkValues();
+        VertexInterface start = this.getStart();
+        if (start == null) {
+            Modal.makeMessage(Constant.t("NO_START"));
+            return;
+        }
+        VertexInterface end = this.getEnd();
+        if (end == null) {
+            Modal.makeMessage(Constant.t("NO_END"));
+            return;
+        }
+        PreviousInterface chemin = Dijkstra.dijkstra(this, start);
+
+        Cercle caseTemp = (Cercle) end;
+        while (caseTemp != null) {
+            caseTemp = (Cercle) chemin.getValue(caseTemp);
+            if (caseTemp != null) {
+                this.setCaseWIN(caseTemp.getRealX(), caseTemp.getRealY());
+            }
+        }
     }
 }

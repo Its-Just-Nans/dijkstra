@@ -19,7 +19,7 @@ public class Lang_en extends ListResourceBundle {
             { "LEAVE", "Leave" },
             { "SAVE", "Drawing not saved. Save ?" },
             { "SQUARE_SIZE", "Enter size of labyrinth square" },
-            { "OPT_MOD", "Enter size of labyrinth square" },
+            { "OPT_MOD", "This modification will be set for the next labyrinth" },
             { "SQUARE_SIZE", "Labyrinth square's size:" },
             { "NEW", "New" },
             { "CURSOR", "Cursor" },
@@ -36,5 +36,10 @@ public class Lang_en extends ListResourceBundle {
             { "START", "Start" },
             { "WALL", "Wall" },
             { "MSG_SWITCH", "You are already in the correct tab" },
+            { "INIT_FROM_FILE", "Init from file" },
+            { "GET_HEIGHT", "Enter the height of the labyrinth" },
+            { "GET_WIDTH", "Enter the width of the labyrinth" },
+            { "NO_START", "Start can't be found !" },
+            { "NO_END", "End can't be found !" },
     };
 }

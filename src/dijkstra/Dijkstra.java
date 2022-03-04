@@ -24,44 +24,31 @@ public class Dijkstra {
 		int loopValue = listeSommets.size() - 1;
 		for (int j = 1; j <= loopValue; j++) {
 			// pour tout sommet y non encore dans A et successeur de pivot
-			List<VertexInterface> listOfSuccessorOfPivotNotInA = new ArrayList<VertexInterface>();
 			List<VertexInterface> listOfSuccessor = g.getSuccessorOf(pivot);
 			for (VertexInterface y : listeSommets) {
 				boolean isInSet = set.isIn(y);
-				if (!isInSet) {
-					boolean isASucessor = listOfSuccessor.contains(y);
-					if (isASucessor) {
-						listOfSuccessorOfPivotNotInA.add(y);
+				if (!isInSet && listOfSuccessor.contains(y)) {
+					// si pi(pivot) + p(pivot, y) < x(y)
+					int valueToCheck = pi.getValue(pivot) + g.getWeight(pivot, y);
+					if (valueToCheck < pi.getValue(y)) {
+						// pi(y) <— pi(pivot) + p(pivot, y)
+						pi.setValue(y, valueToCheck);
+						// pere(y) <- pivot
+						pere.setValue(y, pivot);
 					}
 				}
 			}
-			for (VertexInterface oneSuccessor : listOfSuccessorOfPivotNotInA) {
-				// si pi(pivot) + p(pivot, y) < x(y)
-				int valueToCheck = pi.getValue(pivot) + g.getWeight(pivot, oneSuccessor);
-				int valueOfY = pi.getValue(oneSuccessor);
-				if (valueToCheck < valueOfY) {
-					// pi(y) <— pi(pivot) + p(pivot, y)
-					pi.setValue(oneSuccessor, valueToCheck);
-					// pere(y) <- pivot
-					pere.setValue(oneSuccessor, pivot);
-				}
-			}
-			// chercher, parmi les sommets non dans À
-			List<VertexInterface> sommetsNotInA = new ArrayList<VertexInterface>();
-			for (VertexInterface vertex : listeSommets) {
-				boolean isInSet = set.isIn(vertex);
-				if (!isInSet) {
-					sommetsNotInA.add(vertex);
-				}
-			}
-			// chercher un sommet y tel que z(y) soit minimum
 			int minValue = maxVal;
-			for (VertexInterface vertex : sommetsNotInA) {
-				int valueOfVertex = pi.getValue(vertex);
-				if (valueOfVertex < minValue) {
-					// pivot <- y
-					minValue = valueOfVertex;
-					pivot = vertex;
+			// chercher, parmi les sommets non dans À
+			for (VertexInterface vertex : listeSommets) {
+				if (!set.isIn(vertex)) {
+					// chercher un sommet y tel que z(y) soit minimum
+					int valueOfVertex = pi.getValue(vertex);
+					if (valueOfVertex < minValue) {
+						// pivot <- y
+						minValue = valueOfVertex;
+						pivot = vertex;
+					}
 				}
 			}
 			// A <— A u (pivot)

@@ -1,15 +1,21 @@
 package ui.Drawing.Labyrinthe;
 
-import javax.swing.event.MouseInputListener;
 import javax.swing.event.MouseInputAdapter;
+
+import maze.ABox;
+import maze.DBox;
+import maze.EBox;
+import maze.MBox;
+import maze.WBox;
 
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 
 import ui.Drawing.DrawingApp;
 import ui.Drawing.Labyrinthe.Elements.Square;
+import ui.Utils.Constant;
 
-public class DrawingPanelMouseListenerLaby extends MouseInputAdapter implements MouseInputListener {
+public class DrawingPanelMouseListenerLaby extends MouseInputAdapter {
    private final Square square;
    private final DrawingApp drawingApp;
 
@@ -38,7 +44,8 @@ public class DrawingPanelMouseListenerLaby extends MouseInputAdapter implements 
    public final void mouseEntered(MouseEvent e) {
       // System.out.println("entrée");
       if (drawingApp.getDrawingAppModelLaby().getClicked()) {
-         this.square.changeColor(Color.BLACK); // only black
+         this.square.setBox(new WBox()); // only black
+         drawingApp.getDrawingAppModelLaby().stateChanges();
       }
    }
 
@@ -50,7 +57,21 @@ public class DrawingPanelMouseListenerLaby extends MouseInputAdapter implements 
    @Override
    public final void mouseClicked(MouseEvent e) {
       if (this.square != null) {
-         this.square.changeColor(null); // defautlt actions
+         String typeOfBox = Constant.convertType(this.square.getBox().getType());
+         MBox temp;
+         if (typeOfBox.equals(Constant.cst("START"))) {
+            temp = new ABox();
+         } else if (typeOfBox.equals(Constant.cst("END"))) {
+            temp = new EBox();
+         } else if (typeOfBox.equals(Constant.cst("WALL"))) {
+            temp = new DBox();
+         } else if (typeOfBox.equals(Constant.cst("FINAL"))) {
+            temp = new EBox();
+         } else {
+            // (typeOfBox.equals(Constant.cst("NORMAL"))
+            temp = new WBox(); // default value
+         }
+         this.square.setBox(temp);
       } else if (drawingApp != null) {
          drawingApp.stateChanged(null);
       }

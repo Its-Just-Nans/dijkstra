@@ -7,22 +7,22 @@ import java.awt.event.ActionEvent;
 import ui.Drawing.DrawingApp;
 import ui.Utils.Constant;
 
-public class SolveLabyMenuItem extends JMenuItem implements ActionListener {
+public class InitFromFileMenuItem extends JMenuItem implements ActionListener {
    private final DrawingApp drawingApp;
 
-   public SolveLabyMenuItem(DrawingApp drawingApp) {
-      super(Constant.t("SOLVE")); // Text of menu item
+   public InitFromFileMenuItem(DrawingApp drawingApp) {
+      super(Constant.t("INIT_FROM_FILE")); // Text of menu item
       this.drawingApp = drawingApp;
       addActionListener(this);
    }
 
    public void actionPerformed(ActionEvent evt) {
       this.drawingApp.changeTo(Constant.cst("LABY"), true);
-      this.drawingApp.getDrawingAppModelLaby().solveDijkstra();
+      this.drawingApp.getDrawingAppModelLaby().initLabyFromFile();
    }
 
    public void changeLocale() {
-      this.setText(Constant.t("SOLVE"));
+      this.setText(Constant.t("INIT_FROM_FILE"));
    }
 
 }

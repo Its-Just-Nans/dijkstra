@@ -17,7 +17,7 @@ public class SwitchMenuItem extends JMenuItem implements ActionListener {
    }
 
    public void actionPerformed(ActionEvent evt) {
-      this.drawingApp.changeTo(Constant.cst("GRAPH"));
+      this.drawingApp.changeTo(Constant.cst("GRAPH"), false);
    }
 
    public void changeLocale() {
