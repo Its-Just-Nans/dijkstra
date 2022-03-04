@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 
 import ui.Drawing.DrawingApp;
-import ui.Drawing.Dijkstra.Elements.Cercle;
 import ui.Utils.Constant;
 
 public class ListFormes extends JPanel implements ItemListener {

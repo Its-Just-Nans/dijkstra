@@ -4,7 +4,6 @@ import javax.swing.JPanel;
 import java.awt.BorderLayout;
 
 import ui.Buttons.ButtonsPanel;
-import ui.Buttons.ButtonsOptions;
 import ui.Drawing.DrawingApp;
 
 public class WindowPanel extends JPanel {
