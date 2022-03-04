@@ -29,6 +29,9 @@ J'ai utilisé VSCode au lieu d'Eclipse car :
 ```
 # download jdk
 sudo apt install default-jdk
+# download make
+sudo apt install make
+
 # run build command
 make build
 ```
