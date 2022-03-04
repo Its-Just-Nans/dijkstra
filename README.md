@@ -1,6 +1,6 @@
 # INF103 : Dijkstra avec JAVA
 
-# Le sujet du projet
+## Le sujet du projet
 
 
 Si vous avez bien réalisés les TPs, vous avez normalement une implémentation de l’algorithme de Dijkstra.
@@ -16,3 +16,19 @@ On attend de vous entre autres :
 - la possibilité de charger un nouveau graphe, d’éditer un graphe et de sauver un graphe dans un fichier texte.
 
 On pourra, par exemple mais **tout autre idée sera aussi bonne**, utiliser la notion de labyrinthe pour représenter la notion de graphe. Deux cases du labyrinthe sont connectées si elles sont contiguës et s’il n’y a pas de mur entre elles.
+
+## Tools
+
+J'ai utilisé VSCode au lieu d'Eclipse car :
+- VScode à une très bonne gestion du projet JAVA
+- il faut installer Eclipse
+- Eclipse a un aspect "vieux"
+
+## Build the project
+
+```
+# download jdk
+sudo apt install default-jdk
+# run build command
+make build
+```
