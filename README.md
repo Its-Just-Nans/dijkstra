@@ -2,7 +2,6 @@
 
 ## Le sujet du projet
 
-
 Si vous avez bien réalisés les TPs, vous avez normalement une implémentation de l’algorithme de Dijkstra.
 
 Le reste du projet consiste à concevoir, et réaliser une très belle interface graphique qui illustre l’algorithme de Dijkstra.
@@ -46,6 +45,10 @@ J'ai utilisé VSCode au lieu d'Eclipse car :
 
 Ainsi, je recommande l'utilisation de VSCode !
 
+## JavaDoc
+
+Ma JavaDoc a été générée automatiquement. Je n'ai pas mis de commentaires supplémentaires car le nom des fonctions est parlant.
+
 ## Builder le projet
 
 Il est possible que le build ne fonctionne pas sur Windows (car il nécessite des fonctions Unix), On peut néanmoins le construire sur Windows avec des outils comme `WSL` ou `GIT Bash`.
@@ -59,3 +62,7 @@ sudo apt install make
 # run build command
 make build
 ```
+
+## LICENSE
+
+Licensed under the MIT License - [LICENSE](LICENSE)
