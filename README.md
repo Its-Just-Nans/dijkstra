@@ -35,6 +35,7 @@ J'ai pu faire quelques ajouts supplémentaires au programme :
 - script de compilation du projet
 - création d'une classe `Modal` pour simplifier l'utiliser des affichages
 - création d'une classe `Constant` pour la gestion des traductions et des constantes
+- bouton d'aide pour décrire le fonctionnement des interfaces
 
 ## Outils
 
