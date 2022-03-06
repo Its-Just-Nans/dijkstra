@@ -4,6 +4,11 @@ import java.util.List;
 
 public class Dijkstra {
 
+	/**
+	 * @param g
+	 * @param r
+	 * @return PreviousInterface
+	 */
 	public static PreviousInterface dijkstra(GraphInterface g, VertexInterface r) {
 		int maxVal = Integer.MAX_VALUE;
 		ASet set = new ASet();

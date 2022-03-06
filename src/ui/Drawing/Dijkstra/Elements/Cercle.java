@@ -23,14 +23,23 @@ public class Cercle extends Ellipse2D.Float implements VertexInterface {
 
     private final static BasicStroke basicStroke = new BasicStroke();
 
+    /**
+     * @return float
+     */
     public static float getDiametre() {
         return diametre;
     }
 
+    /**
+     * @return String
+     */
     public String getLabel() {
         return this.type;
     }
 
+    /**
+     * @param newType
+     */
     public void setType(String newType) {
         this.type = newType;
         if (this.type.equals(Constant.cst("NORMAL"))) {
@@ -42,18 +51,32 @@ public class Cercle extends Ellipse2D.Float implements VertexInterface {
         }
     }
 
+    /**
+     * @return String
+     */
     public String getType() {
         return this.type;
     }
 
+    /**
+     * @return float
+     */
     public float getRealX() {
         return x + (diametre / 2); // the x of Ellipse2D is at the top right corner;
     }
 
+    /**
+     * @return float
+     */
     public float getRealY() {
         return y + (diametre / 2); // the y of Ellipse2D is at the top right corner;
     }
 
+    /**
+     * @param g
+     * @param selected
+     * @param current
+     */
     public final void paint(Graphics g, boolean selected, boolean current) {
         Graphics2D g2 = (Graphics2D) g;
 

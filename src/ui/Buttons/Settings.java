@@ -51,6 +51,9 @@ public class Settings extends JPanel implements ActionListener {
 		label.setText(Constant.t("UPDATE_VALUE"));
 	}
 
+	/**
+	 * @param e
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String valueInString = textField.getText();

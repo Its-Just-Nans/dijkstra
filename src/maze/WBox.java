@@ -9,6 +9,9 @@ public class WBox extends MBox {
 		super("W", x, y);
 	}
 
+	/**
+	 * @return boolean
+	 */
 	@Override
 	public boolean isTraversable() {
 		return false;

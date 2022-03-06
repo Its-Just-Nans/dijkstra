@@ -15,6 +15,11 @@ public class DrawingPanelMouseListenerDijkstra extends MouseInputAdapter {
       this.drawingApp = drawingApp;
    }
 
+   /**
+    * Event mousePressed
+    * 
+    * @param e
+    */
    @Override
    public final void mousePressed(MouseEvent e) {
       if (drawingApp.getDrawingAppModel().getCurrentForme().equals(Constant.cst("CURSOR"))) {
@@ -26,6 +31,11 @@ public class DrawingPanelMouseListenerDijkstra extends MouseInputAdapter {
       }
    }
 
+   /**
+    * Event mouseDragged (drag des boutons et segments)
+    * 
+    * @param e
+    */
    @Override
    public final void mouseDragged(MouseEvent e) {
       String tempForme = drawingApp.getDrawingAppModel().getCurrentForme();
@@ -37,6 +47,11 @@ public class DrawingPanelMouseListenerDijkstra extends MouseInputAdapter {
       }
    }
 
+   /**
+    * event mouseReleased (enregistre le segment ou bouge le cercle)
+    * 
+    * @param e
+    */
    @Override
    public final void mouseReleased(MouseEvent e) {
       String current = drawingApp.getDrawingAppModel().getCurrentForme();
@@ -49,11 +64,21 @@ public class DrawingPanelMouseListenerDijkstra extends MouseInputAdapter {
       }
    }
 
+   /**
+    * Event mouseExisted - arrêter le dessin
+    * 
+    * @param e
+    */
    @Override
    public final void mouseExited(MouseEvent e) {
       drawingApp.getDrawingAppModel().cancelCurrentForme();
    }
 
+   /**
+    * event mouseClicked - active la selection si c'est le curseur
+    * 
+    * @param e
+    */
    @Override
    public final void mouseClicked(MouseEvent e) {
       if (drawingApp.getDrawingAppModel().getCurrentForme().equals(Constant.cst("CURSOR"))) {

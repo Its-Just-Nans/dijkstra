@@ -12,6 +12,9 @@ public class MazeReadingException extends Exception {
 		System.out.print(correctMsg);
 	}
 
+	/**
+	 * @return String
+	 */
 	public String getInfos() {
 		return this.correctMsg;
 	}

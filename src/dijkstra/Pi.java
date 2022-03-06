@@ -7,10 +7,18 @@ public class Pi extends Hashtable<VertexInterface, Integer> implements PiInterfa
 		super();
 	}
 
+	/**
+	 * @param vertexToFind
+	 * @return int
+	 */
 	public int getValue(VertexInterface vertexToFind) {
 		return this.get(vertexToFind);
 	}
 
+	/**
+	 * @param vertexToModidfy
+	 * @param value
+	 */
 	public void setValue(VertexInterface vertexToModidfy, Integer value) {
 		this.put(vertexToModidfy, value);
 	}

@@ -26,6 +26,9 @@ public class DrawingPanel extends JPanel {
 		this.addMouseMotionListener(drawingPanelMouseListenerDijkstra);
 	}
 
+	/**
+	 * @param g
+	 */
 	@Override
 	protected void paintComponent(Graphics g) {
 		// Paint the background

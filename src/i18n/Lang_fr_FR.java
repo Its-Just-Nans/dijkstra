@@ -4,6 +4,9 @@ import java.util.ListResourceBundle;
 
 public class Lang_fr_FR extends ListResourceBundle {
 
+    /**
+     * @return Object[][]
+     */
     @Override
     protected Object[][] getContents() {
         return contents;

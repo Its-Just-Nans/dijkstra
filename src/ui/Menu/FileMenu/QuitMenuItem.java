@@ -20,6 +20,9 @@ public class QuitMenuItem extends JMenuItem implements ActionListener {
       addActionListener(this);
    }
 
+   /**
+    * @param evt
+    */
    public void actionPerformed(ActionEvent evt) {
       DrawingAppModel drawingAppModel = drawingApp.getDrawingAppModel();
 

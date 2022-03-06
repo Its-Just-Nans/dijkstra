@@ -49,14 +49,24 @@ public class DrawingApp extends JFrame implements ChangeListener {
       setVisible(true); // The great show
    }
 
+   /**
+    * @return DrawingAppModel
+    */
    public DrawingAppModel getDrawingAppModel() {
       return drawingAppModel;
    }
 
+   /**
+    * @return DrawingAppModelLaby
+    */
    public DrawingAppModelLaby getDrawingAppModelLaby() {
       return drawingAppModelLaby;
    }
 
+   /**
+    * @param newType
+    * @param force
+    */
    public void changeTo(String newType, boolean force) {
       if (this.windowType != newType) {
          windowPanelLaby.setVisible(false);
@@ -78,10 +88,16 @@ public class DrawingApp extends JFrame implements ChangeListener {
       }
    }
 
+   /**
+    * @param drawingAppModel
+    */
    public void setDrawingAppModel(DrawingAppModel drawingAppModel) {
       this.drawingAppModel = drawingAppModel;
    }
 
+   /**
+    * @param evt
+    */
    public void stateChanged(ChangeEvent evt) {
       if (windowType.equals(Constant.cst("LABY"))) {
          windowPanelLaby.notifyForUpdate();
@@ -90,10 +106,16 @@ public class DrawingApp extends JFrame implements ChangeListener {
       }
    }
 
+   /**
+    * @return WindowPanelLaby
+    */
    public WindowPanelLaby getWindowPanelLaby() {
       return windowPanelLaby;
    }
 
+   /**
+    * @param newType
+    */
    public void newGame(String newType) {
       windowPanelLaby.setVisible(false);
       windowPanel.setVisible(false);

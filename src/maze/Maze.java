@@ -33,22 +33,38 @@ public class Maze implements GraphInterface {
 		this.maxY = allBoxes.size();
 	}
 
+	/**
+	 * @param newMaxX
+	 */
 	public void setMaxX(int newMaxX) {
 		this.maxX = newMaxX;
 	}
 
+	/**
+	 * @return int
+	 */
 	public int getMaxX() {
 		return this.maxX;
 	}
 
+	/**
+	 * @param newMaxY
+	 */
 	public void setMaxY(int newMaxY) {
 		this.maxY = newMaxY;
 	}
 
+	/**
+	 * @return int
+	 */
 	public int getMaxY() {
 		return this.maxY;
 	}
 
+	/**
+	 * @param type
+	 * @return MBox
+	 */
 	public MBox findByType(String type) {
 		MBox start = null;
 		for (int i = 0; i < this.maxY; i++) {
@@ -61,6 +77,9 @@ public class Maze implements GraphInterface {
 		return start;
 	}
 
+	/**
+	 * @return List<VertexInterface>
+	 */
 	public List<VertexInterface> getSommets() {
 		List<VertexInterface> list = new ArrayList<VertexInterface>();
 		for (int i = 0; i < this.maxY; i++) {
@@ -71,6 +90,9 @@ public class Maze implements GraphInterface {
 		return list;
 	}
 
+	/**
+	 * @return List<MBox>
+	 */
 	public List<MBox> getAllMBox() {
 		List<MBox> list = new ArrayList<MBox>();
 		for (int i = 0; i < this.maxY; i++) {
@@ -81,6 +103,10 @@ public class Maze implements GraphInterface {
 		return list;
 	}
 
+	/**
+	 * @param vertex
+	 * @return List<VertexInterface>
+	 */
 	public List<VertexInterface> getSuccessorOf(VertexInterface vertex) {
 		MBox box = (MBox) vertex;
 		int x = box.getX();
@@ -117,15 +143,27 @@ public class Maze implements GraphInterface {
 		return listSuccessor;
 	}
 
+	/**
+	 * @param src
+	 * @param dst
+	 * @return int
+	 */
 	@Override
 	public int getWeight(VertexInterface src, VertexInterface dst) {
 		return 1;
 	}
 
+	/**
+	 * @param x
+	 * @param y
+	 */
 	public void setCaseWIN(int x, int y) {
 		this.laby.get(y).get(x).setType("O");
 	}
 
+	/**
+	 * @param fileName
+	 */
 	public final void initFromTextFile(String fileName) {
 		BufferedReader objReader = null;
 		int countChecker = 0;
@@ -202,6 +240,9 @@ public class Maze implements GraphInterface {
 		}
 	}
 
+	/**
+	 * @param fileName
+	 */
 	public final void saveToTextFile(String fileName) {
 		File file = new File(fileName);
 		try {

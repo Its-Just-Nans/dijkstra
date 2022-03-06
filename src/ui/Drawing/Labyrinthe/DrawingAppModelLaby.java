@@ -34,39 +34,67 @@ public class DrawingAppModelLaby {
         editedSquare.clear();
     }
 
+    /**
+     * @return int
+     */
     public int getHeight() {
         return this.heightLaby;
     }
 
+    /**
+     * @return int
+     */
     public int getWidth() {
         return this.widthLaby;
     }
 
+    /**
+     * @param newHeight
+     * @param newWidth
+     */
     public void setDimensions(int newHeight, int newWidth) {
         this.heightLaby = newHeight;
         this.widthLaby = newWidth;
     }
 
+    /**
+     * @return boolean
+     */
     public boolean getClicked() {
         return this.clicked;
     }
 
+    /**
+     * @param newClicked
+     */
     public void setClicked(boolean newClicked) {
         this.clicked = newClicked;
     }
 
+    /**
+     * @param sqr
+     */
     public void addSquare(Square sqr) {
         this.editedSquare.add(sqr);
     }
 
+    /**
+     * @return int
+     */
     public int getSquareSize() {
         return this.squareSize;
     }
 
+    /**
+     * @param newSize
+     */
     public void setSquareSize(int newSize) {
         this.squareSize = newSize;
     }
 
+    /**
+     * @param typeOfReset
+     */
     public void resetCase(String typeOfReset) {
         for (Square oneSqr : this.editedSquare) {
             String typeOfActualSquare = Constant.convertType(oneSqr.getBoxType());
@@ -91,6 +119,9 @@ public class DrawingAppModelLaby {
         this.drawingApp.getWindowPanelLaby().generateLaby(listBox);
     }
 
+    /**
+     * @param listener
+     */
     public void addObserver(ChangeListener listener) {
         listeners.add(listener);
     }
@@ -102,6 +133,9 @@ public class DrawingAppModelLaby {
         }
     }
 
+    /**
+     * @return Maze
+     */
     private Maze createMaze() {
         ArrayList<ArrayList<MBox>> boxes = new ArrayList<ArrayList<MBox>>();
         for (int hauteur = 0; hauteur < this.heightLaby; hauteur++) {
@@ -117,6 +151,9 @@ public class DrawingAppModelLaby {
         return new Maze(boxes);
     }
 
+    /**
+     * enlève les box finals (pour un aspect esthétique)
+     */
     private void removeFinalBoxes() {
         for (Square oneSquare : editedSquare) {
             if (oneSquare.getBox().getType().equals("F")) {
@@ -163,6 +200,10 @@ public class DrawingAppModelLaby {
         }
     }
 
+    /**
+     * @param box
+     * @return Square
+     */
     private Square getSquareFormBox(MBox box) {
         for (Square oneSquare : editedSquare) {
             if (oneSquare.getBox() == box) {
@@ -172,6 +213,9 @@ public class DrawingAppModelLaby {
         return null;
     }
 
+    /**
+     * @param path
+     */
     public void saveToFile(String path) {
         Maze maze = createMaze();
         maze.saveToTextFile(path);

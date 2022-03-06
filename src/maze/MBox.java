@@ -20,10 +20,16 @@ public abstract class MBox implements VertexInterface {
 		this.setLabel();
 	}
 
+	/**
+	 * @param type
+	 */
 	public void setType(String type) {
 		this.type = type;
 	}
 
+	/**
+	 * @return String
+	 */
 	public String getLabel() {
 		return this.label;
 	}
@@ -32,32 +38,53 @@ public abstract class MBox implements VertexInterface {
 		this.label = "case" + this.X + ":" + this.Y;
 	}
 
+	/**
+	 * @return String
+	 */
 	public String getType() {
 		return this.type;
 	}
 
+	/**
+	 * @return String
+	 */
 	public String toString() {
 		return this.label;
 	}
 
+	/**
+	 * @return int
+	 */
 	public int getX() {
 		return this.X;
 	}
 
+	/**
+	 * @return int
+	 */
 	public int getY() {
 		return this.Y;
 	}
 
+	/**
+	 * @param newX
+	 */
 	public void setX(int newX) {
 		this.X = newX;
 		this.setLabel();
 	}
 
+	/**
+	 * @param newY
+	 */
 	public void setY(int newY) {
 		this.Y = newY;
 		this.setLabel();
 	}
 
+	/**
+	 * @return boolean
+	 */
 	public boolean isTraversable() {
 		return true;
 	}

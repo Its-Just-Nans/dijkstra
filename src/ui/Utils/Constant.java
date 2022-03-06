@@ -37,6 +37,9 @@ public class Constant {
         }
     };
 
+    /**
+     * @param newLang
+     */
     /* Public methods */
 
     public static void changeLang(String newLang) {
@@ -45,14 +48,25 @@ public class Constant {
         }
     }
 
+    /**
+     * @return String
+     */
     public static String getLang() {
         return lang;
     }
 
+    /**
+     * @param key
+     * @return String
+     */
     public static String t(String key) {
         return langObj.get(lang).getString(key);
     }
 
+    /**
+     * @param cstSTR
+     * @return String
+     */
     public static String cst(String cstSTR) {
         if (constante.containsKey(cstSTR)) {
             return constante.get(cstSTR);
@@ -67,6 +81,10 @@ public class Constant {
         return "";
     }
 
+    /**
+     * @param type
+     * @return String
+     */
     public static String convertType(String type) {
         if (type.equals("W")) {
             return Constant.cst("WALL");

@@ -14,6 +14,9 @@ public class AboutMenuItem extends JMenuItem implements ActionListener {
       addActionListener(this);
    }
 
+   /**
+    * @param evt
+    */
    public void actionPerformed(ActionEvent evt) {
       Modal.showAbout();
    }

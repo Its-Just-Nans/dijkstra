@@ -11,6 +11,9 @@ public class Vertex implements VertexInterface {
 		this.label = label;
 	}
 
+	/**
+	 * @return String
+	 */
 	@Override
 	public String getLabel() {
 		return this.label;

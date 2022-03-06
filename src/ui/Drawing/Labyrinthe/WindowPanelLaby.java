@@ -25,11 +25,19 @@ public class WindowPanelLaby extends JPanel {
 		this.setBackground(Color.RED);
 	}
 
+	/**
+	 * @param newHeight
+	 * @param newWidth
+	 */
 	public void setDimensions(int newHeight, int newWidth) {
 		drawingAppModelLaby.setDimensions(newHeight, newWidth);
 		this.setLayout(new GridLayout(newHeight, newWidth));
 	}
 
+	/**
+	 * @param height
+	 * @param width
+	 */
 	public void generateLaby(int height, int width) {
 		this.removeAll();
 		this.drawingAppModelLaby.removeAll();
@@ -50,6 +58,9 @@ public class WindowPanelLaby extends JPanel {
 		}
 	}
 
+	/**
+	 * @param list
+	 */
 	public void generateLaby(List<MBox> list) {
 		this.removeAll();
 		int count = 0;

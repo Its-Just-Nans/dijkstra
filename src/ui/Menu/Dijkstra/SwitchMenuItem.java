@@ -16,6 +16,9 @@ public class SwitchMenuItem extends JMenuItem implements ActionListener {
       addActionListener(this);
    }
 
+   /**
+    * @param evt
+    */
    public void actionPerformed(ActionEvent evt) {
       this.drawingApp.changeTo(Constant.cst("GRAPH"), false);
    }

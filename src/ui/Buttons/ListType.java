@@ -74,6 +74,9 @@ public class ListType extends JPanel implements ItemListener {
 		}
 	}
 
+	/**
+	 * @param e
+	 */
 	public void itemStateChanged(ItemEvent e) {
 		// Operation delegated to the model
 		Enumeration<AbstractButton> buttons = buttonGroup.getElements();

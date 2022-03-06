@@ -20,6 +20,9 @@ public class Segment extends Line2D.Float implements VertexInterface {
         this.color = color;
     }
 
+    /**
+     * @return String
+     */
     public String getLabel() {
         return null;
     }
@@ -36,6 +39,11 @@ public class Segment extends Line2D.Float implements VertexInterface {
         dashStroke = new BasicStroke(3.0f, BasicStroke.CAP_ROUND, BasicStroke.JOIN_MITER, 10.0f, dash, 0.0f);
     }
 
+    /**
+     * @param g
+     * @param selected
+     * @param current
+     */
     public final void paint(Graphics g, boolean selected, boolean current) {
         Graphics2D g2 = (Graphics2D) g;
 
@@ -58,30 +66,51 @@ public class Segment extends Line2D.Float implements VertexInterface {
         }
     }
 
+    /**
+     * @param newEnd1
+     */
     public void setEnd1(Cercle newEnd1) {
         this.end1 = newEnd1;
     }
 
+    /**
+     * @param newEnd2
+     */
     public void setEnd2(Cercle newEnd2) {
         this.end2 = newEnd2;
     }
 
+    /**
+     * @return Cercle
+     */
     public Cercle getEnd1() {
         return this.end1;
     }
 
+    /**
+     * @return Cercle
+     */
     public Cercle getEnd2() {
         return this.end2;
     }
 
+    /**
+     * @param newValue
+     */
     public void setValue(int newValue) {
         this.value = newValue;
     }
 
+    /**
+     * @return int
+     */
     public int getValue() {
         return this.value;
     }
 
+    /**
+     * @param newColor
+     */
     public void setColor(Color newColor) {
         this.color = newColor;
     }

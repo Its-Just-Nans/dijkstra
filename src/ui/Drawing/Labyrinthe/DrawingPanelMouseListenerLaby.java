@@ -24,21 +24,33 @@ public class DrawingPanelMouseListenerLaby extends MouseInputAdapter {
       this.square = square;
    }
 
+   /**
+    * @param e
+    */
    @Override
    public final void mousePressed(MouseEvent e) {
       drawingApp.getDrawingAppModelLaby().setClicked(true);
    }
 
+   /**
+    * @param e
+    */
    @Override
    public final void mouseDragged(MouseEvent e) {
       // System.out.println("drag");
    }
 
+   /**
+    * @param e
+    */
    @Override
    public final void mouseReleased(MouseEvent e) {
       drawingApp.getDrawingAppModelLaby().setClicked(false);
    }
 
+   /**
+    * @param e
+    */
    @Override
    public final void mouseEntered(MouseEvent e) {
       // System.out.println("entrée");
@@ -48,11 +60,17 @@ public class DrawingPanelMouseListenerLaby extends MouseInputAdapter {
       }
    }
 
+   /**
+    * @param e
+    */
    @Override
    public final void mouseExited(MouseEvent e) {
       // System.out.println("sortie");
    }
 
+   /**
+    * @param e
+    */
    @Override
    public final void mouseClicked(MouseEvent e) {
       if (this.square != null) {

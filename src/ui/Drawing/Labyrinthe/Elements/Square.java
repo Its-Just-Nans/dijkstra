@@ -25,6 +25,9 @@ public class Square extends JPanel {
         this.setBox(mbox);
     }
 
+    /**
+     * @param mbox
+     */
     public void setBox(MBox mbox) {
         this.box = mbox;
         this.box.setX(this.x);
@@ -32,6 +35,10 @@ public class Square extends JPanel {
         this.setPanelBackground();
     }
 
+    /**
+     * @param x
+     * @param y
+     */
     public void setCoord(int x, int y) {
         this.x = x;
         this.y = y;
@@ -39,10 +46,16 @@ public class Square extends JPanel {
         this.box.setY(this.y);
     }
 
+    /**
+     * @return String
+     */
     public String getBoxType() {
         return this.box.getType();
     }
 
+    /**
+     * @return MBox
+     */
     public MBox getBox() {
         return this.box;
     }

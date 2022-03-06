@@ -16,6 +16,9 @@ public class SolveMenuItem extends JMenuItem implements ActionListener {
       addActionListener(this);
    }
 
+   /**
+    * @param evt
+    */
    public void actionPerformed(ActionEvent evt) {
       this.drawingApp.getDrawingAppModel().solveDijkstra();
    }

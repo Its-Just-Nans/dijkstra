@@ -31,22 +31,37 @@ public class DrawingAppModel implements GraphInterface {
     private String selectionType = ""; // used with the cursor mode, to know the current figure
     private boolean modified = false;
 
+    /**
+     * @return ArrayList<Cercle>
+     */
     public ArrayList<Cercle> getEditedCercle() {
         return this.editedCercle;
     }
 
+    /**
+     * @return Color
+     */
     public Color getCurrentColor() {
         return this.currentColor;
     }
 
+    /**
+     * @return String
+     */
     public String getCurrentForme() {
         return this.currentForme;
     }
 
+    /**
+     * @return String
+     */
     public String getSelectionType() {
         return this.selectionType;
     }
 
+    /**
+     * @param select
+     */
     public void setSelectionType(String select) {
         this.selectionType = select;
     }
@@ -57,6 +72,9 @@ public class DrawingAppModel implements GraphInterface {
         this.setCurrentForme(""); // this function activate stateChanges()
     }
 
+    /**
+     * @return boolean
+     */
     public boolean isModified() {
         return this.modified;
     }
@@ -65,18 +83,30 @@ public class DrawingAppModel implements GraphInterface {
         System.out.println("SAVE TO FILE");
     }
 
+    /**
+     * @param newCurrent
+     */
     public void setCurrentSegment(Segment newCurrent) {
         this.currentSegment = newCurrent;
     }
 
+    /**
+     * @param newCurrent
+     */
     public void setCurrentCercle(Cercle newCurrent) {
         this.currentCercle = newCurrent;
     }
 
+    /**
+     * @return Segment
+     */
     public Segment getSelectedSegment() {
         return this.selectedSegment;
     }
 
+    /**
+     * @param newSelected
+     */
     public void setSelectedSegment(Segment newSelected) {
         this.selectedSegment = newSelected;
         if (newSelected != null) {
@@ -85,10 +115,16 @@ public class DrawingAppModel implements GraphInterface {
         stateChanges(); // update the view
     }
 
+    /**
+     * @return Cercle
+     */
     public Cercle getSelectedCercle() {
         return this.selectedCercle;
     }
 
+    /**
+     * @param newSelected
+     */
     public void setSelectedCercle(Cercle newSelected) {
         this.selectedCercle = newSelected;
         if (newSelected != null) {
@@ -101,6 +137,9 @@ public class DrawingAppModel implements GraphInterface {
         setCurrentSegment(null);
     }
 
+    /**
+     * @param g
+     */
     public final void paintSegments(Graphics g) {
         for (Segment s : editedSegments) {
             s.paint(g, false, false);
@@ -117,6 +156,9 @@ public class DrawingAppModel implements GraphInterface {
 
     private ArrayList<ChangeListener> listeners = new ArrayList<ChangeListener>();
 
+    /**
+     * @param listener
+     */
     public void addObserver(ChangeListener listener) {
         listeners.add(listener);
     }
@@ -128,6 +170,9 @@ public class DrawingAppModel implements GraphInterface {
         }
     }
 
+    /**
+     * @param currentColor
+     */
     public final void setCurrentColor(Color currentColor) {
         if (this.currentColor != currentColor) {
             this.currentColor = currentColor;
@@ -136,6 +181,9 @@ public class DrawingAppModel implements GraphInterface {
         }
     }
 
+    /**
+     * @param newCurrentForme
+     */
     public final void setCurrentForme(String newCurrentForme) {
         this.currentForme = newCurrentForme;
         this.setSelectedCercle(null);
@@ -168,6 +216,10 @@ public class DrawingAppModel implements GraphInterface {
         this.stateChanges(); // notify to hide the erase button
     }
 
+    /**
+     * @param x2
+     * @param y2
+     */
     public final void registerCurrentSegment(int x2, int y2) {
         if (this.currentSegment != null) {
             float x1 = (float) currentSegment.getX1();
@@ -191,6 +243,10 @@ public class DrawingAppModel implements GraphInterface {
         }
     }
 
+    /**
+     * @param x
+     * @param y
+     */
     public final void initCurrentForme(int x, int y) {
         if (this.currentForme.equals(Constant.cst("CERCLE"))) {
             float diametre = Cercle.getDiametre();
@@ -220,6 +276,10 @@ public class DrawingAppModel implements GraphInterface {
         }
     }
 
+    /**
+     * @param x2
+     * @param y2
+     */
     public final void modifyCurrentForme(int x2, int y2) {
         if (this.currentSegment != null && this.currentForme.equals(Constant.cst("SEGMENT"))) {
             float x1 = (float) currentSegment.getX1();
@@ -229,6 +289,10 @@ public class DrawingAppModel implements GraphInterface {
         this.stateChanges();
     }
 
+    /**
+     * @param newX
+     * @param newY
+     */
     public final void moveCirle(int newX, int newY) {
         if (this.selectedCercle != null) {
             float diametre = Cercle.getDiametre();
@@ -247,6 +311,10 @@ public class DrawingAppModel implements GraphInterface {
         this.stateChanges();
     }
 
+    /**
+     * @param newX
+     * @param newY
+     */
     public final void endMoveCirle(int newX, int newY) {
         this.setSelectedCercle(null);
         this.setSelectionType("");
@@ -262,6 +330,9 @@ public class DrawingAppModel implements GraphInterface {
         this.stateChanges();
     }
 
+    /**
+     * @param g
+     */
     public final void paintCercle(Graphics g) {
         for (Cercle oneCercle : editedCercle) {
             oneCercle.paint(g, false, false);
@@ -274,6 +345,10 @@ public class DrawingAppModel implements GraphInterface {
         }
     }
 
+    /**
+     * @param x
+     * @param y
+     */
     public final void setSelection(int x, int y) {
 
         setSelectedCercle(null);
@@ -327,6 +402,9 @@ public class DrawingAppModel implements GraphInterface {
         this.stateChanges(); // update for unselect, when click on background
     }
 
+    /**
+     * @return ArrayList<VertexInterface>
+     */
     public ArrayList<VertexInterface> getSommets() {
         ArrayList<VertexInterface> toReturn = new ArrayList<VertexInterface>();
         for (Cercle oneCercle : this.editedCercle) {
@@ -335,6 +413,10 @@ public class DrawingAppModel implements GraphInterface {
         return toReturn;
     }
 
+    /**
+     * @param vertex
+     * @return ArrayList<VertexInterface>
+     */
     public ArrayList<VertexInterface> getSuccessorOf(VertexInterface vertex) {
         ArrayList<VertexInterface> list = new ArrayList<VertexInterface>();
         for (Segment oneSegment : this.editedSegments) {
@@ -347,6 +429,11 @@ public class DrawingAppModel implements GraphInterface {
         return list;
     }
 
+    /**
+     * @param src
+     * @param dest
+     * @return int
+     */
     public int getWeight(VertexInterface src, VertexInterface dest) {
         Segment segmentTemp = getSegmentByCercles(src, dest);
         if (segmentTemp != null) {
@@ -355,6 +442,11 @@ public class DrawingAppModel implements GraphInterface {
         return Integer.MAX_VALUE;
     }
 
+    /**
+     * @param src
+     * @param dest
+     * @return Segment
+     */
     private Segment getSegmentByCercles(VertexInterface src, VertexInterface dest) {
         for (Segment oneSegment : this.editedSegments) {
             if (oneSegment.getEnd1() == src) {
@@ -372,6 +464,9 @@ public class DrawingAppModel implements GraphInterface {
         return null;
     }
 
+    /**
+     * @return VertexInterface
+     */
     // private Cercle searchCercleFromVertex(VertexInterface tofind) {
     // for (Cercle oneCercle : this.editedCercle) {
     // // VertexInterface oneCercleInVertex = (VertexInterface) oneCercle;
@@ -392,6 +487,9 @@ public class DrawingAppModel implements GraphInterface {
         return null;
     }
 
+    /**
+     * @return VertexInterface
+     */
     public VertexInterface getEnd() {
         for (Cercle oneCercle : this.editedCercle) {
             // VertexInterface oneCercleInVertex = (VertexInterface) oneCercle;
@@ -402,6 +500,10 @@ public class DrawingAppModel implements GraphInterface {
         return null;
     }
 
+    /**
+     * @param x
+     * @param y
+     */
     public void setCaseWIN(float x, float y) {
         System.out.println(x + " " + y);
     }

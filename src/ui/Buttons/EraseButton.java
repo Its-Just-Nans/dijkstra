@@ -38,6 +38,9 @@ public class EraseButton extends JButton implements ActionListener {
 		}
 	}
 
+	/**
+	 * @param evt
+	 */
 	public final void actionPerformed(ActionEvent evt) {
 		// Operation delegated to the model
 		drawingApp.getDrawingAppModel().removeCurrentSelection();

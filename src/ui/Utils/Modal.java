@@ -23,6 +23,14 @@ import javax.swing.JTextField;
 import ui.Drawing.DrawingApp;
 
 public class Modal {
+
+    /**
+     * @param val
+     * @param minValue
+     * @param maxValue
+     * @param defaultValue
+     * @return int
+     */
     private static int checkValue(String val, int minValue, int maxValue, int defaultValue) {
         int finalValue = defaultValue;
         try {
@@ -42,6 +50,13 @@ public class Modal {
         return finalValue;
     }
 
+    /**
+     * @param text
+     * @param defaultValue
+     * @param minValue
+     * @param maxValue
+     * @return int
+     */
     public static int ask(String text, int defaultValue, int minValue, int maxValue) {
         String response = "";
         response = JOptionPane.showInputDialog(text + " (entre " + minValue + " et " + maxValue + ")", defaultValue);
@@ -49,6 +64,9 @@ public class Modal {
         return value;
     }
 
+    /**
+     * @param drawingApp
+     */
     public static void showOptions(DrawingApp drawingApp) {
         JPanel myPanel = new JPanel();
         myPanel.setLayout(new BoxLayout(myPanel, BoxLayout.Y_AXIS));
@@ -87,6 +105,9 @@ public class Modal {
         drawingApp.changeLocale();
     }
 
+    /**
+     * @param msg
+     */
     public static void makeMessage(String msg) {
         JPanel myPanel = new JPanel();
         myPanel.setLayout(new BoxLayout(myPanel, BoxLayout.Y_AXIS));
@@ -144,6 +165,11 @@ public class Modal {
                 "Informations", JOptionPane.OK_CANCEL_OPTION);
     }
 
+    /**
+     * @param title
+     * @param msg
+     * @return boolean
+     */
     public static boolean showYesOrNo(String title, String msg) {
         int response = JOptionPane.showInternalOptionDialog(null,
                 msg,
@@ -160,6 +186,9 @@ public class Modal {
         }
     }
 
+    /**
+     * @return String
+     */
     public static String fileChooser() {
         JFileChooser fileChooser = new JFileChooser();
         int returnVal = fileChooser.showOpenDialog(null);
@@ -170,6 +199,9 @@ public class Modal {
         return null;
     }
 
+    /**
+     * @return String
+     */
     public static String filePathChooser() {
         JFileChooser fileChooser = new JFileChooser();
         if (fileChooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
@@ -179,11 +211,19 @@ public class Modal {
         return null;
     }
 
+    /**
+     * @param correctMsg
+     * @param trace
+     */
     public static void Error(String correctMsg, String trace) {
         System.out.println(trace);
         Modal.makeMessage(correctMsg);
     }
 
+    /**
+     * @param code
+     * @param trace
+     */
     public static void ErrorCode(String code, String trace) {
         System.out.println(trace);
         Modal.makeMessage(Constant.t(code));
