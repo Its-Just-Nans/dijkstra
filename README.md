@@ -17,14 +17,38 @@ On attend de vous entre autres :
 
 On pourra, par exemple mais **tout autre idée sera aussi bonne**, utiliser la notion de labyrinthe pour représenter la notion de graphe. Deux cases du labyrinthe sont connectées si elles sont contiguës et s’il n’y a pas de mur entre elles.
 
-## Tools
+## Fonctionnement et historique
+
+Au début du projet, j'ai voulu continuer sur une interface graphique avec des dessins, je trouve ça plus original qu'un simple labyrinthe et dans le sujet il y avait écrit `tout autre idée sera aussi bonne`. Mais après avoir fait une bonne partie du programme, le second professeur de JAVA (en TP), m'a dit qu'il fallait faire un labyrinthe et non pas un dessin graphique. J'ai demandé également à M.BELLOT son avis et il m' adit que l'interface dessin était bien. J'ai donc fait les deux interfaces : dessin et labyrinthe.
+
+Le dessin étend la classe `Maze`, donc certaine méthodes sont ré-implémentés. Le labyrinthe utilise la classe `Maze` définit aux TP 6,7,8,9.
+
+Les deux interface ainsi que les menus sont relativement bien organisés dans différent dossier (pour faciliter le développement).
+
+Dans l'interface, on peut changer entre les deux interfaces (dessin et labyrinthe) avec le bouton "Changer" pour aller sur l'interface sélectionnée.
+
+## Ajouts
+
+J'ai pu faire quelques ajouts supplémentaires au programme :
+- ajout d'un icône
+- ajout d'une option "taille des cases"
+- ajout d'un option de traduction des menus (Télécom Paris, école internationale !)
+- script de compilation du projet
+- création d'une classe `Modal` pour simplifier l'utiliser des affichages
+- création d'une classe `Constant` pour la gestion des traductions et des constantes
+
+## Outils
 
 J'ai utilisé VSCode au lieu d'Eclipse car :
 - VScode à une très bonne gestion du projet JAVA
 - il faut installer Eclipse
-- Eclipse a un aspect "vieux"
+- je trouve le debugger de VSCode beaucoup plus simple (surtout si on a l'habitude)
 
-## Build the project
+Ainsi, je recommande l'utilisation de VSCode !
+
+## Builder le projet
+
+Il est possible que le build ne fonctionne pas sur Windows (car il nécessite des fonctions Unix), On peut néanmoins le construire sur Windows avec des outils comme `WSL` ou `GIT Bash`.
 
 ```
 # download jdk

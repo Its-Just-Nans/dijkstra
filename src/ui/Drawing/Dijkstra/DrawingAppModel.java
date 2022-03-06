@@ -434,7 +434,7 @@ public class DrawingAppModel implements GraphInterface {
             caseTemp = chemin.getValue(caseTemp);
         }
         int sizeList = listFinal.size();
-        if (sizeList == 1 && listFinal.get(0) == null) {
+        if (sizeList == 1 && listFinal.get(0) == end) {
             // System.out.println("No solution");
             Modal.makeMessage(Constant.t("NO_SOLUTION"));
         }
