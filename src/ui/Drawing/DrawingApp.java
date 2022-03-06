@@ -19,8 +19,8 @@ public class DrawingApp extends JFrame implements ChangeListener {
    private final DrawingMenuBar drawingMenuBar;
    private final WindowPanel windowPanel;
    private final WindowPanelLaby windowPanelLaby;
-   private DrawingAppModel drawingAppModel;
-   private DrawingAppModelLaby drawingAppModelLaby;
+   private final DrawingAppModel drawingAppModel;
+   private final DrawingAppModelLaby drawingAppModelLaby;
    private String windowType = null;
 
    public DrawingApp() {
@@ -86,13 +86,6 @@ public class DrawingApp extends JFrame implements ChangeListener {
             Modal.makeMessage(Constant.t("MSG_SWITCH"));
          }
       }
-   }
-
-   /**
-    * @param drawingAppModel
-    */
-   public void setDrawingAppModel(DrawingAppModel drawingAppModel) {
-      this.drawingAppModel = drawingAppModel;
    }
 
    /**
