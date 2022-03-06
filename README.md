@@ -66,7 +66,7 @@ make build
 
 ## Améliorations possibles
 
-Une amélioration intéressante qui aurait pu être bien serait de pouvoir avoir une interface CLI et pas seulement graphique (ce qui n'est en soit pas compliqué car il suffit de vérifier les `args` dans `Main.java` et d'agit en conséquence).
+Une amélioration intéressante qui aurait pu être bien serait de pouvoir avoir une interface CLI et pas seulement graphique (ce qui n'est en soi pas compliqué car il suffit de vérifier les `args` dans `Main.java` et d'agit en conséquence).
 
 À titre informatif, je l'ai déjà fait dans un projet antérieur, (lors de mon DUT) : [https://github.com/Its-Just-Nans/hangman-game](https://github.com/Its-Just-Nans/hangman-game)
 
