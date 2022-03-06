@@ -9,11 +9,8 @@ import ui.Utils.Constant;
 import ui.Utils.Modal;
 
 public class HelpMenuItem extends JMenuItem implements ActionListener {
-   private final DrawingApp drawingApp;
-
    public HelpMenuItem(DrawingApp drawingApp) {
       super(Constant.t("HELP")); // Text of menu item
-      this.drawingApp = drawingApp;
       addActionListener(this);
    }
 
