@@ -53,5 +53,10 @@ public class Lang_fr_FR extends ListResourceBundle {
             { "NO_SOLUTION", "Pas de solution trouvée" },
             { "SEGMENT_VALUE", "Valeur du segment" },
             { "UPDATE_VALUE", "Actualiser la valeur" },
+            { "HELP", "Aide" },
+            { "HELP_LABY",
+                    "<html>Cliquer sur les cases pour modifier le type de la case<br/>Attention, il faut mettre d'abord l'arrivée (en rouge) puis le départ<br/><br/>Puis appuyer sur \"Solution\"</html>" },
+            { "HELP_DIJKSTRA",
+                    "<html>- Créez des cercles<br/>- Reliez-les<br/>- Sélectionnez le cercle de départ<br/>- Sélectionnez l'arrivée<br/><br/>Puis appuyer sur \"Solution\"</html>" },
     };
 }

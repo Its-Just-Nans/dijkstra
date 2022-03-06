@@ -6,11 +6,12 @@ import ui.Drawing.DrawingApp;
 import ui.Utils.Constant;
 
 public class LabyrintheMenu extends JMenu {
-   private NewLabyMenuItem newLabyMenuItem;
-   private SwitchLabyMenuItem switchLabyMenuItem;
-   private SolveLabyMenuItem solveLabyMenuItem;
-   private InitFromFileMenuItem initFromFileMenuItem;
-   private SaveToFileMenuItem saveToFileMenuItem;
+   private final NewLabyMenuItem newLabyMenuItem;
+   private final SwitchLabyMenuItem switchLabyMenuItem;
+   private final SolveLabyMenuItem solveLabyMenuItem;
+   private final InitFromFileMenuItem initFromFileMenuItem;
+   private final SaveToFileMenuItem saveToFileMenuItem;
+   private final HelpLabyMenuItem helpLabyMenuItem;
 
    public LabyrintheMenu(DrawingApp drawingApp) {
       super(Constant.t("LABY")); // Text of the menu
@@ -19,6 +20,7 @@ public class LabyrintheMenu extends JMenu {
       add(solveLabyMenuItem = new SolveLabyMenuItem(drawingApp));
       add(initFromFileMenuItem = new InitFromFileMenuItem(drawingApp));
       add(saveToFileMenuItem = new SaveToFileMenuItem(drawingApp));
+      add(helpLabyMenuItem = new HelpLabyMenuItem(drawingApp));
    }
 
    public void changeLocale() {
@@ -28,5 +30,6 @@ public class LabyrintheMenu extends JMenu {
       solveLabyMenuItem.changeLocale();
       initFromFileMenuItem.changeLocale();
       saveToFileMenuItem.changeLocale();
+      helpLabyMenuItem.changeLocale();
    }
 }

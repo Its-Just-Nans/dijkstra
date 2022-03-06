@@ -52,6 +52,11 @@ public class Lang_en_EN extends ListResourceBundle {
             { "ERROR_LINE_LEN", "Error with the length of the line :" },
             { "NO_SOLUTION", "No solution found" },
             { "SEGMENT_VALUE", "Value of the segment" },
-            { "UPDATE_VALUE", "Actualiser la valeur" },
+            { "UPDATE_VALUE", "Update value" },
+            { "HELP", "Help" },
+            { "HELP_LABY",
+                    "<html>Click on the boxes to change the type of box<br/>Warning, you must first put the arrival (in red) then the departure<br/><br/>Then press \"Solution\"</html>" },
+            { "HELP_DIJKSTRA",
+                    "<html>- Create circles<br/>- Connect them<br/>- Select the starting circle<br/>- Select the end<br/><br/>Then press \"Solution\"</html>" },
     };
 }
