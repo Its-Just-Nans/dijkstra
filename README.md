@@ -1,5 +1,7 @@
 # INF103 : Dijkstra avec JAVA
 
+![demo](./demo.gif)
+
 ## Le sujet du projet
 
 Si vous avez bien réalisés les TPs, vous avez normalement une implémentation de l’algorithme de Dijkstra.
@@ -29,6 +31,7 @@ Dans l'interface, on peut changer entre les deux interfaces (dessin et labyrinth
 ## Ajouts
 
 J'ai pu faire quelques ajouts supplémentaires au programme :
+
 - ajout d'un icône
 - ajout d'une option "taille des cases"
 - ajout d'un option de traduction des menus (Télécom Paris, école internationale !)
@@ -40,6 +43,7 @@ J'ai pu faire quelques ajouts supplémentaires au programme :
 ## Outils
 
 J'ai utilisé VSCode au lieu d'Eclipse car :
+
 - VScode à une très bonne gestion du projet JAVA
 - il faut installer Eclipse
 - je trouve le debugger de VSCode beaucoup plus simple (surtout si on a l'habitude)
@@ -54,7 +58,7 @@ Ma JavaDoc a été générée automatiquement. Je n'ai pas mis de commentaires s
 
 Il est possible que le build ne fonctionne pas sur Windows (car il nécessite des fonctions Unix), On peut néanmoins le construire sur Windows avec des outils comme `WSL` ou `GIT Bash`.
 
-```
+```sh
 # download jdk
 sudo apt install default-jdk
 # download make
